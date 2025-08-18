@@ -2,6 +2,26 @@
 
 A modern React application for finding dental implant specialists and clinics. Built with React, Vite, and Tailwind CSS.
 
+# pages done
+1.	dental-implants-Thrissur
+2.	dental-implants-Guwahati
+3.	dental-implants-Tiruchirappalli
+4.	dental-implants-Dehradun
+5.	dental-implants-belgaum
+6.	dental-implants-aizawl
+7.	dental-implants-Nagercoil
+8.	dental-implants-Shimla
+9.	dental-implants-Guntur
+10.	dental-implants-akola
+11.	dental-implants-Ahmedabad
+12.	dental-implants-Bhopal
+13.	dental-implants-Amritsar
+14.	dental-implants-Coimbatore
+15.	dental-implants-Siliguri
+16.	dental-implants-mangalore
+17.	dental-implants-Gorakhpur
+18.	dental-implants-patiala
+
 ## Features
 
 - 🦷 Find dental implant specialists near you
