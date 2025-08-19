@@ -280,7 +280,7 @@ const AhmedabadPage = () => {
                   Replace Roots centre in Ahmedabad, is the highest quality of periodontal care and dental implant services. We accomplish this by combining the latest technology with traditional techniques while treating you like family.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0">
-                  Led by Dr Kairavi Buch, our services include traditional periodontal treatment, dental implant surgery including same day implants, minimally invasive gum surgery, and treatment of gum recession.
+                  Our services include traditional periodontal treatment, dental implant surgery including same day implants, minimally invasive gum surgery, and treatment of gum recession.
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto md:mx-0">
                   We aim to create a caring environment to help each patient with their individual periodontal needs – and overall dental health. We strive to create a stress-free environment and offer a wide variety of treatment options.
@@ -315,8 +315,8 @@ const AhmedabadPage = () => {
               <div className="relative">
                 <div className="relative z-10">
                   <img 
-                    src={clinicContent.image} 
-                    alt={clinicContent.altText} 
+                    src="/images/ahem/am1.webp" 
+                    alt={`Dental Clinic in ${displayName}`} 
                     className="rounded-2xl shadow-2xl w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20 rounded-2xl"></div>
@@ -411,7 +411,7 @@ const AhmedabadPage = () => {
                 <div className="order-2 lg:order-1">
                   <div className="relative">
                     <img 
-                      src={clinic.prideImage || '/images/amravati2.webp'} 
+                      src="/images/ahem/am2.webp" 
                       alt={`Dental Clinic in ${displayName} - Premium Care`} 
                       className="rounded-xl shadow-2xl w-full h-auto"
                     />
@@ -593,51 +593,7 @@ const AhmedabadPage = () => {
           </div>
         </section>
 
-        {/* Re-add in /clinic order: Experts, Tourism, Gallery, Why */}
-        {experts.length > 0 && (
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-user-doctor mr-2"></i>Dental Experts</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Dental Implant's experts <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">in {displayName}</span></h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
-              </div>
-              <div className="max-w-4xl mx-auto">
-                {experts.map((doc, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 mb-10">
-                    <div className="flex flex-col items-center">
-                      <img src={doc.image} alt={doc.name} className="w-full max-w-md h-auto rounded-xl shadow-md object-cover mb-6" />
-                      <h3 className="text-xl md:text-2xl font-semibold text-gray-800">{doc.name}</h3>
-                      {doc.qual && (<div className="text-teal-600 text-sm md:text-base mt-2">{doc.qual}</div>)}
-                      {doc.bio && (<p className="text-gray-600 text-sm md:text-base leading-relaxed mt-6 text-center">{doc.bio}</p>)}
-                      {(doc.rating || doc.ratingText) && (
-                        <div className="mt-6 flex items-center space-x-3 text-gray-600"><span className="text-sm">{doc.ratingText || `Rated by Patients ${doc.rating}/5`}</span><div className="flex items-center space-x-1 text-amber-400">{Array.from({ length: 5 }).map((_, idx) => (<i key={idx} className="fa-solid fa-star"></i>))}</div></div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-        {clinic && clinic.gallery && clinic.gallery.images && clinic.gallery.images.length > 0 && (
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4">
-                  <i className="fa-solid fa-images mr-2"></i>
-                  {clinic.gallery.title || 'Clinic Images'}
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Clinic <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Images</span></h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {clinic.gallery.images.map((src, idx) => (
-                  <img key={idx} src={src} alt={`Clinic image ${idx + 1}`} className="rounded-xl shadow-lg object-cover w-full h-full" />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+
         {true && (
           <section className="py-20 bg-gray-50">
             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-start">
@@ -696,117 +652,123 @@ const AhmedabadPage = () => {
           </div>
         </section>
 
-        {/* Contact Section (exact ContactSection markup) */}
+        {/* Contact Section - Improved UI */}
         <section id="contact" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-bl from-cyan-200/30 to-teal-200/30 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tr from-teal-200/20 to-cyan-200/20 rounded-full blur-3xl"></div>
           
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <div className="text-center mb-12 sm:mb-16">
-              <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6 shadow-sm">
                 <i className="fa-solid fa-phone mr-2"></i>
                 Get In Touch
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
                 Contact us at <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">{displayName}</span>
               </h2>
               
-              <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center max-w-6xl mx-auto">
-              <div className="space-y-6 sm:space-y-8">
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                  <div className="flex items-center space-x-4 sm:space-x-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      <i className="fa-solid fa-phone text-white text-lg sm:text-2xl"></i>
+            <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+              {/* Left Column - Contact Information */}
+              <div className="space-y-6">
+                {/* Phone Card */}
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                      <i className="fa-solid fa-phone text-white text-xl"></i>
                     </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Phone</h3>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-700 mb-2">Phone</h3>
                       <a 
                         href={`tel:${(clinic.contact.phone || '').replace(/\s+/g, '')}`}
-                        className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
+                        className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300 block"
                       >
-                        {clinic.contact.phone || '+91 99788 01024'}
+                        {clinic.contact.phone || '+91 9328036817'}
                       </a>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">Available 24/7 for emergencies</p>
+                      <p className="text-sm text-gray-500 mt-1">Available 24/7 for emergencies</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                  <div className="flex items-center space-x-4 sm:space-x-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      <i className="fa-solid fa-envelope text-white text-lg sm:text-2xl"></i>
+                {/* Email Card */}
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                      <i className="fa-solid fa-envelope text-white text-xl"></i>
                     </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Email</h3>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-700 mb-2">Email</h3>
                       <a 
-                        href={`mailto:info@replaceroots.com`} 
-                        className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
+                        href="mailto:info@replaceroots.com" 
+                        className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300 block"
                       >
                         info@replaceroots.com
                       </a>
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">We'll respond within 2 hours</p>
+                      <p className="text-sm text-gray-500 mt-1">We'll respond within 2 hours</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
-                  <div className="flex items-center space-x-4 sm:space-x-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                      <i className="fa-solid fa-clock text-white text-lg sm:text-2xl"></i>
+                {/* Working Hours Card */}
+                <div className="bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl p-6 text-white shadow-lg">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm flex-shrink-0">
+                      <i className="fa-solid fa-clock text-white text-xl"></i>
                     </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Working Hours</h3>
-                      <p className="text-base sm:text-lg font-medium">Monday to Saturday 10:00 AM - 7:15 PM</p>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold mb-2">Working Hours</h3>
+                      <p className="text-lg font-medium">Monday to Saturday 10:00 AM - 7:15 PM</p>
                     </div>
                   </div>
                 </div>
               </div>
               
+              {/* Right Column - Map and Address */}
               <div className="relative">
                 <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-                  <div className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white p-4 sm:p-6">
-                    <div className="flex items-center justify-center space-x-2">
-                      <i className="fa-solid fa-map-marker-alt text-lg sm:text-2xl"></i>
-                      <h3 className="text-lg sm:text-2xl font-bold">Our Location</h3>
+                  <div className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white p-6">
+                    <div className="flex items-center justify-center space-x-3">
+                      <i className="fa-solid fa-map-marker-alt text-2xl"></i>
+                      <h3 className="text-2xl font-bold">Our Location</h3>
                     </div>
                   </div>
-                  <iframe 
-                    src={clinic.contact.mapEmbedUrl}
-                    width="100%" 
-                    height="300" 
-                    style={{ border: 0 }}
-                    allowFullScreen="" 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`${displayName} Location Map`}
-                    className="w-full"
-                  />
+                  <div className="relative">
+                    <iframe 
+                      src={clinic.contact.mapEmbedUrl}
+                      width="100%" 
+                      height="350" 
+                      style={{ border: 0 }}
+                      allowFullScreen="" 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`${displayName} Location Map`}
+                      className="w-full"
+                    />
+                  </div>
                 </div>
                 
-                {/* Floating contact card */}
-                <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-100">
+
+                
+                {/* Book Appointment Card */}
+                <div className="mt-6 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl p-6 text-white shadow-lg">
                   <div className="text-center">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                      <i className="fa-solid fa-calendar-check text-white text-sm sm:text-base"></i>
+                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <i className="fa-solid fa-calendar-check text-white text-2xl"></i>
                     </div>
-                    <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">Book Appointment</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Get your free consultation today</p>
-                    <a href="#appointment" className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
-                      <i className="fa-solid fa-arrow-right mr-1 sm:mr-2"></i>
+                    <h4 className="text-xl font-bold mb-2">Book Appointment</h4>
+                    <p className="text-white/90 mb-4">Get your free consultation today</p>
+                    <a 
+                      href="#appointment" 
+                      className="inline-flex items-center bg-white text-cyan-600 font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:bg-gray-50"
+                    >
+                      <i className="fa-solid fa-arrow-right mr-2"></i>
                       Book Now
                     </a>
                   </div>
                 </div>
-                {clinic.contact.address && (
-                  <div className="mt-4 text-sm text-gray-600">
-                    <strong className="text-gray-700">Address: </strong>
-                    <span>{clinic.contact.address}</span>
-                  </div>
-                )}
               </div>
             </div>
           </div>

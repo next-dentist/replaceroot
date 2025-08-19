@@ -33,8 +33,8 @@ const amritsar = {
     { icon: 'fa-users', title: 'Patient-First', description: 'Empathetic, comfort-centered care at every step.' }
   ],
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'amritsar@replaceroots.in',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     address: 'Dental Implant Center, Amritsar, Punjab',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108737.5949278339!2d74.8190038!3d31.6339793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0x8fbd263103a38861!2sAmritsar%2C%20Punjab!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
   },

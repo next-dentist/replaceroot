@@ -39,8 +39,8 @@ const akola = {
       'End-to-end digital workflow: CBCT imaging, planning software, guided surgery and premium implant systems for long-lasting results.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Akola&output=embed'
   },
   specialties: [

@@ -39,8 +39,8 @@ const nagercoil = {
       'Digital workflows from diagnostics to prosthetics: CBCT, planning software, guided kits and premium implant systems for lasting results.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Nagercoil&output=embed'
   },
   specialties: [

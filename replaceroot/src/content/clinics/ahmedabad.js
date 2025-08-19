@@ -53,7 +53,7 @@ const ahmedabad = {
       'End-to-end digital workflow: CBCT imaging, planning software, guided surgery and premium implant systems for long-lasting results.'
   },
   contact: {
-    phone: '+91 99788 01024',
+    phone: '+91 9328036817',
     email: 'info@localhost',
     mapEmbedUrl: 'https://www.google.com/maps?q=Ahmedabad&output=embed',
     address: 'Perfect Dental Clinic, Dr. Kairavi Buch, 7, Dhananjay Tower, Shyamal Cross Road, Satellite, Ahmedabad – 380015, Near in the building of CCD, above Vijaya Bank'

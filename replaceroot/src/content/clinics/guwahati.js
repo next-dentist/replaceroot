@@ -40,8 +40,8 @@ const guwahati = {
   },
   
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57340.69578168937!2d91.7182!3d26.1445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375a597f5f7c9a7f%3A0x4a62b5b6e5b5e6d!2sGuwahati%2C%20Assam!5e0!3m2!1sen!2sin!4v1694181123456!5m2!1sen!2sin'
   },

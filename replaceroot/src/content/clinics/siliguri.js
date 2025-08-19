@@ -5,10 +5,10 @@ const siliguri = {
   hero: {
     description:
       'For dental implants in Siliguri, ReplaceRoots Approved Centre delivers advanced solutions — Single Tooth Implants, Immediate Implants, Basal Implants, Zygomatic Implants, and All-on-4/All-on-6 full-arch rehabilitation. With digital diagnostics, guided surgery and globally trusted systems, we restore function, aesthetics and confidence with precision and comfort.',
-    image: '/images/amravati1.webp',
+    image: '/images/Siliguri/s1.webp',
     altText: 'Dental Implant Clinic in Siliguri'
   },
-  prideImage: '/images/amravati2.webp',
+  prideImage: '/images/Siliguri/s2.webp',
   pricing: {
     description:
       'Dental implant cost in Siliguri varies by implant brand, bone condition, number of teeth, and whether procedures like bone grafting or sinus lift are needed. Our ReplaceRoots-approved clinic follows transparent pricing, uses genuine materials and prioritizes long-term function and aesthetics. Book a free consultation for a personalized plan and detailed estimate for Single Implants, All-on-4/All-on-6, Zygoma and Basal modalities.'
@@ -33,8 +33,8 @@ const siliguri = {
     { icon: 'fa-users', title: 'Patient-First', description: 'Empathetic, comfort-centered care at every step.' }
   ],
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'siliguri@replaceroots.in',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     address: 'Dental Implant Center, Siliguri, West Bengal',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113981.1158894664!2d88.3722779!3d26.7271016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e4416d9a9e22a3%3A0x3ab2b8a3a9c2f8a3!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
   },

@@ -39,8 +39,8 @@ const guntur = {
       'End-to-end digital workflow: CBCT imaging, planning software, guided surgery and premium implant systems for durable results.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Guntur&output=embed'
   },
   specialties: [

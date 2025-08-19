@@ -315,8 +315,8 @@ const BelgaumPage = () => {
               <div className="relative">
                 <div className="relative z-10">
                   <img 
-                    src={clinicContent.image} 
-                    alt={clinicContent.altText} 
+                    src="/images/belgaum/bel1.webp" 
+                    alt={`Dental Clinic in ${displayName}`} 
                     className="rounded-2xl shadow-2xl w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20 rounded-2xl"></div>
@@ -402,7 +402,7 @@ const BelgaumPage = () => {
                 <div className="order-2 lg:order-1">
                   <div className="relative">
                     <img 
-                      src={clinic.prideImage || '/images/amravati2.webp'} 
+                      src="/images/belgaum/bel2.webp" 
                       alt={`Dental Clinic in ${displayName} - Premium Care`} 
                       className="rounded-xl shadow-2xl w-full h-auto"
                     />
@@ -562,33 +562,7 @@ const BelgaumPage = () => {
           </div>
         </section>
 
-        {/* Re-add in /clinic order: Experts, Tourism, Gallery, Why */}
-        {experts.length > 0 && (
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-user-doctor mr-2"></i>Dental Experts</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Dental Implant's experts <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">in {displayName}</span></h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
-              </div>
-              <div className="max-w-4xl mx-auto">
-                {experts.map((doc, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 mb-10">
-                    <div className="flex flex-col items-center">
-                      <img src={doc.image} alt={doc.name} className="w/full max-w-md rounded-xl shadow-md object-cover mb-6" />
-                      <h3 className="text-xl md:text-2xl font-semibold text-gray-800">{doc.name}</h3>
-                      {doc.qual && (<div className="text-teal-600 text-sm md:text-base mt-2">{doc.qual}</div>)}
-                      {doc.bio && (<p className="text-gray-600 text-sm md:text-base leading-relaxed mt-6 text-center">{doc.bio}</p>)}
-                      {(doc.rating || doc.ratingText) && (
-                        <div className="mt-6 flex items-center space-x-3 text-gray-600"><span className="text-sm">{doc.ratingText || `Rated by Patients ${doc.rating}/5`}</span><div className="flex items-center space-x-1 text-amber-400">{Array.from({ length: 5 }).map((_, idx) => (<i key={idx} className="fa-solid fa-star"></i>))}</div></div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+
 
         {true && (
           <section className="py-20 bg-gray-50">
@@ -605,9 +579,7 @@ const BelgaumPage = () => {
           </section>
         )}
 
-        {clinic.gallery && clinic.gallery.images && clinic.gallery.images.length > 0 && (
-          <section className="py-20 bg-white"><div className="container mx-auto px-6"><div className="text-center mb-10"><div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-images mr-2"></i>{clinic.gallery.title || 'Clinic Images'}</div><h2 className="text-3xl md:text-4xl font-bold text-gray-800">Clinic <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Images</span></h2></div><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">{clinic.gallery.images.map((src, idx) => (<img key={idx} src={src} alt={`Clinic image ${idx + 1}`} className="rounded-xl shadow-lg object-cover w-full h-full" />))}</div></div></section>
-        )}
+
 
         <section id="section_1" className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>

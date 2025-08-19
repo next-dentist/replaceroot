@@ -39,8 +39,8 @@ const dehradun = {
       'Modern implant systems with precision instruments, digital workflows, and software-guided treatment for predictable outcomes.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Dehradun&output=embed'
   },
   specialties: [

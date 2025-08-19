@@ -33,8 +33,8 @@ const coimbatore = {
     { icon: 'fa-users', title: 'Patient-First', description: 'Empathetic, comfort-centered care at every step.' }
   ],
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'coimbatore@replaceroots.in',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     address: 'Dental Implant Center, Coimbatore, Tamil Nadu',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125320.95324770834!2d76.8776556!3d11.0055476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8581805000001%3A0x5c5ace8d73a3b9d5!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
   },

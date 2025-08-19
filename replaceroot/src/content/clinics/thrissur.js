@@ -39,8 +39,8 @@ const thrissur = {
       'Modern dental implant systems involve a comprehensive array of precision instruments, components, interactive software, and techniques for the creation of implant restorations.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31480.781!2d76.186!3d10.5276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba79b8e3b6f09c7%3A0x9da2b2a3ba!2sThrissur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1694181123456!5m2!1sen!2sin'
   },

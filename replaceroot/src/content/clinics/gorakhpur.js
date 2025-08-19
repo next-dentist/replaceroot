@@ -33,8 +33,8 @@ const gorakhpur = {
     { icon: 'fa-users', title: 'Patient-First', description: 'Compassionate, comfort-centered care at every step.' }
   ],
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'gorakhpur@replaceroots.in',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     address: 'Dental Implant Center, Gorakhpur, Uttar Pradesh',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113996.35009813598!2d83.307022!3d26.7605545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991ebc4b9f5d1b5%3A0x4f5e6a6c5d5d5b5d5!2sGorakhpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
   },

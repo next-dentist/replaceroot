@@ -33,8 +33,8 @@ const bhopal = {
     { icon: 'fa-users', title: 'Patient-First', description: 'Empathetic, comfort-centered care at every step.' }
   ],
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'bhopal@replaceroots.in',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     address: 'Dental Implant Center, Bhopal, Madhya Pradesh',
     mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.125484996385!2d77.41296931540467!3d23.17985548490521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43a7a31f357f%3A0x9e6c7c8b9f8e7b6d5!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin'
   },

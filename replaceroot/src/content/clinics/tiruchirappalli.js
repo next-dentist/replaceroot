@@ -39,8 +39,8 @@ const tiruchirappalli = {
       'Modern dental implant systems involve a comprehensive array of precision instruments, components, interactive software, and techniques for the creation of implant restorations.'
   },
   contact: {
-    phone: '+91 787 470 0596',
-    email: 'info@localhost',
+    phone: '+91 9328036817',
+    email: 'info@replaceroots.com',
     mapEmbedUrl: 'https://www.google.com/maps?q=Tiruchirappalli&output=embed'
   },
   specialties: [

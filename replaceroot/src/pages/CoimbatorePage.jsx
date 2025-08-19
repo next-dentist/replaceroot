@@ -153,8 +153,8 @@ const CoimbatorePage = () => {
               <div className="relative">
                 <div className="relative z-10">
                   <img 
-                    src={clinicContent.image} 
-                    alt={clinicContent.altText} 
+                    src="/images/Coimbatore/c1.webp" 
+                    alt={`Dental Clinic in ${displayName}`} 
                     className="rounded-2xl shadow-2xl w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20 rounded-2xl"></div>
@@ -240,7 +240,7 @@ const CoimbatorePage = () => {
                 <div className="order-2 lg:order-1">
                   <div className="relative">
                     <img 
-                      src={clinic.prideImage || '/images/amravati2.webp'} 
+                      src="/images/Coimbatore/c2.webp" 
                       alt={`Dental Clinic in ${displayName} - Premium Care`} 
                       className="rounded-xl shadow-2xl w-full h-auto"
                     />
@@ -488,10 +488,10 @@ const CoimbatorePage = () => {
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Phone</h3>
                       <a 
-                        href={`tel:+917874700596`}
+                        href={`tel:+919328036817`}
                         className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
                       >
-                        +91 787 470 0596
+                        +91 9328036817
                       </a>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1">Available 24/7 for emergencies</p>
                     </div>
@@ -506,10 +506,10 @@ const CoimbatorePage = () => {
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Email</h3>
                       <a 
-                        href={`mailto:info@localhost`} 
+                        href={`mailto:info@replaceroots.com`} 
                         className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
                       >
-                        info@localhost
+                        info@replaceroots.com
                       </a>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1">We'll respond within 2 hours</p>
                     </div>

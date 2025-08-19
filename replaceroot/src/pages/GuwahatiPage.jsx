@@ -157,8 +157,8 @@ const GuwahatiPage = () => {
               <div className="relative">
                 <div className="relative z-10">
                   <img 
-                    src={clinicContent.image} 
-                    alt={clinicContent.altText} 
+                    src="/images/Guwahati/g1.webp" 
+                    alt={`Dental Clinic in ${displayName}`} 
                     className="rounded-2xl shadow-2xl w-full h-auto"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20 rounded-2xl"></div>
@@ -244,7 +244,7 @@ const GuwahatiPage = () => {
                 <div className="order-2 lg:order-1">
                   <div className="relative">
                     <img 
-                      src={clinic.prideImage || '/images/amravati2.webp'} 
+                      src="/images/Guwahati/g2.webp" 
                       alt={`Dental Clinic in ${displayName} - Premium Care`} 
                       className="rounded-xl shadow-2xl w-full h-auto"
                     />

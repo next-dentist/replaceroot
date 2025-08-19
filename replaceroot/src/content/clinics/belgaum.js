@@ -41,7 +41,7 @@ const belgaum = {
       'Modern dental implant systems include a comprehensive array of accuracy instruments, components, interactive software, and techniques for the creation of implant restorations suited for most surgical and restorative situations.'
   },
   contact: {
-    phone: '+919448 910840',
+    phone: '+91 9328036817',
     email: 'info@replaceroots.com',
     address: 'Danushree Specialty Dental Clinic: Implant, LASER Center 1st Main Road, Shivabasava Nagar, Shahu Nagar, Belgaum, Karnataka 590010',
     mapEmbedUrl:
