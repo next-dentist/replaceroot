@@ -3,24 +3,52 @@
 A modern React application for finding dental implant specialists and clinics. Built with React, Vite, and Tailwind CSS.
 
 # pages done
-1.	dental-implants-Thrissur
-2.	dental-implants-Guwahati
-3.	dental-implants-Tiruchirappalli
-4.	dental-implants-Dehradun
-5.	dental-implants-belgaum
-6.	dental-implants-aizawl
-7.	dental-implants-Nagercoil
-8.	dental-implants-Shimla
-9.	dental-implants-Guntur
-10.	dental-implants-akola
-11.	dental-implants-Ahmedabad
-12.	dental-implants-Bhopal
-13.	dental-implants-Amritsar
-14.	dental-implants-Coimbatore
-15.	dental-implants-Siliguri
-16.	dental-implants-mangalore
-17.	dental-implants-Gorakhpur
-18.	dental-implants-patiala
+1.	dental-implants-Thrissur [done]
+2.	dental-implants-Guwahati [done]
+3.	dental-implants-Tiruchirappalli [done]
+4.	dental-implants-Dehradun [done]
+5.	dental-implants-belgaum [done]
+6.	dental-implants-Aizawl [done]
+7.	dental-implants-Nagercoil [done]
+8.	dental-implants-Shimla[done]
+9.	dental-implants-Guntur [done]
+10.	dental-implants-akola [done]
+11.	dental-implants-Ahmedabad [done]
+12.	dental-implants-Bhopal [done]
+13.	dental-implants-Amritsar [done]
+14.	dental-implants-Coimbatore [done]
+15.	dental-implants-Siliguri [done]
+16.	dental-implants-mangalore [done]
+17.	dental-implants-Gorakhpur[done]
+18.	dental-implants-Patiala [done]
+19.	dental-implants-sangli-miraj-kupwad
+20.	dental-implants-Kozhikode
+21.	dental-implants-yamunanagar
+22.	dental-implants-bellary
+23.	dental-implants-Anantapur
+24.	dental-implants-dindigul
+25.	dental-implants-bhusawal
+26.	dental-implants-bettiah
+27.	dental-implants-Hyderabad
+28.	dental-implants-indore
+29.	dental-implants-Kottayam
+30.	dental-implants-patna
+31.	dental-implants-Pondicherry
+32.	dental-implants-varanasi 
+33.	dental-implants-kota
+34.	dental-implants-Muzaffarpur
+35.	dental-implants-Solapur
+36.	dental-implants-ambala
+37.	dental-implants-thoothukudi
+38.	dental-implants-Bathinda
+39.	dental-implants-Gulbarga
+40.	dental-implants-satara
+41.	dental-implants-ongole
+42.	dental-implants-howrah
+43.	dental-implants-Bhavnagar
+44.	dental-implants-Dhule
+45.	dental-implants-parbhani
+46.	dental-implants-udaipur
 
 ## Features
 

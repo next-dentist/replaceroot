@@ -26,6 +26,34 @@ import SiliguriPage from './pages/SiliguriPage.jsx';
 import MangalorePage from './pages/MangalorePage.jsx';
 import GorakhpurPage from './pages/GorakhpurPage.jsx';
 import PatialaPage from './pages/PatialaPage.jsx';
+import SangliMirajKupwadPage from './pages/Sangli-Miraj & KupwadPage.jsx';
+import KozhikodePage from './pages/KozhikodePage.jsx';
+import YamunanagarPage from './pages/YamunanagarPage.jsx';
+import BellaryPage from './pages/BellaryPage.jsx';
+import AnantapurPage from './pages/AnantapurPage.jsx';
+import DindigulPage from './pages/DindigulPage.jsx';
+import BhusawalPage from './pages/BhusawalPage.jsx';
+import BettiahPage from './pages/BettiahPage.jsx';
+import HyderabadPage from './pages/HyderabadPage.jsx';
+import IndorePage from './pages/IndorePage.jsx';
+import KottayamPage from './pages/KottayamPage.jsx';
+import PatnaPage from './pages/PatnaPage.jsx';
+import PondicherryPage from './pages/PondicherryPage.jsx';
+import VaranasiPage from './pages/VaranasiPage.jsx';
+import KotaPage from './pages/KotaPage.jsx';
+import MuzaffarpurPage from './pages/MuzaffarpurPage.jsx';
+import SolapurPage from './pages/SolapurPage.jsx';
+import AmbalaPage from './pages/AmbalaPage.jsx';
+import ThoothukudiPage from './pages/ThoothukudiPage.jsx';
+import BathindaPage from './pages/BathindaPage.jsx';
+import GulbargaPage from './pages/GulbargaPage.jsx';
+import SataraPage from './pages/SataraPage.jsx';
+import OngolePage from './pages/OngolePage.jsx';
+import HowrahPage from './pages/HowrahPage.jsx';
+import BhavnagarPage from './pages/BhavnagarPage.jsx';
+import DhulePage from './pages/DhulePage.jsx';
+import ParbhaniPage from './pages/ParbhaniPage.jsx';
+import UdaipurPage from './pages/UdaipurPage.jsx';
 
 
 function App() {
@@ -67,6 +95,34 @@ function App() {
           <Route path="/dental-implants-akola" element={<AkolaPage />} />
           <Route path="/dental-implants-ahmedabad" element={<AhmedabadPage />} />
           <Route path="/dental-implants-bhopal" element={<BhopalPage />} />
+          <Route path="/dental-implants-sangli-miraj-kupwad" element={<SangliMirajKupwadPage />} />
+          <Route path="/dental-implants-kozhikode" element={<KozhikodePage />} />
+          <Route path="/dental-implants-yamunanagar" element={<YamunanagarPage />} />
+          <Route path="/dental-implants-bellary" element={<BellaryPage />} />
+          <Route path="/dental-implants-anantapur" element={<AnantapurPage />} />
+          <Route path="/dental-implants-dindigul" element={<DindigulPage />} />
+          <Route path="/dental-implants-bhusawal" element={<BhusawalPage />} />
+          <Route path="/dental-implants-bettiah" element={<BettiahPage />} />
+          <Route path="/dental-implants-hyderabad" element={<HyderabadPage />} />
+          <Route path="/dental-implants-indore" element={<IndorePage />} />
+          <Route path="/dental-implants-kottayam" element={<KottayamPage />} />
+          <Route path="/dental-implants-patna" element={<PatnaPage />} />
+          <Route path="/dental-implants-pondicherry" element={<PondicherryPage />} />
+          <Route path="/dental-implants-varanasi" element={<VaranasiPage />} />
+          <Route path="/dental-implants-kota" element={<KotaPage />} />
+          <Route path="/dental-implants-muzaffarpur" element={<MuzaffarpurPage />} />
+          <Route path="/dental-implants-solapur" element={<SolapurPage />} />
+          <Route path="/dental-implants-ambala" element={<AmbalaPage />} />
+          <Route path="/dental-implants-thoothukudi" element={<ThoothukudiPage />} />
+          <Route path="/dental-implants-bathinda" element={<BathindaPage />} />
+          <Route path="/dental-implants-gulbarga" element={<GulbargaPage />} />
+          <Route path="/dental-implants-satara" element={<SataraPage />} />
+          <Route path="/dental-implants-ongole" element={<OngolePage />} />
+          <Route path="/dental-implants-howrah" element={<HowrahPage />} />
+          <Route path="/dental-implants-bhavnagar" element={<BhavnagarPage />} />
+          <Route path="/dental-implants-dhule" element={<DhulePage />} />
+          <Route path="/dental-implants-parbhani" element={<ParbhaniPage />} />
+          <Route path="/dental-implants-udaipur" element={<UdaipurPage />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
