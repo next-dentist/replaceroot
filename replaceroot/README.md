@@ -34,7 +34,7 @@ A modern React application for finding dental implant specialists and clinics. B
 29.	dental-implants-Kottayam
 30.	dental-implants-patna
 31.	dental-implants-Pondicherry
-32.	dental-implants-varanasi 
+32.	dental-implants-varanasi
 33.	dental-implants-kota
 34.	dental-implants-Muzaffarpur
 35.	dental-implants-Solapur
@@ -48,7 +48,31 @@ A modern React application for finding dental implant specialists and clinics. B
 43.	dental-implants-Bhavnagar
 44.	dental-implants-Dhule
 45.	dental-implants-parbhani
-46.	dental-implants-udaipur
+46.	dental-implants-Udaipur
+
+1.	dental-implants-nashik
+2.	dental-implants-Bhubaneswar
+3.	dental-implants-mysore
+4.	dental-implants-Pimpri-Chinchwad
+5.	dental-implants-Kanpur
+6.	dental-implants-ajmer
+7.	dental-implants-Ludhiana
+8.	dental-implants-Faridabad ✔
+9.	dental-implants-Asansol ✔
+10.	dental-implants-anand ✔
+11.	dental-implants-Nellore ✔
+12.	dental-implants-Aligarh ✔
+13.	dental-implants-Durgapur ✔
+14.	dental-implants-Saharanpur ✔
+15.	dental-implants-latur ✔
+16.	dental-implants-Bareilly ✔
+17.	dental-implants-vellore ✔
+18.	dental-implants-Tirupati ✔
+19.	dental-implants-sri-ganganagar ✔
+20.	dental-implants-mehsana ✔
+21.	dental-implants-ichalkaranji ✔
+22.	dental-implants-berhampore ✔
+
 
 ## Features
 

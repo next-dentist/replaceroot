@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 function upsertMeta(attr, key, value) {
-  if (!value) return;
+  if (!value || typeof document === 'undefined') return;
   let selector = `${attr}="${key}"`;
   let el = document.head.querySelector(`meta[${selector}]`);
   if (!el) {
@@ -13,7 +13,7 @@ function upsertMeta(attr, key, value) {
 }
 
 function upsertLink(rel, href) {
-  if (!href) return;
+  if (!href || typeof document === 'undefined') return;
   let el = document.head.querySelector(`link[rel="${rel}"]`);
   if (!el) {
     el = document.createElement('link');
@@ -35,7 +35,7 @@ export default function Layout({
 }) {
   useEffect(() => {
     // Title
-    if (title) document.title = title;
+    if (title && typeof document !== 'undefined') document.title = title;
 
     // Basic meta
     upsertMeta('name', 'description', description);
@@ -46,7 +46,7 @@ export default function Layout({
     }
 
     // Canonical
-    if (canonical) {
+    if (canonical && typeof window !== 'undefined') {
       const isAbsolute = /^https?:\/\//i.test(canonical);
       const href = isAbsolute ? canonical : `${window.location.origin}${canonical.startsWith('/') ? '' : '/'}${canonical}`;
       upsertLink('canonical', href);
@@ -56,7 +56,7 @@ export default function Layout({
     upsertMeta('property', 'og:title', og.title || title);
     upsertMeta('property', 'og:description', og.description || description);
     upsertMeta('property', 'og:type', og.type || 'website');
-    upsertMeta('property', 'og:url', og.url || window.location.href);
+    upsertMeta('property', 'og:url', og.url || (typeof window !== 'undefined' ? window.location.href : ''));
     upsertMeta('property', 'og:image', og.image);
 
     // Twitter
@@ -66,18 +66,20 @@ export default function Layout({
     upsertMeta('name', 'twitter:image', twitter.image || og.image);
 
     // JSON-LD
-    let ld = document.getElementById('ld-json');
-    if (jsonLd) {
-      if (!ld) {
-        ld = document.createElement('script');
-        ld.type = 'application/ld+json';
-        ld.id = 'ld-json';
-        document.head.appendChild(ld);
+    if (typeof document !== 'undefined') {
+      let ld = document.getElementById('ld-json');
+      if (jsonLd) {
+        if (!ld) {
+          ld = document.createElement('script');
+          ld.type = 'application/ld+json';
+          ld.id = 'ld-json';
+          document.head.appendChild(ld);
+        }
+        ld.textContent = JSON.stringify(jsonLd);
+      } else if (ld) {
+        // remove if previously set
+        ld.remove();
       }
-      ld.textContent = JSON.stringify(jsonLd);
-    } else if (ld) {
-      // remove if previously set
-      ld.remove();
     }
   }, [title, description, JSON.stringify(keywords), canonical, JSON.stringify(og), JSON.stringify(twitter), JSON.stringify(jsonLd)]);
 

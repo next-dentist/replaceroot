@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getClinic, getDisplayName } from '../content/clinics';
+import ContactFormModal from '../components/clinic/ContactFormModal';
 
 const BerhamporePage = () => {
   const clinicName = 'berhampore';
@@ -16,6 +17,7 @@ const BerhamporePage = () => {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const facilities = [
     { icon: 'fa-car', name: 'Parking', available: true },
     { icon: 'fa-wheelchair', name: 'Handicapped', available: true },
@@ -158,10 +160,10 @@ const BerhamporePage = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
-          <a href="#appointment" className="hidden md:block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+          <button onClick={() => setIsContactModalOpen(true)} className="hidden md:block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
             <i className="fa-solid fa-calendar-check mr-2"></i>
             Book Appointment
-          </a>
+          </button>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-gray-600 focus:outline-none">
             <i className={`fa-solid ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
           </button>
@@ -173,7 +175,7 @@ const BerhamporePage = () => {
                 <a href="#services" className="block text-gray-600 hover:text-teal-500 transition">Services</a>
                 <a href="#pricing" className="block text-gray-600 hover:text-teal-500 transition">Pricing</a>
                 <a href="#contact" className="block text-gray-600 hover:text-teal-500 transition">Contact</a>
-                <a href="#appointment" className="block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center">Book Appointment</a>
+                <button onClick={() => setIsContactModalOpen(true)} className="block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center">Book Appointment</button>
               </div>
             </div>
           )}
@@ -205,13 +207,13 @@ const BerhamporePage = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="#appointment" 
+                  <button 
+                    onClick={() => setIsContactModalOpen(true)}
                     className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
                     <i className="fa-regular fa-calendar-days mr-2 sm:mr-3"></i>
                     Book Appointment
-                  </a>
+                  </button>
                 </div>
                 
                 <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500">
@@ -262,7 +264,7 @@ const BerhamporePage = () => {
           <div className="absolute top-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-tl from-teal-200/15 to-cyan-200/15 rounded-full blur-3xl"></div>
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <div className="text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 shadow-sm">
                 <i className="fa-solid fa-building mr-2 sm:mr-2.5"></i>
                 Our Facilities
@@ -480,52 +482,7 @@ const BerhamporePage = () => {
           </div>
         </section>
 
-        {/* Re-add in /clinic order: Experts, Tourism, Gallery, Why */}
-        {Array.isArray(clinic.experts) && clinic.experts.length > 0 && (
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-user-doctor mr-2"></i>Dental Experts</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Dental Implant's experts <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">in {displayName}</span></h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
-              </div>
-              <div className="max-w-4xl mx-auto">
-                {clinic.experts.map((doc, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 mb-10">
-                    <div className="flex flex-col items-center">
-                      <img src={doc.image} alt={doc.name} className="w/full max-w-md rounded-xl shadow-md object-cover mb-6" />
-                      <h3 className="text-xl md:text-2xl font-semibold text-gray-800">{doc.name}</h3>
-                      {doc.qual && (<div className="text-teal-600 text-sm md:text-base mt-2">{doc.qual}</div>)}
-                      {doc.bio && (<p className="text-gray-600 text-sm md:text-base leading-relaxed mt-6 text-center">{doc.bio}</p>)}
-                      {(doc.rating || doc.ratingText) && (
-                        <div className="mt-6 flex items-center space-x-3 text-gray-600"><span className="text-sm">{doc.ratingText || `Rated by Patients ${doc.rating}/5`}</span><div className="flex items-center space-x-1 text-amber-400">{Array.from({ length: 5 }).map((_, idx) => (<i key={idx} className="fa-solid fa-star"></i>))}</div></div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
-        {clinic.tourism && (
-          <section className="py-20 bg-gray-50">
-            <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-start">
-              <div>
-                <div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-plane-departure mr-2"></i>Dental Tourism</div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Dental Tourism <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">in {displayName}</span></h2>
-                <p className="text-gray-600 leading-relaxed mb-6">{clinic.tourism.intro}</p>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">{clinic.tourism.pointsTitle}</h3>
-                <ul className="space-y-2 text-gray-700">{clinic.tourism.places.map((p, idx) => (<li key={idx} className="flex items-center"><i className="fa-solid fa-check text-teal-500 mr-2"></i>{p}</li>))}</ul>
-              </div>
-              <div className="flex justify-center"><img src={clinic.tourism.image} alt={`Tourism in ${displayName}`} className="rounded-xl shadow-xl w-full h-auto object-cover max-w-xl md:max-w-lg" /></div>
-            </div>
-          </section>
-        )}
-
-        {clinic.gallery && clinic.gallery.images && clinic.gallery.images.length > 0 && (
-          <section className="py-20 bg-white"><div className="container mx-auto px-6"><div className="text-center mb-10"><div className="inline-flex items-center px-3 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4"><i className="fa-solid fa-images mr-2"></i>{clinic.gallery.title || 'Clinic Images'}</div><h2 className="text-3xl md:text-4xl font-bold text-gray-800">Clinic <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Images</span></h2></div><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">{clinic.gallery.images.map((src, idx) => (<img key={idx} src={src} alt={`Clinic image ${idx + 1}`} className="rounded-xl shadow-lg object-cover w-full h-full" />))}</div></div></section>
-        )}
 
         <section id="section_1" className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
@@ -568,10 +525,10 @@ const BerhamporePage = () => {
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Phone</h3>
                       <a 
-                        href={`tel:+917874700596`}
+                        href={`tel:${clinic.contact.phone.replace(/\s+/g,'')}`}
                         className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
                       >
-                        +91 787 470 0596
+                        {clinic.contact.phone}
                       </a>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1">Available 24/7 for emergencies</p>
                     </div>
@@ -586,10 +543,10 @@ const BerhamporePage = () => {
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-1 sm:mb-2">Email</h3>
                       <a 
-                        href={`mailto:info@localhost`} 
+                        href={`mailto:${clinic.contact.email}`} 
                         className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent hover:from-cyan-700 hover:to-teal-700 transition-all duration-300"
                       >
-                        info@localhost
+                        {clinic.contact.email}
                       </a>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1">We'll respond within 2 hours</p>
                     </div>
@@ -640,10 +597,10 @@ const BerhamporePage = () => {
                     </div>
                     <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">Book Appointment</h4>
                     <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Get your free consultation today</p>
-                    <a href="#appointment" className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
+                    <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
                       <i className="fa-solid fa-arrow-right mr-1 sm:mr-2"></i>
                       Book Now
-                    </a>
+                    </button>
                   </div>
                 </div>
                 {clinic.contact.address && (
@@ -902,13 +859,13 @@ const BerhamporePage = () => {
                       </div>
 
                       <div className="text-center lg:text-left">
-                        <a 
-                          href="#appointment" 
+                        <button 
+                          onClick={() => setIsContactModalOpen(true)}
                           className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-3"
                         >
                           <i className="fa-regular fa-calendar-days text-xl"></i>
                           <span className="text-lg">Schedule Appointment</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -1115,6 +1072,14 @@ const BerhamporePage = () => {
           </div>
         </div>
       </footer>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        clinicName={clinicName}
+        displayName={displayName}
+      />
     </div>
   );
 };

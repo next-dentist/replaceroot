@@ -51,8 +51,29 @@ import bhavnagar from './clinics/bhavnagar';
 import dhule from './clinics/dhule';
 import parbhani from './clinics/parbhani';
 import udaipur from './clinics/udaipur';
+import nashik from './clinics/nashik';
+import bhubaneswar from './clinics/bhubaneswar';
+import mysore from './clinics/mysore';
+import pimpriChinchwad from './clinics/pimpri-chinchwad';
+import kanpur from './clinics/kanpur';
+import ajmer from './clinics/ajmer';
+import ludhiana from './clinics/ludhiana';
+import faridabad from './clinics/faridabad';
+import asansol from './clinics/asansol';
+import anand from './clinics/anand';
+import nellore from './clinics/nellore';
+import aligarh from './clinics/aligarh';
+import durgapur from './clinics/durgapur';
+import saharanpur from './clinics/saharanpur';
+import latur from './clinics/latur';
+import bareilly from './clinics/bareilly';
+import vellore from './clinics/vellore';
+import tirupati from './clinics/tirupati';
+import sriGanganagar from './clinics/sriGanganagar';
+import mehsana from './clinics/mehsana';
+import ichalkaranji from './clinics/ichalkaranji';
 
-export const clinics = { amaravati, bahraich, belgaum, berhampore, bhagalpur, guwahati, nagercoil, aizawl, thrissur, tiruchirappalli, dehradun, shimla, guntur, akola, ahmedabad, bhopal, amritsar, coimbatore, siliguri, mangalore, gorakhpur, patiala, sangliMirajKupwad, kozhikode, yamunanagar, bellary, anantapur, dindigul, bhusawal, bettiah, hyderabad, indore, kottayam, patna, pondicherry, varanasi, kota, muzaffarpur, solapur, ambala, thoothukudi, bathinda, gulbarga, satara, ongole, howrah, bhavnagar, dhule, parbhani, udaipur };
+export const clinics = { amaravati, bahraich, belgaum, berhampore, bhagalpur, guwahati, nagercoil, aizawl, thrissur, tiruchirappalli, dehradun, shimla, guntur, akola, ahmedabad, bhopal, amritsar, coimbatore, siliguri, mangalore, gorakhpur, patiala, sangliMirajKupwad, kozhikode, yamunanagar, bellary, anantapur, dindigul, bhusawal, bettiah, hyderabad, indore, kottayam, patna, pondicherry, varanasi, kota, muzaffarpur, solapur, ambala, thoothukudi, bathinda, gulbarga, satara, ongole, howrah, bhavnagar, dhule, parbhani, udaipur, nashik, bhubaneswar, mysore, pimpriChinchwad, kanpur, ajmer, ludhiana, faridabad, asansol, anand, nellore, aligarh, durgapur, saharanpur, latur, bareilly, vellore, tirupati, sriGanganagar, mehsana, ichalkaranji, berhampore };
 
 const aliases = {
   belgum: 'belgaum'
@@ -109,6 +130,28 @@ export const getDisplayName = (slug = 'guwahati') => {
     dhule: 'Dhule',
     parbhani: 'Parbhani',
     udaipur: 'Udaipur',
+    nashik: 'Nashik',
+    bhubaneswar: 'Bhubaneswar',
+    mysore: 'Mysore',
+    pimpriChinchwad: 'Pimpri-Chinchwad',
+    kanpur: 'Kanpur',
+    ajmer: 'Ajmer',
+    ludhiana: 'Ludhiana',
+    faridabad: 'Faridabad',
+    asansol: 'Asansol',
+    anand: 'Anand',
+    nellore: 'Nellore',
+    aligarh: 'Aligarh',
+    durgapur: 'Durgapur',
+    saharanpur: 'Saharanpur',
+    latur: 'Latur',
+    bareilly: 'Bareilly',
+    vellore: 'Vellore',
+    tirupati: 'Tirupati',
+    sriGanganagar: 'Sri Ganganagar',
+    mehsana: 'Mehsana',
+    ichalkaranji: 'Ichalkaranji',
+    berhampore: 'Berhampore',
     nagercoil: 'Nagercoil',
     aizawl: 'Aizawl',
     thrissur: 'Thrissur',

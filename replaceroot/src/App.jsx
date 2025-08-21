@@ -54,6 +54,27 @@ import BhavnagarPage from './pages/BhavnagarPage.jsx';
 import DhulePage from './pages/DhulePage.jsx';
 import ParbhaniPage from './pages/ParbhaniPage.jsx';
 import UdaipurPage from './pages/UdaipurPage.jsx';
+import NashikPage from './pages/NashikPage.jsx';
+import BhubaneswarPage from './pages/BhubaneswarPage.jsx';
+import MysorePage from './pages/MysorePage.jsx';
+import PimpriChinchwadPage from './pages/Pimpri-ChinchwadPage.jsx';
+import KanpurPage from './pages/KanpurPage.jsx';
+import AjmerPage from './pages/AjmerPage.jsx';
+import LudhianaPage from './pages/LudhianaPage.jsx';
+import FaridabadPage from './pages/FaridabadPage.jsx';
+import AsansolPage from './pages/AsansolPage.jsx';
+import AnandPage from './pages/AnandPage.jsx';
+import NellorePage from './pages/NellorePage.jsx';
+import AligarhPage from './pages/AligarhPage.jsx';
+import DurgapurPage from './pages/DurgapurPage.jsx';
+import SaharanpurPage from './pages/SaharanpurPage.jsx';
+import LaturPage from './pages/LaturPage.jsx';
+import BareillyPage from './pages/BareillyPage.jsx';
+import VellorePage from './pages/VellorePage.jsx';
+import TirupatiPage from './pages/TirupatiPage.jsx';
+import SriGanganagarPage from './pages/Sri GanganagarPage.jsx';
+import MehsanaPage from './pages/MehsanaPage.jsx';
+import IchalkaranjiPage from './pages/IchalkaranjiPage.jsx';
 
 
 function App() {
@@ -123,6 +144,28 @@ function App() {
           <Route path="/dental-implants-dhule" element={<DhulePage />} />
           <Route path="/dental-implants-parbhani" element={<ParbhaniPage />} />
           <Route path="/dental-implants-udaipur" element={<UdaipurPage />} />
+          <Route path="/dental-implants-nashik" element={<NashikPage />} />
+          <Route path="/dental-implants-bhubaneswar" element={<BhubaneswarPage />} />
+          <Route path="/dental-implants-mysore" element={<MysorePage />} />
+          <Route path="/dental-implants-pimpri-chinchwad" element={<PimpriChinchwadPage />} />
+          <Route path="/dental-implants-kanpur" element={<KanpurPage />} />
+          <Route path="/dental-implants-ajmer" element={<AjmerPage />} />
+          <Route path="/dental-implants-ludhiana" element={<LudhianaPage />} />
+          <Route path="/dental-implants-faridabad" element={<FaridabadPage />} />
+          <Route path="/dental-implants-asansol" element={<AsansolPage />} />
+          <Route path="/dental-implants-anand" element={<AnandPage />} />
+          <Route path="/dental-implants-nellore" element={<NellorePage />} />
+          <Route path="/dental-implants-aligarh" element={<AligarhPage />} />
+          <Route path="/dental-implants-durgapur" element={<DurgapurPage />} />
+          <Route path="/dental-implants-saharanpur" element={<SaharanpurPage />} />
+          <Route path="/dental-implants-latur" element={<LaturPage />} />
+          <Route path="/dental-implants-bareilly" element={<BareillyPage />} />
+          <Route path="/dental-implants-vellore" element={<VellorePage />} />
+          <Route path="/dental-implants-tirupati" element={<TirupatiPage />} />
+          <Route path="/dental-implants-sri-ganganagar" element={<SriGanganagarPage />} />
+          <Route path="/dental-implants-mehsana" element={<MehsanaPage />} />
+          <Route path="/dental-implants-ichalkaranji" element={<IchalkaranjiPage />} />
+          <Route path="/dental-implants-berhampore" element={<BerhamporePage />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

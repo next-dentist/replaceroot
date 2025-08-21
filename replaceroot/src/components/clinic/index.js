@@ -18,3 +18,5 @@ export { default as ClinicExperts } from './ClinicExperts';
 export { default as DentalTourism } from './DentalTourism';
 export { default as ClinicGallery } from './ClinicGallery';
 export { default as ClinicSpecialties } from './ClinicSpecialties';
+export { default as ContactForm } from './ContactForm';
+export { default as ContactFormModal } from './ContactFormModal';
