@@ -1,55 +1,177 @@
 const Footer = () => {
-  const locations = ['New York', 'Bangalore', 'Ajmer', 'Mumbai', 'Vadodara'];
-  const companyLinks = ['About', 'Blogs', 'Join us', 'Dentist Platform'];
+  const quickLinks = [
+    { label: 'Home', to: '/' },
+    { label: 'About Us', to: '/about' },
+    { label: 'Services', to: '/#services' },
+    { label: 'For Dentists', to: '/for-dentists' },
+    { label: 'For Patients', to: '/for-patients' },
+    { label: 'Pricing & Plans', to: '/pricing' },
+    { label: 'Case Studies', to: '/case-studies' },
+    { label: 'Blog', to: '/blog' },
+    { label: 'FAQs', to: '/faqs' },
+   
+  ];
+
+  const dentalServices = [
+    { name: 'Single Tooth Implant', path: '/services/single-tooth-implant' },
+    { name: 'Multiple Tooth Implants', path: '/services/multiple-tooth-implants' },
+    { name: 'Full Mouth Dental Implants', path: '/services/full-mouth-dental-implants' },
+    { name: 'All-on-4 Implants', path: '/services/all-on-4-implants' },
+    { name: 'All-on-6 Implants', path: '/services/all-on-6-implants' },
+    { name: 'Immediate (Same Day) Implants', path: '/services/immediate-implants' },
+    { name: 'Mini Dental Implants', path: '/services/mini-implants' },
+    { name: 'Zygomatic Implants', path: '/services/zygomatic-implants' },
+    { name: 'Basal (Cortical) Implants', path: '/services/basal-implants' },
+    { name: 'Implant-Supported Overdentures', path: '/services/overdentures' },
+    { name: 'Bone Grafting', path: '/services/bone-grafting' },
+    { name: 'Sinus Lift Surgery', path: '/services/sinus-lift' },
+    { name: 'Guided Digital Implants', path: '/services/guided-implants' }
+  ];
+
+  const forDentists = [
+    { name: 'How We Generate Leads', path: '/leads/how-we-generate-leads' },
+    { name: 'Benefits of Joining Replace Roots', path: '/leads/benefits-for-dentists' },
+    { name: 'Lead Generation Process', path: '/leads/process-explanation' },
+    { name: 'Packages & Pricing', path: '/pricing' }
+  ];
+
+  const forPatients = [
+    'Why Choose a Replace Roots Dentist', 'Find an Implant Specialist',
+    'Submit an Inquiry', 'Contact Us'
+  ];
+
+  const legal = [
+    'Privacy Policy', 'Terms & Conditions', 'Cookie Policy'
+  ];
+
+  const socialLinks = [
+    { name: 'Facebook', icon: 'fa-facebook-f', url: '#' },
+    { name: 'LinkedIn', icon: 'fa-linkedin-in', url: '#' },
+    { name: 'Instagram', icon: 'fa-instagram', url: '#' },
+    { name: 'YouTube', icon: 'fa-youtube', url: '#' }
+  ];
 
   return (
-    <footer className="bg-primary-dark text-text-medium border-t border-gray-800">
-      <div className="container mx-auto px-4 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="sm:col-span-2 text-center sm:text-left">
-            <a href="#" className="block mb-4">
-              <img src="/images/rr-logo.webp" alt="Replace Roots Logo" className="h-8 sm:h-10 w-auto mx-auto sm:mx-0" />
-            </a>
-            <p className="max-w-xs mx-auto sm:mx-0 text-sm sm:text-base">Top Group of Dental Implant Clinics Across, INDIA</p>
+    <footer className="bg-gray-800 text-white">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Footer Content - 3 Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+          {/* Column 1: About & Contact */}
+          <div className="space-y-6">
+            {/* Logo & About */}
+                         <div>
+               <div className="flex items-center space-x-3 mb-4">
+                 <img src="/images/rr-logo.webp" alt="Replace Roots Logo" className="h-10 w-auto" />
+               </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                A trusted global platform connecting patients with verified implant specialists and helping dentists grow their practice with high-quality leads.
+              </p>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <h4 className="font-semibold text-white text-sm uppercase tracking-wide">Contact</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center space-x-2">
+                  <i className="fa-solid fa-map-marker-alt text-cyan-400 w-4"></i>
+                  <span className="text-gray-300">Global Headquarters: [Address]</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <i className="fa-solid fa-envelope text-cyan-400 w-4"></i>
+                  <span className="text-gray-300">[Email]</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <i className="fa-solid fa-phone text-cyan-400 w-4"></i>
+                  <span className="text-gray-300">[Phone]</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div>
+              <h4 className="font-semibold text-white text-sm uppercase tracking-wide mb-3">Follow Us</h4>
+              <div className="flex space-x-3">
+                {socialLinks.map((social) => (
+                  <a 
+                    key={social.name}
+                    href={social.url}
+                    className="w-8 h-8 bg-gray-700 hover:bg-cyan-600 rounded-full flex items-center justify-center transition-colors duration-300"
+                  >
+                    <i className={`fa-brands ${social.icon} text-sm`}></i>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="text-center sm:text-left">
-            <h4 className="font-bold text-white text-base sm:text-lg mb-3 sm:mb-4">Locations</h4>
-            <ul className="space-y-1 sm:space-y-2">
-              {locations.map((location, index) => (
-                <li key={index}>
-                  <a href="#" className="hover:text-primary-accent transition-colors duration-300 text-sm sm:text-base">
-                    {location}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                     {/* Column 2: Services */}
+           <div className="space-y-6">
+             <h4 className="font-semibold text-white text-sm uppercase tracking-wide">Dental Implant Services</h4>
+             <div className="grid grid-cols-1 gap-2">
+               {dentalServices.map((service, index) => (
+                 <a key={index} href={service.path} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                   {service.name}
+                 </a>
+               ))}
+             </div>
           </div>
 
-          <div className="text-center sm:text-left">
-            <h4 className="font-bold text-white text-base sm:text-lg mb-3 sm:mb-4">Company</h4>
-            <ul className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
-              {companyLinks.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="hover:text-primary-accent transition-colors duration-300 text-sm sm:text-base">
-                    {link}
+          {/* Column 3: Quick Links & For Users */}
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-white text-sm uppercase tracking-wide mb-3">Quick Links</h4>
+              <div className="grid grid-cols-1 gap-2">
+                {quickLinks.map((link, index) => (
+                  <a key={index} href={link.to} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                    {link.label}
                   </a>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center sm:justify-start space-x-4">
-              <a href="#" className="hover:text-primary-accent transition-colors duration-300">
-                <i className="fa-brands fa-facebook-f text-lg sm:text-xl"></i>
-              </a>
-              <a href="#" className="hover:text-primary-accent transition-colors duration-300">
-                <i className="fa-brands fa-twitter text-lg sm:text-xl"></i>
-              </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-white text-sm uppercase tracking-wide mb-3">For Dentists</h4>
+              <div className="grid grid-cols-1 gap-2">
+                {forDentists.map((item, index) => (
+                  <a key={index} href={item.path} className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-white text-sm uppercase tracking-wide mb-3">For Patients</h4>
+              <div className="grid grid-cols-1 gap-2">
+                {forPatients.map((item, index) => (
+                  <a key={index} href="#" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                    {item}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-xs sm:text-sm">
-          &copy; 2025 Replace Roots. All Rights Reserved.
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-700 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            {/* Copyright */}
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} Replace Roots. All Rights Reserved.
+              </p>
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex flex-wrap justify-center gap-6">
+              {legal.map((item, index) => (
+                <a key={index} href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                  {item}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

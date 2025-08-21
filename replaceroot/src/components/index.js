@@ -1,12 +1,14 @@
-// Main site components
 export { default as Header } from './Header';
 export { default as Hero } from './Hero';
-export { default as ClinicCard } from './ClinicCard';
+export { default as QuickOverview } from './QuickOverview';
+export { default as CoreServices } from './CoreServices';
+export { default as ForPatients } from './ForPatients';
+export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as Testimonials } from './Testimonials';
+export { default as PlansPricing } from './PlansPricing';
 export { default as RecommendedClinics } from './RecommendedClinics';
 export { default as FeatureSection } from './FeatureSection';
-export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as FinalFeatures } from './FinalFeatures';
 export { default as Footer } from './Footer';
-
-// Clinic page components
-export * from './clinic';
+export { default as ClinicCard } from './ClinicCard';
+export { default as Layout } from './Layout';

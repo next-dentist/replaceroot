@@ -1,6 +1,37 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import ForDentistsPage from './pages/ForDentistsPage.jsx';
+import ForPatientsPage from './pages/ForPatientsPage.jsx';
+import PricingPage from './pages/PricingPage.jsx';
 import ClinicPage from './pages/ClinicPage.jsx';
+import CaseStudiesPage from './pages/CaseStudiesPage.jsx';
+import BlogPage from './pages/BlogPage.jsx';
+import BlogPostPage from './pages/BlogPostPage.jsx';
+import BlogPostBoneGrafting from './pages/BlogPostBoneGrafting.jsx';
+import BlogPostDigitalDentistry from './pages/BlogPostDigitalDentistry.jsx';
+import BlogPostImplantMaintenance from './pages/BlogPostImplantMaintenance.jsx';
+import BlogPostMarketingStrategies from './pages/BlogPostMarketingStrategies.jsx';
+import BlogPostBuildingTrust from './pages/BlogPostBuildingTrust.jsx';
+import BlogPostAllOn4 from './pages/BlogPostAllOn4.jsx';
+import FAQsPage from './pages/FAQsPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
+import SingleToothImplantPage from './pages/SingleToothImplantPage.jsx';
+import MultipleToothImplantPage from './pages/MultipleToothImplantPage.jsx';
+import FullMouthImplantPage from './pages/FullMouthImplantPage.jsx';
+import AllOn4ImplantPage from './pages/AllOn4ImplantPage.jsx';
+import AllOn6ImplantPage from './pages/AllOn6ImplantPage.jsx';
+import ImmediateImplantPage from './pages/ImmediateImplantPage.jsx';
+import MiniImplantPage from './pages/MiniImplantPage.jsx';
+import ZygomaticImplantPage from './pages/ZygomaticImplantPage.jsx';
+import BasalImplantPage from './pages/BasalImplantPage.jsx';
+import OverdenturesPage from './pages/OverdenturesPage.jsx';
+import BoneGraftingPage from './pages/BoneGraftingPage.jsx';
+import SinusLiftPage from './pages/SinusLiftPage.jsx';
+import GuidedImplantPage from './pages/GuidedImplantPage.jsx';
+import HowWeGenerateLeadsPage from './pages/HowWeGenerateLeadsPage.jsx';
+import BenefitsForDentistsPage from './pages/BenefitsForDentistsPage.jsx';
+import ProcessExplanationPage from './pages/ProcessExplanationPage.jsx';
 import AmaravatiPage from './pages/AmaravatiPage.jsx';
 import BahraichPage from './pages/BahraichPage.jsx';
 import BelgaumPage from './pages/BelgaumPage.jsx';
@@ -83,6 +114,37 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/for-dentists" element={<ForDentistsPage />} />
+          <Route path="/for-patients" element={<ForPatientsPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/blog/bone-grafting" element={<BlogPostBoneGrafting />} />
+          <Route path="/blog/digital-dentistry" element={<BlogPostDigitalDentistry />} />
+          <Route path="/blog/implant-maintenance" element={<BlogPostImplantMaintenance />} />
+          <Route path="/blog/marketing-strategies" element={<BlogPostMarketingStrategies />} />
+          <Route path="/blog/building-trust" element={<BlogPostBuildingTrust />} />
+          <Route path="/blog/all-on-4-guide" element={<BlogPostAllOn4 />} />
+          <Route path="/faqs" element={<FAQsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/services/single-tooth-implant" element={<SingleToothImplantPage />} />
+          <Route path="/services/multiple-tooth-implants" element={<MultipleToothImplantPage />} />
+          <Route path="/services/full-mouth-dental-implants" element={<FullMouthImplantPage />} />
+          <Route path="/services/all-on-4-implants" element={<AllOn4ImplantPage />} />
+          <Route path="/services/all-on-6-implants" element={<AllOn6ImplantPage />} />
+          <Route path="/services/immediate-implants" element={<ImmediateImplantPage />} />
+          <Route path="/services/mini-implants" element={<MiniImplantPage />} />
+          <Route path="/services/zygomatic-implants" element={<ZygomaticImplantPage />} />
+          <Route path="/services/basal-implants" element={<BasalImplantPage />} />
+          <Route path="/services/overdentures" element={<OverdenturesPage />} />
+          <Route path="/services/bone-grafting" element={<BoneGraftingPage />} />
+          <Route path="/services/sinus-lift" element={<SinusLiftPage />} />
+          <Route path="/services/guided-implants" element={<GuidedImplantPage />} />
+          <Route path="/leads/how-we-generate-leads" element={<HowWeGenerateLeadsPage />} />
+          <Route path="/leads/benefits-for-dentists" element={<BenefitsForDentistsPage />} />
+          <Route path="/leads/process-explanation" element={<ProcessExplanationPage />} />
           <Route path="/clinic" element={<ClinicPage />} />
           <Route path="/clinic/:clinicName" element={<ClinicPage />} />
           <Route path="/amaravati" element={<AmaravatiPage />} />
