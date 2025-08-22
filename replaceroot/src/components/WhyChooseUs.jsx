@@ -1,7 +1,7 @@
 const WhyChooseUs = () => {
   const uspHighlights = [
     {
-      icon: 'fa-shield-check',
+      icon: 'fa-check-circle',
       title: 'Verified Implant Leads',
       description: 'All patient leads are pre-screened and verified for quality and intent, ensuring you receive genuine implant inquiries.'
     },
@@ -42,10 +42,10 @@ const WhyChooseUs = () => {
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {uspHighlights.map((highlight, index) => (
             <div key={index} className="group">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full">
                 <div className="flex justify-center mb-6">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <i className={`fa-solid ${highlight.icon} text-white text-2xl`}></i>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Footer } from '../components';
+import Layout from '../components/Layout';
 
 const ProcessExplanationPage = () => {
   const processSteps = [
@@ -261,74 +262,91 @@ const ProcessExplanationPage = () => {
   ];
 
   return (
+    <Layout
+      title="Our Lead Generation Process | ReplaceRoot"
+      description="Discover how our sophisticated lead generation and delivery process works, from patient inquiry to dentist notification. Transparent, quality-driven process for dental implant leads."
+      keywords={['lead generation process', 'dental implant leads', 'implant lead delivery', 'lead qualification process', 'dental marketing process', 'ReplaceRoot']}
+      canonical="/leads/process-explanation"
+      og={{
+        title: "Our Lead Generation Process",
+        description: "Discover how our sophisticated lead generation and delivery process works, from patient inquiry to dentist notification. Transparent, quality-driven process for dental implant leads.",
+        type: 'website',
+        image: "https://replaceroot.com/images/process-explanation-hero.jpg",
+        site_name: "ReplaceRoot"
+      }}
+      twitter={{ card: 'summary_large_image' }}
+      jsonLd={{
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Our Lead Generation Process',
+        description: 'Discover how our sophisticated lead generation and delivery process works, from patient inquiry to dentist notification. Transparent, quality-driven process for dental implant leads.',
+        url: 'https://replaceroot.com/leads/process-explanation',
+        mainEntity: {
+          '@type': 'Service',
+          name: 'Dental Implant Lead Generation Process',
+          provider: {
+            '@type': 'Organization',
+            name: 'ReplaceRoot'
+          },
+          description: 'Sophisticated lead generation and delivery process for dental implants'
+        }
+      }}
+    >
     <div className="bg-gray-50 min-h-screen">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
+      <section className="relative pt-24 sm:pt-28 md:pt-36 pb-16 sm:pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <i className="fa-solid fa-cogs mr-2"></i>
               Transparent Process
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 text-gray-800">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 text-gray-800">
               Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Process</span>
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 sm:px-0">
               Discover how our sophisticated lead generation and delivery process works, from patient inquiry to dentist notification. We ensure transparency, quality, and efficiency at every step.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#process"
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:-translate-y-1"
-              >
-                Explore Process
-              </a>
-              <a 
-                href="/for-dentists"
-                className="bg-white border-2 border-cyan-500 text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-50 transition-all duration-300"
-              >
-                Join as Dentist
-              </a>
-            </div>
+
           </div>
         </div>
       </section>
 
       {/* Process Steps */}
-      <section id="process" className="py-20 bg-white">
+      <section id="process" className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               The <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Complete Process</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
               Our streamlined process ensures that qualified patients are efficiently matched with the right dental implant specialists.
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {processSteps.map((step, index) => (
-                <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <i className={`fa-solid ${step.icon} text-white text-xl`}></i>
+                <div key={index} className="bg-gray-50 rounded-2xl p-6 sm:p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
+                      <i className={`fa-solid ${step.icon} text-white text-lg sm:text-xl`}></i>
                     </div>
-                    <span className="text-4xl font-black text-gray-200">{step.step}</span>
+                    <span className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-200">{step.step}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">{step.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">{step.description}</p>
                   <ul className="space-y-2">
                     {step.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className="flex items-start gap-2 text-sm text-gray-600">
+                      <li key={detailIndex} className="flex items-start gap-2 text-xs sm:text-sm text-gray-600">
                         <i className="fa-solid fa-circle text-cyan-500 text-xs mt-2 flex-shrink-0"></i>
                         {detail}
                       </li>
@@ -342,33 +360,33 @@ const ProcessExplanationPage = () => {
       </section>
 
       {/* Lead Quality Factors */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Lead <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Quality Factors</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
               We evaluate multiple factors to ensure only the highest quality, conversion-ready leads reach our partner dentists.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {leadQualityFactors.map((factor, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
-                      <i className={`fa-solid ${factor.icon} text-white text-xl`}></i>
+                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-center mb-4 sm:mb-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                      <i className={`fa-solid ${factor.icon} text-white text-lg sm:text-xl`}></i>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">{factor.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800">{factor.title}</h3>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{factor.description}</p>
-                  <ul className="space-y-3">
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{factor.description}</p>
+                  <ul className="space-y-2 sm:space-y-3">
                     {factor.factors.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-3">
-                        <i className="fa-solid fa-check text-cyan-500 text-sm mt-1"></i>
-                        <span className="text-gray-700">{item}</span>
+                      <li key={itemIndex} className="flex items-start gap-2 sm:gap-3">
+                        <i className="fa-solid fa-check text-cyan-500 text-xs sm:text-sm mt-1"></i>
+                        <span className="text-gray-700 text-sm sm:text-base">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -380,31 +398,31 @@ const ProcessExplanationPage = () => {
       </section>
 
       {/* Technology Features */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Advanced <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Technology</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
               Our cutting-edge technology ensures efficient, accurate, and secure lead processing and delivery.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {technologyFeatures.map((feature, index) => (
-                <div key={index} className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-8 border border-cyan-200 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
-                      <i className={`fa-solid ${feature.icon} text-white text-2xl`}></i>
+                <div key={index} className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-6 sm:p-8 border border-cyan-200 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center mb-4 sm:mb-6">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                      <i className={`fa-solid ${feature.icon} text-white text-lg sm:text-2xl`}></i>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">{feature.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800">{feature.title}</h3>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{feature.description}</p>
                   <ul className="space-y-2">
                     {feature.features.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center gap-2 text-sm text-gray-600">
+                      <li key={itemIndex} className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                         <i className="fa-solid fa-check text-cyan-500 text-xs"></i>
                         {item}
                       </li>
@@ -418,30 +436,30 @@ const ProcessExplanationPage = () => {
       </section>
 
       {/* Quality Assurance */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Quality <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Assurance</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
               Our comprehensive quality assurance process ensures that only the highest quality leads reach our partner dentists.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
               {qualityAssurance.map((process, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">{process.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{process.description}</p>
-                  <ul className="space-y-3">
+                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">{process.title}</h3>
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{process.description}</p>
+                  <ul className="space-y-2 sm:space-y-3">
                     {process.steps.map((step, stepIndex) => (
-                      <li key={stepIndex} className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <li key={stepIndex} className="flex items-start gap-2 sm:gap-3">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                           <span className="text-white text-xs font-bold">{stepIndex + 1}</span>
                         </div>
-                        <span className="text-gray-700 text-sm">{step}</span>
+                        <span className="text-gray-700 text-xs sm:text-sm">{step}</span>
                       </li>
                     ))}
                   </ul>
@@ -453,31 +471,31 @@ const ProcessExplanationPage = () => {
       </section>
 
       {/* Delivery Methods */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Lead <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Delivery</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
               Multiple secure delivery methods ensure you never miss a qualified lead opportunity.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {deliveryMethods.map((method, index) => (
-                <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
-                      <i className={`fa-solid ${method.icon} text-white text-xl`}></i>
+                <div key={index} className="bg-gray-50 rounded-2xl p-6 sm:p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div className="flex items-center mb-4 sm:mb-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                      <i className={`fa-solid ${method.icon} text-white text-lg sm:text-xl`}></i>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">{method.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800">{method.title}</h3>
                   </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{method.description}</p>
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{method.description}</p>
                   <ul className="space-y-2">
                     {method.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center gap-2 text-sm text-gray-600">
+                      <li key={featureIndex} className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                         <i className="fa-solid fa-check text-cyan-500 text-xs"></i>
                         {feature}
                       </li>
@@ -491,28 +509,22 @@ const ProcessExplanationPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-cyan-50 to-teal-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-cyan-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Ready to Experience <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Our Process?</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
               Join our network of successful dental implant specialists and start receiving high-quality, qualified leads through our proven process.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <a 
                 href="/for-dentists"
                 className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 shadow-lg"
               >
                 Join Replace Roots
-              </a>
-              <a 
-                href="/contact"
-                className="bg-white border-2 border-cyan-500 text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-50 transition-all duration-300"
-              >
-                Learn More
               </a>
             </div>
           </div>
@@ -521,7 +533,8 @@ const ProcessExplanationPage = () => {
 
       <Footer />
     </div>
-  );
+  </Layout>
+);
 };
 
 export default ProcessExplanationPage;

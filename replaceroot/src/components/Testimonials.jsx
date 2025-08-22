@@ -43,10 +43,10 @@ const Testimonials = () => {
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="group">
-              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg mr-4">
                     <i className="fa-solid fa-user text-white text-xl"></i>

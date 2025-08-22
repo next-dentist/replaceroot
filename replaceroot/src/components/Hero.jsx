@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-24 md:pb-32 min-h-screen bg-gradient-to-br from-gray-50 via-white to-cyan-50 overflow-hidden">
+    <section className="relative pt-60 sm:pt-40 md:pt-48 pb-16 sm:pb-24 md:pb-32 min-h-screen bg-gradient-to-br from-gray-50 via-white to-cyan-50 overflow-hidden">
       {/* Background Image with enhanced overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
 
         {/* Enhanced Main Heading */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 sm:mb-10 leading-tight text-gray-800 animate-fade-in-up delay-200">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8 md:mb-10 leading-tight text-gray-800 animate-fade-in-up delay-200">
           Global Dental Implant 
           <span className="block bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent animate-gradient">
             Lead Network
@@ -35,35 +35,35 @@ const Hero = () => {
         </h1>
         
         {/* Enhanced Subtitle */}
-        <p className="text-2xl sm:text-3xl text-gray-600 mb-12 sm:mb-16 max-w-4xl mx-auto px-4 font-medium leading-relaxed animate-fade-in-up delay-400">
+        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto px-4 font-medium leading-relaxed animate-fade-in-up delay-400">
           Connecting Patients with 
           <span className="text-cyan-600 font-bold"> Trusted Implant Dentists</span>
         </p>
 
         {/* Enhanced Stats Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-4xl mx-auto animate-fade-in-up delay-600">
+        <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 max-w-4xl mx-auto animate-fade-in-up delay-600">
           <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/25">
-              <i className="fa-solid fa-user-md text-white text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
-            </div>
-            <div className="text-4xl font-black text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors duration-300">500+</div>
-            <div className="text-gray-600 font-semibold text-lg">Verified Dentists</div>
+                         <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-all duration-500 shadow-xl sm:shadow-2xl group-hover:shadow-cyan-500/25">
+               <i className="fa-solid fa-user-md text-white text-lg sm:text-xl md:text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
+             </div>
+                         <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-800 mb-1 sm:mb-2 md:mb-3 group-hover:text-cyan-600 transition-colors duration-300">500+</div>
+             <div className="text-gray-600 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">Verified Dentists</div>
           </div>
           
           <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/25">
-              <i className="fa-solid fa-globe text-white text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
-            </div>
-            <div className="text-4xl font-black text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors duration-300">50+</div>
-            <div className="text-gray-600 font-semibold text-lg">Cities Covered</div>
+                         <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-all duration-500 shadow-xl sm:shadow-2xl group-hover:shadow-cyan-500/25">
+               <i className="fa-solid fa-globe text-white text-lg sm:text-xl md:text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
+             </div>
+                         <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-800 mb-1 sm:mb-2 md:mb-3 group-hover:text-cyan-600 transition-colors duration-300">50+</div>
+             <div className="text-gray-600 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">Cities Covered</div>
           </div>
           
           <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 shadow-2xl group-hover:shadow-cyan-500/25">
-              <i className="fa-solid fa-smile text-white text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
-            </div>
-            <div className="text-4xl font-black text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors duration-300">10K+</div>
-            <div className="text-gray-600 font-semibold text-lg">Happy Patients</div>
+                         <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-all duration-500 shadow-xl sm:shadow-2xl group-hover:shadow-cyan-500/25">
+               <i className="fa-solid fa-smile text-white text-lg sm:text-xl md:text-3xl group-hover:rotate-12 transition-transform duration-500"></i>
+             </div>
+                         <div className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-800 mb-1 sm:mb-2 md:mb-3 group-hover:text-cyan-600 transition-colors duration-300">10K+</div>
+             <div className="text-gray-600 font-semibold text-xs sm:text-sm md:text-base lg:text-lg">Happy Patients</div>
           </div>
         </div>
       </div>

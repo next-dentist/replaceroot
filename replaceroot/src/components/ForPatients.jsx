@@ -78,29 +78,29 @@ const ForPatients = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
           <div className="text-center group">
-            <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <i className="fa-solid fa-check-circle text-white text-2xl"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <i className="fa-solid fa-check-circle text-white text-lg sm:text-2xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-3">Verified Specialists</h3>
-            <p className="text-gray-600 leading-relaxed">All dentists are pre-screened and verified for quality, experience, and patient safety standards.</p>
+            <h3 className="text-sm sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">Verified Specialists</h3>
+            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">All dentists are pre-screened and verified for quality, experience, and patient safety standards.</p>
           </div>
           
           <div className="text-center group">
-            <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <i className="fa-solid fa-shield-alt text-white text-2xl"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <i className="fa-solid fa-shield-alt text-white text-lg sm:text-2xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-3">Quality Assured</h3>
-            <p className="text-gray-600 leading-relaxed">Rigorous quality standards and patient safety protocols ensure the best care possible.</p>
+            <h3 className="text-sm sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">Quality Assured</h3>
+            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">Rigorous quality standards and patient safety protocols ensure the best care possible.</p>
           </div>
           
           <div className="text-center group">
-            <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <i className="fa-solid fa-star text-white text-2xl"></i>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <i className="fa-solid fa-star text-white text-lg sm:text-2xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-3">Patient Reviews</h3>
-            <p className="text-gray-600 leading-relaxed">Real patient experiences and verified testimonials help you make informed decisions.</p>
+            <h3 className="text-sm sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">Patient Reviews</h3>
+            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm md:text-base">Real patient experiences and verified testimonials help you make informed decisions.</p>
           </div>
         </div>
 

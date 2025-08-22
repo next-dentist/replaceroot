@@ -14,6 +14,12 @@ import BlogPostImplantMaintenance from './pages/BlogPostImplantMaintenance.jsx';
 import BlogPostMarketingStrategies from './pages/BlogPostMarketingStrategies.jsx';
 import BlogPostBuildingTrust from './pages/BlogPostBuildingTrust.jsx';
 import BlogPostAllOn4 from './pages/BlogPostAllOn4.jsx';
+import BlogPostSocialMediaSuccess from './pages/BlogPostSocialMediaSuccess.jsx';
+import BlogPostPatientReferralPrograms from './pages/BlogPostPatientReferralPrograms.jsx';
+import BlogPostMarketTrends from './pages/BlogPostMarketTrends.jsx';
+import BlogPostFDAApprovals from './pages/BlogPostFDAApprovals.jsx';
+import BlogPostDentalTourism from './pages/BlogPostDentalTourism.jsx';
+import BlogPostRegulatoryChanges from './pages/BlogPostRegulatoryChanges.jsx';
 import FAQsPage from './pages/FAQsPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import SingleToothImplantPage from './pages/SingleToothImplantPage.jsx';
@@ -127,6 +133,12 @@ function App() {
           <Route path="/blog/marketing-strategies" element={<BlogPostMarketingStrategies />} />
           <Route path="/blog/building-trust" element={<BlogPostBuildingTrust />} />
           <Route path="/blog/all-on-4-guide" element={<BlogPostAllOn4 />} />
+          <Route path="/blog/social-media-success" element={<BlogPostSocialMediaSuccess />} />
+        <Route path="/blog/patient-referral-programs" element={<BlogPostPatientReferralPrograms />} />
+        <Route path="/blog/market-trends" element={<BlogPostMarketTrends />} />
+        <Route path="/blog/fda-approvals" element={<BlogPostFDAApprovals />} />
+        <Route path="/blog/dental-tourism" element={<BlogPostDentalTourism />} />
+        <Route path="/blog/regulatory-changes" element={<BlogPostRegulatoryChanges />} />
           <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/services/single-tooth-implant" element={<SingleToothImplantPage />} />

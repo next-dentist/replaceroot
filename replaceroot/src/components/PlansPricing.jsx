@@ -55,23 +55,26 @@ const PlansPricing = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
             Choose Your <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Growth Plan</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Flexible pricing plans designed to scale with your practice growth
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+            Flexible pricing plans designed to scale with your practice growth. Start with the plan that fits your needs and upgrade as you grow.
           </p>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full mt-4"></div>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto pt-8">
           {plans.map((plan, index) => (
             <div key={index} className={`relative group ${plan.popular ? 'md:-mt-4' : ''}`}>
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg z-10">
                   Most Popular
                 </div>
               )}
-              <div className={`bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 h-full ${
+              <div className={`bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 h-full relative overflow-hidden ${
                 plan.popular ? 'border-cyan-500' : 'border-gray-100'
               }`}>
+                {plan.popular && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-teal-500"></div>
+                )}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
                   <div className="flex items-baseline justify-center">
@@ -80,36 +83,30 @@ const PlansPricing = () => {
                   </div>
                 </div>
                 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
-                      <i className="fa-solid fa-check text-cyan-500 mr-3 mt-1 flex-shrink-0"></i>
-                      <span className="text-gray-600">{feature}</span>
+                      <div className="w-5 h-5 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                        <i className="fa-solid fa-check text-white text-xs"></i>
+                      </div>
+                      <span className="text-gray-600 text-sm sm:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <button className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
+                <button className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 ${
                   plan.popular 
                     ? 'bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg hover:shadow-xl' 
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+                    : 'bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-800 border border-gray-200'
                 }`}>
-                  Choose {plan.name}
+                  {plan.popular ? 'Get Started' : `Choose ${plan.name}`}
                 </button>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-12 sm:mt-16">
-          <a 
-            href="/pricing" 
-            className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-3"
-          >
-            <i className="fa-solid fa-list text-xl"></i>
-            <span>See Full Pricing</span>
-          </a>
-        </div>
+
       </div>
     </section>
   );

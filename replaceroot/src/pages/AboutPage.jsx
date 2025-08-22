@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Footer } from '../components';
+import Layout from '../components/Layout';
 
 const AboutPage = () => {
   const teamMembers = [
@@ -45,7 +46,7 @@ const AboutPage = () => {
       description: "Connecting patients with verified implant specialists across 50+ countries worldwide."
     },
     {
-      icon: "fa-shield-check", 
+      icon: "fa-check-circle", 
       title: "Quality Assurance",
       description: "Rigorous verification process ensures only qualified and experienced dentists join our platform."
     },
@@ -62,8 +63,40 @@ const AboutPage = () => {
   ];
 
       return (
-      <div className="bg-gray-50 min-h-screen">
-        <Header />
+        <Layout
+          title="About ReplaceRoot - Dental Implant Platform | About"
+          description="Learn about ReplaceRoot's mission to revolutionize dental implant care through technology, trust, and global connectivity. Meet our expert team and discover our commitment to quality."
+          keywords={['about ReplaceRoot', 'dental implant platform', 'implant specialists', 'global dental care', 'implant technology', 'dental professionals', 'ReplaceRoot']}
+          canonical="/about"
+          og={{
+            title: "About ReplaceRoot - Dental Implant Platform",
+            description: "Learn about ReplaceRoot's mission to revolutionize dental implant care through technology, trust, and global connectivity.",
+            type: 'website',
+            image: "https://replaceroot.com/images/about-hero.jpg",
+            site_name: "ReplaceRoot"
+          }}
+          twitter={{ card: 'summary_large_image' }}
+          jsonLd={{
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'ReplaceRoot',
+            description: 'Leading dental implant platform connecting patients with verified specialists worldwide',
+            url: 'https://replaceroot.com',
+            logo: 'https://replaceroot.com/logo.png',
+            foundingDate: '2020',
+            sameAs: [
+              'https://linkedin.com/company/replaceroot',
+              'https://twitter.com/replaceroot'
+            ],
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+1-800-REPLACE',
+              contactType: 'customer service'
+            }
+          }}
+        >
+        <div className="bg-gray-50 min-h-screen">
+          <Header />
         {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
@@ -76,11 +109,11 @@ const AboutPage = () => {
               About Replace Roots
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 text-gray-800">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 text-gray-800">
               About <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Replace Roots</span>
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto">
               Revolutionizing dental implant care through technology, trust, and global connectivity
             </p>
           </div>
@@ -88,42 +121,42 @@ const AboutPage = () => {
       </section>
 
       {/* Company Background */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
                 Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Story</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                 Founded in 2020, Replace Roots emerged from a simple yet powerful vision: to bridge the gap between patients seeking quality dental implant care and skilled specialists worldwide.
               </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                 What started as a local initiative has grown into a global platform connecting patients with verified implant dentists across 50+ countries. Our journey has been driven by the belief that everyone deserves access to world-class dental care, regardless of their location.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                 Today, we're proud to have facilitated over 10,000 successful implant procedures and continue to expand our network of trusted dental professionals committed to excellence.
               </p>
             </div>
             
             <div className="relative">
-              <div className="bg-gradient-to-br from-cyan-500 to-teal-500 rounded-3xl p-8 text-white">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-white">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-2">50+</div>
-                    <div className="text-cyan-100">Countries</div>
+                    <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">50+</div>
+                    <div className="text-cyan-100 text-sm sm:text-base">Countries</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-2">500+</div>
-                    <div className="text-cyan-100">Verified Dentists</div>
+                    <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">500+</div>
+                    <div className="text-cyan-100 text-sm sm:text-base">Verified Dentists</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-2">10K+</div>
-                    <div className="text-cyan-100">Successful Procedures</div>
+                    <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">10K+</div>
+                    <div className="text-cyan-100 text-sm sm:text-base">Successful Procedures</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold mb-2">98%</div>
-                    <div className="text-cyan-100">Patient Satisfaction</div>
+                    <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">98%</div>
+                    <div className="text-cyan-100 text-sm sm:text-base">Patient Satisfaction</div>
                   </div>
                 </div>
               </div>
@@ -133,34 +166,34 @@ const AboutPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Mission & Vision</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Driving innovation in dental care through technology and human connection
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6">
-                <i className="fa-solid fa-bullseye text-white text-2xl"></i>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl border border-gray-100">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                <i className="fa-solid fa-bullseye text-white text-lg sm:text-2xl"></i>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                 To democratize access to high-quality dental implant care by connecting patients with verified specialists worldwide, ensuring every individual can restore their smile with confidence and trust.
               </p>
             </div>
             
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6">
-                <i className="fa-solid fa-eye text-white text-2xl"></i>
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl border border-gray-100">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6">
+                <i className="fa-solid fa-eye text-white text-lg sm:text-2xl"></i>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Our Vision</h3>
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                 To become the world's most trusted platform for dental implant care, where technology meets human expertise to create seamless, accessible, and exceptional patient experiences globally.
               </p>
             </div>
@@ -169,25 +202,25 @@ const AboutPage = () => {
       </section>
 
       {/* Why Replace Roots */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Why <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Replace Roots?</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Discover what makes us the preferred choice for dental implant care worldwide
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {uniqueSellingPoints.map((point, index) => (
               <div key={index} className="text-center group">
-                <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                  <i className={`fa-solid ${point.icon} text-white text-2xl`}></i>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                  <i className={`fa-solid ${point.icon} text-white text-lg sm:text-2xl`}></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">{point.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{point.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">{point.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{point.description}</p>
               </div>
             ))}
           </div>
@@ -195,26 +228,26 @@ const AboutPage = () => {
       </section>
 
       {/* Team Introduction */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
               Meet Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Team</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               The passionate professionals behind Replace Roots' mission to transform dental care
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-3xl p-6 shadow-xl border border-gray-100 text-center group hover:shadow-2xl transition-all duration-300">
-                <div className="w-24 h-24 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold">
+              <div key={index} className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl border border-gray-100 text-center group hover:shadow-2xl transition-all duration-300">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white text-lg sm:text-2xl font-bold">
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
-                <p className="text-cyan-600 font-semibold mb-4">{member.position}</p>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">{member.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{member.name}</h3>
+                <p className="text-cyan-600 font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{member.position}</p>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{member.description}</p>
                 <div className="flex justify-center space-x-3">
                   <a href={member.linkedin} className="w-8 h-8 bg-gray-100 hover:bg-cyan-500 hover:text-white rounded-full flex items-center justify-center transition-all duration-300">
                     <i className="fa-brands fa-linkedin-in text-sm"></i>
@@ -230,15 +263,15 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-500 to-teal-500">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-cyan-500 to-teal-500">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
             Ready to Join Our Mission?
           </h2>
-          <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-cyan-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Whether you're a dental professional looking to expand your practice or a patient seeking quality care, we're here to help.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link 
               to="/for-dentists" 
               className="bg-white text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg transform hover:-translate-y-1"
@@ -256,7 +289,8 @@ const AboutPage = () => {
         </section>
         <Footer />
       </div>
-    );
+    </Layout>
+  );
 };
 
 export default AboutPage;

@@ -24,7 +24,7 @@ const phoneInputStyles = `
   .PhoneInputCountry {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
+    padding: 8px 12px;
     background: #f9fafb;
     border-right: 1px solid #e5e7eb;
     cursor: pointer;
@@ -38,7 +38,7 @@ const phoneInputStyles = `
   .PhoneInputCountrySelect {
     background: transparent;
     border: none;
-    font-size: 14px;
+    font-size: 12px;
     color: #374151;
     cursor: pointer;
     padding: 0;
@@ -47,26 +47,26 @@ const phoneInputStyles = `
   }
   
   .PhoneInputCountryIcon {
-    width: 20px;
-    height: 15px;
-    margin-right: 8px;
+    width: 16px;
+    height: 12px;
+    margin-right: 6px;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
   .PhoneInputCountrySelectArrow {
-    width: 8px;
-    height: 8px;
-    margin-left: 8px;
+    width: 6px;
+    height: 6px;
+    margin-left: 6px;
     color: #6b7280;
   }
   
   .PhoneInputInput {
     flex: 1;
-    padding: 12px 16px;
+    padding: 8px 12px;
     border: none;
     background: transparent;
-    font-size: 14px;
+    font-size: 12px;
     color: #374151;
     outline: none;
     min-width: 0;
@@ -78,6 +78,33 @@ const phoneInputStyles = `
   
   .PhoneInputInput:focus {
     outline: none;
+  }
+
+  @media (min-width: 640px) {
+    .PhoneInputCountry {
+      padding: 12px 16px;
+    }
+    
+    .PhoneInputCountrySelect {
+      font-size: 14px;
+    }
+    
+    .PhoneInputCountryIcon {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
+    }
+    
+    .PhoneInputCountrySelectArrow {
+      width: 8px;
+      height: 8px;
+      margin-left: 8px;
+    }
+    
+    .PhoneInputInput {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
   }
 `;
 
@@ -195,57 +222,57 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
     <>
       <style>{phoneInputStyles}</style>
       <div 
-        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm"
         onClick={handleBackdropClick}
       >
-        <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-sm sm:max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
           {/* Enhanced Header with Gradient */}
-          <div className="relative overflow-hidden rounded-t-2xl">
+          <div className="relative overflow-hidden rounded-t-xl sm:rounded-t-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20"></div>
-            <div className="relative flex items-center justify-between p-6 text-white">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                  <i className="fa-solid fa-calendar-check text-xl"></i>
+            <div className="relative flex items-center justify-between p-4 sm:p-6 text-white">
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white/20 rounded-lg sm:rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <i className="fa-solid fa-calendar-check text-sm sm:text-xl"></i>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">Book Appointment</h2>
-                  <p className="text-cyan-100 mt-1">Get in touch with {displayName} clinic</p>
+                  <h2 className="text-lg sm:text-2xl font-bold">Book Appointment</h2>
+                  <p className="text-cyan-100 mt-0.5 sm:mt-1 text-xs sm:text-sm">Get in touch with {displayName} clinic</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="w-10 h-10 flex items-center justify-center text-white hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
+                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
               >
-                <i className="fa-solid fa-times text-xl"></i>
+                <i className="fa-solid fa-times text-sm sm:text-xl"></i>
               </button>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* Success/Error Messages */}
             {submitStatus === 'success' && (
-              <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl">
+              <div className="bg-green-50 border border-green-200 text-green-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl">
                 <div className="flex items-center">
-                  <i className="fa-solid fa-check-circle text-green-500 mr-2"></i>
-                  <span>Thank you! Your appointment request has been submitted successfully.</span>
+                  <i className="fa-solid fa-check-circle text-green-500 mr-2 text-sm sm:text-base"></i>
+                  <span className="text-sm sm:text-base">Thank you! Your appointment request has been submitted successfully.</span>
                 </div>
               </div>
             )}
 
             {submitStatus === 'error' && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+              <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl">
                 <div className="flex items-center">
-                  <i className="fa-solid fa-exclamation-triangle text-red-500 mr-2"></i>
-                  <span>Sorry, there was an error submitting your request. Please try again.</span>
+                  <i className="fa-solid fa-exclamation-triangle text-red-500 mr-2 text-sm sm:text-base"></i>
+                  <span className="text-sm sm:text-base">Sorry, there was an error submitting your request. Please try again.</span>
                 </div>
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label htmlFor="modal-name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Full Name *
                 </label>
                 <div className="relative">
@@ -256,17 +283,17 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                     placeholder="Enter your full name"
                   />
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-                    <i className="fa-solid fa-user"></i>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-user text-sm sm:text-base"></i>
                   </div>
                 </div>
               </div>
 
               <div>
-                <label htmlFor="modal-email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Email Address *
                 </label>
                 <div className="relative">
@@ -277,19 +304,19 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                     placeholder="Enter your email address"
                   />
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-                    <i className="fa-solid fa-envelope"></i>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-envelope text-sm sm:text-base"></i>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label htmlFor="modal-phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Phone Number *
                 </label>
                 <PhoneInput
@@ -302,7 +329,7 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
               </div>
               
               <div>
-                <label htmlFor="modal-treatmentType" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-treatmentType" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Treatment Type
                 </label>
                 <div className="relative">
@@ -311,7 +338,7 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                     name="treatmentType"
                     value={formData.treatmentType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none text-sm sm:text-base"
                   >
                     <option value="">Select treatment type</option>
                     <option value="dental-implant">Dental Implant</option>
@@ -321,16 +348,16 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                     <option value="consultation">General Consultation</option>
                     <option value="other">Other</option>
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-                    <i className="fa-solid fa-chevron-down"></i>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-chevron-down text-sm sm:text-base"></i>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label htmlFor="modal-preferredDate" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-preferredDate" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Preferred Date
                 </label>
                 <input
@@ -339,12 +366,12 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                   name="preferredDate"
                   value={formData.preferredDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                 />
               </div>
               
               <div>
-                <label htmlFor="modal-preferredTime" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="modal-preferredTime" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Preferred Time
                 </label>
                 <div className="relative">
@@ -353,22 +380,22 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                     name="preferredTime"
                     value={formData.preferredTime}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none text-sm sm:text-base"
                   >
                     <option value="">Select time</option>
                     <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
                     <option value="afternoon">Afternoon (12:00 PM - 3:00 PM)</option>
                     <option value="evening">Evening (3:00 PM - 7:00 PM)</option>
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-                    <i className="fa-solid fa-chevron-down"></i>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-chevron-down text-sm sm:text-base"></i>
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <label htmlFor="modal-message" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="modal-message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 Message *
               </label>
               <div className="relative">
@@ -378,38 +405,38 @@ const ContactFormModal = ({ isOpen, onClose, clinicName, displayName }) => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="4"
-                  className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none"
+                  rows="3"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
                   placeholder="Tell us about your dental concerns or specific requirements..."
                 />
-                <div className="pointer-events-none absolute top-3 right-3 text-gray-400">
-                  <i className="fa-solid fa-comment"></i>
+                <div className="pointer-events-none absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-400">
+                  <i className="fa-solid fa-comment text-sm sm:text-base"></i>
                 </div>
               </div>
             </div>
 
             {/* Enhanced Submit Button */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-medium"
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-300 text-gray-700 rounded-lg sm:rounded-xl hover:bg-gray-50 transition-colors font-medium text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-xl hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-lg sm:rounded-xl hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-sm sm:text-base"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-white mr-2"></div>
                     Submitting...
                   </span>
                 ) : (
                   <span className="flex items-center justify-center">
-                    <i className="fa-solid fa-paper-plane mr-2"></i>
+                    <i className="fa-solid fa-paper-plane mr-2 text-sm sm:text-base"></i>
                     Submit Request
                   </span>
                 )}

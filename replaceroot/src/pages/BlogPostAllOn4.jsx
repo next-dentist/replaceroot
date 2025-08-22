@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Footer } from '../components';
+import Layout from '../components/Layout';
 
 // Custom styles for blog content
 const blogContentStyles = `
   .blog-content h2 {
     color: #1f2937;
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
     line-height: 1.2;
     border-bottom: 2px solid #e5e7eb;
     padding-bottom: 0.5rem;
@@ -17,29 +18,29 @@ const blogContentStyles = `
   
   .blog-content h3 {
     color: #1f2937;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
     line-height: 1.3;
   }
   
   .blog-content p {
     color: #4b5563;
-    font-size: 1.125rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
   }
   
   .blog-content ul {
     color: #4b5563;
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
   }
   
   .blog-content li {
-    margin-bottom: 0.75rem;
-    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
   }
   
   .blog-content strong {
@@ -53,6 +54,66 @@ const blogContentStyles = `
   
   .blog-content {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  @media (min-width: 640px) {
+    .blog-content h2 {
+      font-size: 2rem;
+      margin-top: 2.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-content h3 {
+      font-size: 1.375rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-content p {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-content ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    
+    .blog-content li {
+      margin-bottom: 0.625rem;
+      line-height: 1.65;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .blog-content h2 {
+      font-size: 2.25rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-content h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-content p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .blog-content ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    
+    .blog-content li {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
   }
 `;
 
@@ -203,58 +264,103 @@ const BlogPostAllOn4 = () => {
   };
 
   return (
+    <Layout
+      title="Complete Guide to All-on-4 Dental Implants: What Patients Need to Know | ReplaceRoot"
+      description="Everything you need to know about All-on-4 implants, from candidacy to recovery. Learn about this revolutionary treatment option for full-arch tooth replacement."
+      keywords={['All-on-4 dental implants', 'full arch restoration', 'implant dentistry', 'tooth replacement', 'dental prosthetics', 'implant surgery', 'permanent dentures', 'ReplaceRoot']}
+      canonical="/blog/all-on-4-guide"
+      og={{
+        title: "Complete Guide to All-on-4 Dental Implants: What Patients Need to Know",
+        description: "Everything you need to know about All-on-4 implants, from candidacy to recovery. Learn about this revolutionary treatment option for full-arch tooth replacement.",
+        type: 'article',
+        image: "https://replaceroot.com/images/blog/all-on-4-guide.jpg",
+        article: {
+          author: "Dr. Sarah Johnson",
+          publishedTime: "2024-03-15T00:00:00Z",
+          section: "Educational Content",
+          tag: ["All-on-4", "Patient Education", "Treatment Guide", "Dental Implants", "Full Arch Restoration"]
+        }
+      }}
+      twitter={{ card: 'summary_large_image' }}
+      jsonLd={{
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: 'Complete Guide to All-on-4 Dental Implants: What Patients Need to Know',
+        description: 'Everything you need to know about All-on-4 implants, from candidacy to recovery. Learn about this revolutionary treatment option for full-arch tooth replacement.',
+        author: {
+          '@type': 'Person',
+          name: 'Dr. Sarah Johnson'
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'ReplaceRoot',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://replaceroot.com/logo.png'
+          }
+        },
+        datePublished: '2024-03-15T00:00:00Z',
+        dateModified: '2024-03-15T00:00:00Z',
+        image: 'https://replaceroot.com/images/blog/all-on-4-guide.jpg',
+        url: typeof window !== 'undefined' ? window.location.href : undefined,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': 'https://replaceroot.com/blog/all-on-4-guide'
+        }
+      }}
+    >
     <div className="bg-gray-50 min-h-screen">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-40 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
+        <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gradient-to-tl from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
-            <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-              <Link to="/" className="hover:text-cyan-600 transition-colors">Home</Link>
-              <span>/</span>
-              <Link to="/blog" className="hover:text-cyan-600 transition-colors">Blog</Link>
-              <span>/</span>
-              <span className="text-gray-800">All-on-4 Guide</span>
+            <nav className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 bg-white px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl shadow-sm border border-gray-200">
+              <Link to="/" className="hover:text-cyan-600 font-medium">Home</Link>
+              <span className="text-gray-400">→</span>
+              <Link to="/blog" className="hover:text-cyan-600 font-medium">Blog</Link>
+              <span className="text-gray-400">→</span>
+              <span className="text-gray-800 font-medium truncate">All-on-4 Guide</span>
             </nav>
 
             {/* Article Header */}
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <span className="px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium">
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
+                <span className="px-2 sm:px-3 md:px-4 py-1 sm:py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium">
                   {blogPost.category === 'educational' ? 'Educational Content' : blogPost.category}
                 </span>
-                <span className="text-gray-500 text-sm">{blogPost.readTime}</span>
+                <span className="text-gray-500 text-xs sm:text-sm">{blogPost.readTime}</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-gray-800 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 text-gray-800 leading-tight">
                 {blogPost.title}
               </h1>
               
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
                 {blogPost.excerpt}
               </p>
               
               {/* Author Info */}
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
-                  <i className="fa-solid fa-user text-white text-xl"></i>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
+                  <i className="fa-solid fa-user text-white text-sm sm:text-lg md:text-xl"></i>
                 </div>
                 <div className="text-left">
-                  <div className="font-bold text-gray-800 text-lg">{blogPost.author}</div>
-                  <div className="text-cyan-600 font-medium">{blogPost.authorTitle}</div>
-                  <div className="text-gray-500 text-sm">{blogPost.date}</div>
+                  <div className="font-bold text-gray-800 text-base sm:text-lg">{blogPost.author}</div>
+                  <div className="text-cyan-600 font-medium text-sm sm:text-base">{blogPost.authorTitle}</div>
+                  <div className="text-gray-500 text-xs sm:text-sm">{blogPost.date}</div>
                 </div>
               </div>
 
               {/* Tags */}
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
                 {blogPost.tags.map((tag, index) => (
-                  <span key={index} className="px-3 py-1 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium border border-cyan-200">
+                  <span key={index} className="px-2 sm:px-3 py-1 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium border border-cyan-200">
                     {tag}
                   </span>
                 ))}
@@ -265,7 +371,7 @@ const BlogPostAllOn4 = () => {
       </section>
 
       {/* Article Content */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white">
@@ -280,19 +386,19 @@ const BlogPostAllOn4 = () => {
       </section>
 
       {/* Author Bio */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 sm:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">About the Author</h3>
-              <div className="flex items-start gap-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i className="fa-solid fa-user text-white text-2xl"></i>
+            <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">About the Author</h3>
+              <div className="flex items-start gap-4 sm:gap-6">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i className="fa-solid fa-user text-white text-lg sm:text-xl md:text-2xl"></i>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-800 mb-2">{blogPost.author}</h4>
-                  <p className="text-cyan-600 font-medium mb-3">{blogPost.authorTitle}</p>
-                  <p className="text-gray-600 leading-relaxed">{blogPost.authorBio}</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">{blogPost.author}</h4>
+                  <p className="text-cyan-600 font-medium mb-2 sm:mb-3 text-sm sm:text-base">{blogPost.authorTitle}</p>
+                  <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{blogPost.authorBio}</p>
                 </div>
               </div>
             </div>
@@ -300,37 +406,9 @@ const BlogPostAllOn4 = () => {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-20 bg-gradient-to-br from-cyan-50 to-teal-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Stay <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Informed</span>
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Get the latest dental implant insights, educational content, and industry updates delivered to your inbox.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none"
-              />
-              <button className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-xl font-bold hover:from-cyan-600 hover:to-teal-600 transition-all duration-300">
-                Subscribe
-              </button>
-            </div>
-            
-            <p className="text-gray-500 text-sm mt-4">
-              No spam, unsubscribe at any time. We respect your privacy.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
+    </Layout>
   );
 };
 

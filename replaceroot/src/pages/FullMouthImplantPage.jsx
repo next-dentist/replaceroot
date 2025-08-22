@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Footer } from '../components';
+import Layout from '../components/Layout';
 
 const FullMouthImplantPage = () => {
   const procedureSteps = [
@@ -169,132 +170,139 @@ const FullMouthImplantPage = () => {
   ];
 
   return (
+    <Layout
+      title="Full Mouth Implants - Complete Smile Restoration | ReplaceRoot"
+      description="Transform your entire smile with full mouth dental implants. Our comprehensive full mouth implant procedures restore all missing teeth with permanent, natural-looking results and full chewing function."
+      keywords={['full mouth implants', 'dental implants', 'tooth replacement', 'implant dentistry', 'full mouth restoration', 'dental implants', 'tooth replacement options', 'implant treatment', 'ReplaceRoot']}
+      canonical="/full-mouth-implant"
+      og={{
+        title: "Full Mouth Implants - Complete Smile Restoration | ReplaceRoot",
+        description: "Transform your entire smile with full mouth dental implants. Our comprehensive full mouth implant procedures restore all missing teeth with permanent, natural-looking results and full chewing function.",
+        type: 'website',
+        image: "https://replaceroot.com/assets/images/full-mouth-implant.jpg",
+      }}
+      twitter={{ card: 'summary_large_image' }}
+      jsonLd={{
+        '@context': 'https://schema.org',
+        '@type': 'MedicalProcedure',
+        name: 'Full Mouth Implants',
+        description: 'Transform your entire smile with full mouth dental implants.',
+        medicalSpecialty: 'Dentistry',
+        url: typeof window !== 'undefined' ? window.location.href : undefined,
+        image: "https://replaceroot.com/assets/images/full-mouth-implant.jpg",
+      }}
+    >
     <div className="bg-gray-50 min-h-screen">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
+      <section className="relative pt-32 sm:pt-24 md:pt-28 lg:pt-32 pb-16 sm:pb-18 md:pb-20 bg-gradient-to-br from-white to-cyan-50 overflow-hidden">
+        <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-gradient-to-tl from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
               <i className="fa-solid fa-tooth mr-2"></i>
               Dental Implant Services
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 text-gray-800">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 text-gray-800">
               Full Mouth <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Dental Implants</span>
             </h1>
             
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
               Complete full arch replacement with permanent, natural-looking dental implants that restore your entire smile, chewing function, and confidence. Our advanced full mouth implant procedure offers the most comprehensive and long-lasting tooth replacement solution.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#find-specialist"
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg transform hover:-translate-y-1"
-              >
-                Find a Specialist
-              </a>
-              <a 
-                href="#procedure"
-                className="bg-white border-2 border-cyan-500 text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-50 transition-all duration-300"
-              >
-                Learn About Procedure
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Overview Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <section className="py-16 sm:py-18 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center max-w-7xl mx-auto">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6">
                 What are Full Mouth <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Dental Implants?</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
                 Full mouth dental implants are a comprehensive solution for replacing all missing teeth in one or both arches. This treatment involves strategically placing multiple implants to support a full arch bridge or implant-supported denture.
               </p>
               
               <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">1</span>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-bold text-xs sm:text-sm">1</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Strategic Implant Placement</h4>
-                    <p className="text-gray-600">Carefully positioned titanium implants (4-8 per arch) that provide optimal support for full arch restoration.</p>
+                    <h4 className="font-bold text-gray-800 mb-1 text-sm sm:text-base">Strategic Implant Placement</h4>
+                    <p className="text-gray-600 text-sm sm:text-base">Carefully positioned titanium implants (4-8 per arch) that provide optimal support for full arch restoration.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">2</span>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-bold text-xs sm:text-sm">2</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Full Arch Restoration</h4>
-                    <p className="text-gray-600">Custom-designed full arch bridge or implant-supported denture that replaces all teeth in the arch.</p>
+                    <h4 className="font-bold text-gray-800 mb-1 text-sm sm:text-base">Full Arch Restoration</h4>
+                    <p className="text-gray-600 text-sm sm:text-base">Custom-designed full arch bridge or implant-supported denture that replaces all teeth in the arch.</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">3</span>
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-bold text-xs sm:text-sm">3</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Complete Function Restoration</h4>
-                    <p className="text-gray-600">Restores full chewing function, speech, and maintains proper bite alignment for optimal oral health.</p>
+                    <h4 className="font-bold text-gray-800 mb-1 text-sm sm:text-base">Complete Function Restoration</h4>
+                    <p className="text-gray-600 text-sm sm:text-base">Restores full chewing function, speech, and maintains proper bite alignment for optimal oral health.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-2xl p-6 border border-cyan-200">
-                <h4 className="font-bold text-gray-800 mb-3 flex items-center">
+              <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-cyan-200">
+                <h4 className="font-bold text-gray-800 mb-3 flex items-center text-sm sm:text-base">
                   <i className="fa-solid fa-lightbulb text-cyan-600 mr-2"></i>
                   Why Choose Full Mouth Dental Implants?
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base">
                   Full mouth dental implants provide superior stability and function compared to traditional dentures. They preserve your jawbone, eliminate denture problems, and offer a permanent, natural-looking solution that feels and functions like your own teeth.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">Key Advantages</h3>
-              <div className="space-y-4">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">Key Advantages</h3>
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Complete smile restoration</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Complete smile restoration</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Preserves facial structure</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Preserves facial structure</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">No more denture issues</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">No more denture issues</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Permanent solution</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Permanent solution</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Easy to maintain</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Easy to maintain</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Restores full chewing function</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Restores full chewing function</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <i className="fa-solid fa-check-circle text-green-500 text-xl"></i>
-                  <span className="text-gray-700">Natural appearance and feel</span>
+                  <i className="fa-solid fa-check-circle text-green-500 text-lg sm:text-xl"></i>
+                  <span className="text-gray-700 text-sm sm:text-base">Natural appearance and feel</span>
                 </div>
               </div>
             </div>
@@ -303,29 +311,29 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* Procedure Steps */}
-      <section id="procedure" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+      <section id="procedure" className="py-16 sm:py-18 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               The <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Procedure</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Our full mouth implant procedure is performed in stages to ensure optimal results and comfortable healing. Here's what you can expect throughout your treatment journey.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {procedureSteps.map((step, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
+                <div key={index} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <i className={`fa-solid ${step.icon} text-white text-xl`}></i>
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
+                      <i className={`fa-solid ${step.icon} text-white text-lg sm:text-xl`}></i>
                     </div>
-                    <span className="text-4xl font-black text-gray-200">{step.step}</span>
+                    <span className="text-3xl sm:text-4xl font-black text-gray-200">{step.step}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">{step.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -334,26 +342,26 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+      <section className="py-16 sm:py-18 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               Benefits of Full Mouth <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Dental Implants</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Full mouth dental implants offer numerous advantages over traditional dentures and other tooth replacement options, providing you with the most comprehensive and long-lasting solution.
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mb-6">
-                    <i className={`fa-solid ${benefit.icon} text-white text-2xl`}></i>
+                <div key={index} className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-gray-100">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mb-6">
+                    <i className={`fa-solid ${benefit.icon} text-white text-lg sm:text-2xl`}></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">{benefit.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -362,27 +370,27 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* Candidacy Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+      <section className="py-16 sm:py-18 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               Are You a <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Candidate?</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Most people with missing most or all teeth in one or both arches are good candidates for full mouth dental implants. Here's what we consider when evaluating your candidacy.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               {candidacyFactors.map((factor, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-6">{factor.title}</h3>
-                  <ul className="space-y-3">
+                <div key={index} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">{factor.title}</h3>
+                  <ul className="space-y-2 sm:space-y-3">
                     {factor.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-3">
+                      <li key={itemIndex} className="flex items-start gap-2 sm:gap-3">
                         <i className={`fa-solid ${index === 0 ? 'fa-check-circle text-green-500' : 'fa-info-circle text-blue-500'} mt-1`}></i>
-                        <span className="text-gray-700">{item}</span>
+                        <span className="text-gray-700 text-sm sm:text-base">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -394,27 +402,27 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* Aftercare Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+      <section className="py-16 sm:py-18 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               Aftercare & <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Recovery</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Proper aftercare is essential for successful healing and long-term implant success. Follow these guidelines for optimal results with full mouth dental implants.
             </p>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {aftercareTips.map((period, index) => (
-                <div key={index} className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-8 border border-cyan-200">
-                  <h3 className="text-xl font-bold text-gray-800 mb-6">{period.title}</h3>
-                  <ul className="space-y-3">
+                <div key={index} className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-cyan-200">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-6">{period.title}</h3>
+                  <ul className="space-y-2 sm:space-y-3">
                     {period.tips.map((tip, tipIndex) => (
-                      <li key={tipIndex} className="flex items-start gap-3">
+                      <li key={tipIndex} className="flex items-start gap-2 sm:gap-3">
                         <i className="fa-solid fa-circle text-cyan-500 text-xs mt-2 flex-shrink-0"></i>
-                        <span className="text-gray-700 text-sm">{tip}</span>
+                        <span className="text-gray-700 text-xs sm:text-sm">{tip}</span>
                       </li>
                     ))}
                   </ul>
@@ -426,23 +434,23 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+      <section className="py-16 sm:py-18 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-14 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               Frequently Asked <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Questions</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Get answers to common questions about full mouth dental implants and what to expect during your treatment.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
-                  <h4 className="text-lg font-bold text-gray-800 mb-4">{faq.question}</h4>
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <div key={index} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
+                  <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-4">{faq.question}</h4>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -451,26 +459,26 @@ const FullMouthImplantPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="find-specialist" className="py-20 bg-gradient-to-br from-cyan-50 to-teal-50">
-        <div className="container mx-auto px-4">
+      <section id="find-specialist" className="py-16 sm:py-18 md:py-20 bg-gradient-to-br from-cyan-50 to-teal-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
               Ready to Restore Your <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Smile?</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
               Find a qualified implant specialist in your area who can help you achieve the smile you deserve with full mouth dental implants.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a 
                 href="/for-patients"
-                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 shadow-lg"
+                className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 shadow-lg"
               >
                 Find a Specialist
               </a>
               <a 
                 href="/contact"
-                className="bg-white border-2 border-cyan-500 text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-50 transition-all duration-300"
+                className="bg-white border-2 border-cyan-500 text-cyan-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-cyan-50 transition-all duration-300"
               >
                 Get Consultation
               </a>
@@ -481,6 +489,7 @@ const FullMouthImplantPage = () => {
 
       <Footer />
     </div>
+    </Layout>
   );
 };
 

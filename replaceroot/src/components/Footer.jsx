@@ -55,7 +55,7 @@ const Footer = () => {
     <footer className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content - 3 Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {/* Column 1: About & Contact */}
           <div className="space-y-6">
             {/* Logo & About */}
@@ -117,7 +117,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Quick Links & For Users */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:col-span-2 lg:col-span-1">
             <div>
               <h4 className="font-semibold text-white text-sm uppercase tracking-wide mb-3">Quick Links</h4>
               <div className="grid grid-cols-1 gap-2">

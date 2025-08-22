@@ -27,20 +27,20 @@ const QuickOverview = () => {
             </p>
           </div>
           
-          <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-8 sm:mt-12 flex flex-row gap-2 sm:gap-4 justify-center items-center">
             <div className="flex items-center space-x-2 text-cyan-600">
-              <i className="fa-solid fa-shield-check text-xl"></i>
-              <span className="font-semibold">Verified Leads</span>
+              <i className="fa-solid fa-shield-check text-lg sm:text-xl"></i>
+              <span className="font-semibold text-sm sm:text-base">Verified Leads</span>
             </div>
-            <div className="hidden sm:block w-px h-6 bg-gray-300"></div>
+            <div className="w-px h-6 bg-gray-300"></div>
             <div className="flex items-center space-x-2 text-cyan-600">
-              <i className="fa-solid fa-globe text-xl"></i>
-              <span className="font-semibold">Global Reach</span>
+              <i className="fa-solid fa-globe text-lg sm:text-xl"></i>
+              <span className="font-semibold text-sm sm:text-base">Global Reach</span>
             </div>
-            <div className="hidden sm:block w-px h-6 bg-gray-300"></div>
+            <div className="w-px h-6 bg-gray-300"></div>
             <div className="flex items-center space-x-2 text-cyan-600">
-              <i className="fa-solid fa-star text-xl"></i>
-              <span className="font-semibold">Quality Care</span>
+              <i className="fa-solid fa-star text-lg sm:text-xl"></i>
+              <span className="font-semibold text-sm sm:text-base">Quality Care</span>
             </div>
           </div>
         </div>

@@ -1,0 +1,606 @@
+import { useState, useEffect } from 'react';
+import { dentistService } from '../../services/dentistService';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+
+// Custom styles for enhanced phone input
+const phoneInputStyles = `
+  .PhoneInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .PhoneInput:focus-within {
+    border-color: #06b6d4;
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.1);
+  }
+  
+  .PhoneInputCountry {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .PhoneInputCountry:hover {
+    background: #f3f4f6;
+  }
+  
+  .PhoneInputCountrySelect {
+    background: transparent;
+    border: none;
+    font-size: 12px;
+    color: #374151;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    outline: none;
+  }
+  
+  .PhoneInputCountryIcon {
+    width: 16px;
+    height: 12px;
+    margin-right: 6px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .PhoneInputCountrySelectArrow {
+    width: 6px;
+    height: 6px;
+    margin-left: 6px;
+    color: #6b7280;
+  }
+  
+  .PhoneInputInput {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: #374151;
+    outline: none;
+    min-width: 0;
+  }
+  
+  .PhoneInputInput::placeholder {
+    color: #9ca3af;
+  }
+  
+  .PhoneInputInput:focus {
+    outline: none;
+  }
+
+  @media (min-width: 640px) {
+    .PhoneInputCountry {
+      padding: 12px 16px;
+    }
+    
+    .PhoneInputCountrySelect {
+      font-size: 14px;
+    }
+    
+    .PhoneInputCountryIcon {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
+    }
+    
+    .PhoneInputCountrySelectArrow {
+      width: 8px;
+      height: 8px;
+      margin-left: 8px;
+    }
+    
+    .PhoneInputInput {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+  }
+`;
+
+const AddClinicModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    dentistName: '',
+    clinicName: '',
+    email: '',
+    phone: '',
+    city: '',
+    state: '',
+    address: '',
+    specialization: '',
+    experience: '',
+    consultationFee: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      if (document.body) {
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      if (document.body) {
+        document.body.style.overflow = 'unset';
+      }
+    };
+  }, [isOpen, onClose]);
+
+  // Reset form when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        dentistName: '',
+        clinicName: '',
+        email: '',
+        phone: '',
+        city: '',
+        state: '',
+        address: '',
+        specialization: '',
+        experience: '',
+        consultationFee: '',
+        message: ''
+      });
+      setSubmitStatus(null);
+    }
+  }, [isOpen]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      phone: value || ''
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Check if email already exists
+      const emailExists = await dentistService.checkEmailExists(formData.email);
+      if (emailExists) {
+        setSubmitStatus('error');
+        alert('An account with this email address already exists. Please use a different email or contact support.');
+        return;
+      }
+
+      // Submit clinic registration to database
+      await dentistService.submitClinicRegistration(formData);
+      
+      setFormData({
+        dentistName: '',
+        clinicName: '',
+        email: '',
+        phone: '',
+        city: '',
+        state: '',
+        address: '',
+        specialization: '',
+        experience: '',
+        consultationFee: '',
+        message: ''
+      });
+      
+      setSubmitStatus('success');
+      
+      setTimeout(() => {
+        onClose();
+      }, 3000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <>
+      <style>{phoneInputStyles}</style>
+      <div 
+        className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm"
+        onClick={handleBackdropClick}
+      >
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-sm sm:max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+          {/* Enhanced Header with Gradient */}
+          <div className="relative overflow-hidden rounded-t-xl sm:rounded-t-2xl">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-teal-500 to-cyan-600"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20"></div>
+            <div className="relative flex items-center justify-between p-4 sm:p-6 text-white">
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 bg-white/20 rounded-lg sm:rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <i className="fa-solid fa-hospital text-sm sm:text-xl"></i>
+                </div>
+                <div>
+                  <h2 className="text-lg sm:text-2xl font-bold">Add Your Clinic</h2>
+                  <p className="text-cyan-100 mt-0.5 sm:mt-1 text-xs sm:text-sm">Join our network of dental implant specialists</p>
+                </div>
+              </div>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
+              >
+                <i className="fa-solid fa-times text-sm sm:text-xl"></i>
+              </button>
+            </div>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+            {/* Success/Error Messages */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-50 border border-green-200 text-green-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl">
+                <div className="flex items-center">
+                  <i className="fa-solid fa-check-circle text-green-500 mr-2 text-sm sm:text-base"></i>
+                  <span className="text-sm sm:text-base">Thank you! Your clinic registration has been submitted successfully. We'll contact you soon.</span>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl">
+                <div className="flex items-center">
+                  <i className="fa-solid fa-exclamation-triangle text-red-500 mr-2 text-sm sm:text-base"></i>
+                  <span className="text-sm sm:text-base">Sorry, there was an error submitting your registration. Please check your information and try again.</span>
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div>
+                <label htmlFor="dentist-name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Dentist Name *
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="dentist-name"
+                    name="dentistName"
+                    value={formData.dentistName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Enter dentist name"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-user-md text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="clinic-name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Clinic Name *
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="clinic-name"
+                    name="clinicName"
+                    value={formData.clinicName}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Enter clinic name"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-hospital text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div>
+                <label htmlFor="clinic-email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Email Address *
+                </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="clinic-email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Enter email address"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-envelope text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="clinic-phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Phone Number *
+                </label>
+                <PhoneInput
+                  international
+                  defaultCountry="IN"
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  placeholder="Enter phone number"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div>
+                <label htmlFor="clinic-city" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  City *
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="clinic-city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                    placeholder="Enter city"
+                  />
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-city text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="clinic-state" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  State *
+                </label>
+                <div className="relative">
+                  <select
+                    id="clinic-state"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none text-sm sm:text-base"
+                  >
+                    <option value="">Select state</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-chevron-down text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="clinic-address" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                Clinic Address *
+              </label>
+              <div className="relative">
+                <textarea
+                  id="clinic-address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                  rows="2"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
+                  placeholder="Enter complete clinic address"
+                />
+                <div className="pointer-events-none absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-400">
+                  <i className="fa-solid fa-map-marker-alt text-sm sm:text-base"></i>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div>
+                <label htmlFor="clinic-specialization" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Specialization *
+                </label>
+                <div className="relative">
+                  <select
+                    id="clinic-specialization"
+                    name="specialization"
+                    value={formData.specialization}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none text-sm sm:text-base"
+                  >
+                    <option value="">Select specialization</option>
+                    <option value="Dental Implants">Dental Implants</option>
+                    <option value="Oral Surgery">Oral Surgery</option>
+                    <option value="Prosthodontics">Prosthodontics</option>
+                    <option value="Periodontics">Periodontics</option>
+                    <option value="Endodontics">Endodontics</option>
+                    <option value="Orthodontics">Orthodontics</option>
+                    <option value="General Dentistry">General Dentistry</option>
+                    <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                    <option value="Multiple Specializations">Multiple Specializations</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-chevron-down text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="clinic-experience" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                  Years of Experience *
+                </label>
+                <div className="relative">
+                  <select
+                    id="clinic-experience"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 appearance-none text-sm sm:text-base"
+                  >
+                    <option value="">Select experience</option>
+                    <option value="0-2 years">0-2 years</option>
+                    <option value="3-5 years">3-5 years</option>
+                    <option value="6-10 years">6-10 years</option>
+                    <option value="11-15 years">11-15 years</option>
+                    <option value="16-20 years">16-20 years</option>
+                    <option value="20+ years">20+ years</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                    <i className="fa-solid fa-chevron-down text-sm sm:text-base"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="consultation-fee" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                Consultation Fee (₹)
+              </label>
+              <div className="relative">
+                <input
+                  type="number"
+                  id="consultation-fee"
+                  name="consultationFee"
+                  value={formData.consultationFee}
+                  onChange={handleChange}
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                  placeholder="Enter consultation fee"
+                />
+                <div className="pointer-events-none absolute inset-y-0 right-2 sm:right-3 flex items-center text-gray-400">
+                  <i className="fa-solid fa-rupee-sign text-sm sm:text-base"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="clinic-message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                Additional Information
+              </label>
+              <div className="relative">
+                <textarea
+                  id="clinic-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="3"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-8 sm:pr-10 border border-gray-300 rounded-lg sm:rounded-xl bg-white focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
+                  placeholder="Tell us about your clinic, services, or any specific requirements..."
+                />
+                <div className="pointer-events-none absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-400">
+                  <i className="fa-solid fa-comment text-sm sm:text-base"></i>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced Submit Button */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-300 text-gray-700 rounded-lg sm:rounded-xl hover:bg-gray-50 transition-colors font-medium text-sm sm:text-base"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-lg sm:rounded-xl hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl text-sm sm:text-base"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-b-2 border-white mr-2"></div>
+                    Submitting...
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center">
+                    <i className="fa-solid fa-hospital mr-2 text-sm sm:text-base"></i>
+                    Add Clinic
+                  </span>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AddClinicModal;
