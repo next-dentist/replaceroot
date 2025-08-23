@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getClinic, getDisplayName } from '../content/clinics';
 import Layout from '../components/Layout';
+import ContactFormModal from '../components/clinic/ContactFormModal';
+import { Header, Footer } from '../components';
 
 const SataraPage = () => {
   const clinicName = 'satara';
@@ -17,6 +19,7 @@ const SataraPage = () => {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const facilities = [
     { icon: 'fa-car', name: 'Parking', available: true },
     { icon: 'fa-wheelchair', name: 'Handicapped', available: true },
@@ -50,59 +53,7 @@ const SataraPage = () => {
       }}
     >
     <div className="font-inter bg-gray-50 text-gray-700">
-      {/* Header (exact ClinicHeader) */}
-      <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <img src="/images/rr-logo.webp" alt="Replace Roots Logo" className="h-10 w-auto transition-transform group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">ReplaceRoots Dental</span>
-          </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <a href="#about" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#services" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#pricing" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-          </div>
-          <a href="#appointment" className="hidden md:block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            <i className="fa-solid fa-calendar-check mr-2"></i>
-            Book Appointment
-          </a>
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-gray-600 focus:outline-none">
-            <i className={`fa-solid ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
-          </button>
-          {isMobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden">
-              <div className="px-6 py-4 space-y-4">
-                <Link to="/" className="block text-gray-600 hover:text-teal-500 transition">Home</Link>
-                <a href="#about" className="block text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="#services" className="block text-gray-600 hover:text-teal-500 transition">Services</a>
-                <a href="#pricing" className="block text-gray-600 hover:text-teal-500 transition">Pricing</a>
-                <a href="#contact" className="block text-gray-600 hover:text-teal-500 transition">Contact</a>
-                <a href="#appointment" className="block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center">Book Appointment</a>
-              </div>
-            </div>
-          )}
-        </nav>
-      </header>
+      <Header />
 
       <main>
         {/* Hero Section */}
@@ -129,13 +80,13 @@ const SataraPage = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="#appointment" 
+                  <button
+                    onClick={() => setIsContactModalOpen(true)}
                     className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
                     <i className="fa-regular fa-calendar-days mr-2 sm:mr-3"></i>
                     Book Appointment
-                  </a>
+                  </button>
                 </div>
                 
                 <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500">
@@ -564,10 +515,10 @@ const SataraPage = () => {
                     </div>
                     <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">Book Appointment</h4>
                     <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Get your free consultation today</p>
-                    <a href="#appointment" className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
+                    <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
                       <i className="fa-solid fa-arrow-right mr-1 sm:mr-2"></i>
                       Book Now
-                    </a>
+                    </button>
                   </div>
                 </div>
                 {clinic.contact.address && (
@@ -826,13 +777,13 @@ const SataraPage = () => {
                       </div>
 
                       <div className="text-center lg:text-left">
-                        <a 
-                          href="#appointment" 
+                        <button 
+                          onClick={() => setIsContactModalOpen(true)}
                           className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-3"
                         >
                           <i className="fa-regular fa-calendar-days text-xl"></i>
                           <span className="text-lg">Schedule Appointment</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -1030,15 +981,15 @@ const SataraPage = () => {
         
       </main>
 
-      {/* Footer (ClinicFooter) */}
-      <footer className="bg-gray-800 text-white">
-        <div className="container mx-auto px-6 py-8">
-          <div className="text-center">
-            <p>&copy; 2024 ReplaceRoots Dental Clinic. All Rights Reserved.</p>
-            <p className="text-sm text-gray-400 mt-2">Designed to bring back your fearless smile.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        clinicName={clinicName}
+        displayName={displayName}
+      />
     </div>
     </Layout>
   );

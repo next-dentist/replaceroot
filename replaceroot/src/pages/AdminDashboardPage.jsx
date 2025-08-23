@@ -383,42 +383,42 @@ const AdminDashboardPage = () => {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-                <p className="mt-2 text-gray-600">Manage contact form leads</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+                <p className="mt-2 text-sm sm:text-base text-gray-600">Manage contact form leads</p>
               </div>
               <button
                 onClick={handleLogout}
-                className="mt-4 sm:mt-0 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
+                className="mt-4 sm:mt-0 bg-red-500 hover:bg-red-600 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
               >
                 Logout
               </button>
             </div>
 
-                         {/* Stats */}
-             <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
-               <div className="bg-white p-6 rounded-lg shadow">
-                 <h3 className="text-lg font-semibold text-gray-900">Patient Leads</h3>
-                 <p className="text-3xl font-bold text-cyan-600">{patientLeads.length}</p>
+            {/* Stats */}
+                         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-6 mb-8">
+               <div className="bg-white p-3 sm:p-6 rounded-lg shadow">
+                 <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Patient Leads</h3>
+                 <p className="text-xl sm:text-3xl font-bold text-cyan-600">{patientLeads.length}</p>
                </div>
-               <div className="bg-white p-6 rounded-lg shadow">
-                 <h3 className="text-lg font-semibold text-gray-900">Dentist Leads</h3>
-                 <p className="text-3xl font-bold text-teal-600">{dentistLeads.length}</p>
+               <div className="bg-white p-3 sm:p-6 rounded-lg shadow">
+                 <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Dentist Leads</h3>
+                 <p className="text-xl sm:text-3xl font-bold text-teal-600">{dentistLeads.length}</p>
                </div>
-               <div className="bg-white p-6 rounded-lg shadow">
-                 <h3 className="text-lg font-semibold text-gray-900">General Inquiries</h3>
-                 <p className="text-3xl font-bold text-purple-600">{generalInquiries.length}</p>
+               <div className="bg-white p-3 sm:p-6 rounded-lg shadow">
+                 <h3 className="text-sm sm:text-lg font-semibold text-gray-900">General Inquiries</h3>
+                 <p className="text-xl sm:text-3xl font-bold text-purple-600">{generalInquiries.length}</p>
                </div>
-               <div className="bg-white p-6 rounded-lg shadow">
-                 <h3 className="text-lg font-semibold text-gray-900">New Leads</h3>
-                 <p className="text-3xl font-bold text-blue-600">
+               <div className="bg-white p-3 sm:p-6 rounded-lg shadow">
+                 <h3 className="text-sm sm:text-lg font-semibold text-gray-900">New Leads</h3>
+                 <p className="text-xl sm:text-3xl font-bold text-blue-600">
                    {patientLeads.filter(lead => lead.status === 'new').length + 
                     dentistLeads.filter(lead => lead.status === 'pending').length +
                     generalInquiries.filter(inquiry => inquiry.status === 'new').length}
                  </p>
                </div>
-               <div className="bg-white p-6 rounded-lg shadow">
-                 <h3 className="text-lg font-semibold text-gray-900">Converted</h3>
-                 <p className="text-3xl font-bold text-green-600">
+               <div className="bg-white p-3 sm:p-6 rounded-lg shadow">
+                 <h3 className="text-sm sm:text-lg font-semibold text-gray-900">Converted</h3>
+                 <p className="text-xl sm:text-3xl font-bold text-green-600">
                    {patientLeads.filter(lead => lead.status === 'converted').length + 
                     dentistLeads.filter(lead => lead.status === 'approved').length +
                     generalInquiries.filter(inquiry => inquiry.status === 'converted').length}
@@ -429,13 +429,13 @@ const AdminDashboardPage = () => {
             {/* Tabs */}
             <div className="bg-white rounded-lg shadow mb-6">
               <div className="border-b border-gray-200">
-                <nav className="-mb-px flex space-x-8 px-6" aria-label="Tabs">
+                <nav className="-mb-px flex flex-wrap sm:flex-nowrap space-x-2 sm:space-x-8 px-4 sm:px-6 overflow-x-auto" aria-label="Tabs">
                                      <button
                      onClick={() => {
                        setActiveTab('patients');
                        setFilterStatus('all');
                      }}
-                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                     className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                        activeTab === 'patients'
                          ? 'border-cyan-500 text-cyan-600'
                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -448,7 +448,7 @@ const AdminDashboardPage = () => {
                        setActiveTab('dentists');
                        setFilterStatus('all');
                      }}
-                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                     className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                        activeTab === 'dentists'
                          ? 'border-cyan-500 text-cyan-600'
                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -461,7 +461,7 @@ const AdminDashboardPage = () => {
                        setActiveTab('inquiries');
                        setFilterStatus('all');
                      }}
-                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                     className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                        activeTab === 'inquiries'
                          ? 'border-cyan-500 text-cyan-600'
                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -474,22 +474,22 @@ const AdminDashboardPage = () => {
             </div>
 
             {/* Filters */}
-            <div className="bg-white p-6 rounded-lg shadow mb-6">
-              <div className="flex flex-col sm:flex-row gap-4">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <div className="flex-1">
                   <input
                     type="text"
                     placeholder="Search leads..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm sm:text-base"
                   />
                 </div>
                                  <div>
                    <select
                      value={filterStatus}
                      onChange={(e) => setFilterStatus(e.target.value)}
-                     className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                     className="w-full sm:w-auto px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-sm sm:text-base"
                    >
                      <option value="all">All Status</option>
                      {activeTab === 'patients' ? (
@@ -534,25 +534,25 @@ const AdminDashboardPage = () => {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Patient Name
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden sm:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Contact
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Treatment Type
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden lg:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Message
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Date
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
@@ -560,57 +560,64 @@ const AdminDashboardPage = () => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       {filteredPatientLeads.map((lead) => (
                         <tr key={lead.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm font-medium text-gray-900">
                               {lead.name}
                             </div>
+                            <div className="sm:hidden text-xs text-gray-500 mt-1">
+                              {lead.email}
+                            </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="hidden sm:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">{lead.email}</div>
                             {lead.phone && (
                               <div className="text-sm text-gray-500">{lead.phone}</div>
                             )}
                           </td>
-                                                     <td className="px-6 py-4 whitespace-nowrap">
+                                                     <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                              <div className="text-sm text-gray-900">
                                {formatTreatmentType(lead.treatment_type)}
                              </div>
                            </td>
-                          <td className="px-6 py-4">
+                          <td className="hidden lg:table-cell px-3 sm:px-6 py-4">
                             <div className="text-sm text-gray-900 max-w-xs truncate">
                               {lead.message}
                             </div>
                           </td>
-                                                     <td className="px-6 py-4 whitespace-nowrap">
+                                                     <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                              {getStatusBadge(lead.status || 'new', 'patient')}
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                           <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                              {new Date(lead.created_at).toLocaleDateString()}
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                             <div className="flex space-x-2">
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                             <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
                                <select
                                  value={lead.status || 'new'}
                                  onChange={(e) => updatePatientLeadStatus(lead.id, e.target.value)}
-                                 className="text-xs border border-gray-300 rounded px-2 py-1"
+                                 className="text-xs border border-gray-300 rounded px-1 sm:px-2 py-1 w-full sm:w-auto"
                                >
                                  <option value="new">New</option>
                                  <option value="contacted">Contacted</option>
                                  <option value="converted">Converted</option>
                                  <option value="lost">Lost</option>
                                </select>
-                              <button
-                                onClick={() => openDetailsModal(lead, 'patient')}
-                                className="text-blue-600 hover:text-blue-900 text-xs mr-2"
-                              >
-                                View Details
-                              </button>
-                              <button
-                                onClick={() => deletePatientLead(lead.id)}
-                                className="text-red-600 hover:text-red-900 text-xs"
-                              >
-                                Delete
-                              </button>
+                              <div className="flex space-x-1 sm:space-x-2">
+                                <button
+                                  onClick={() => openDetailsModal(lead, 'patient')}
+                                  className="text-blue-600 hover:text-blue-900 text-xs p-1 rounded hover:bg-blue-50 flex-1 sm:flex-none"
+                                  title="View Details"
+                                >
+                                  <i className="fas fa-eye"></i>
+                                </button>
+                                <button
+                                  onClick={() => deletePatientLead(lead.id)}
+                                  className="text-red-600 hover:text-red-900 text-xs p-1 rounded hover:bg-red-50 flex-1 sm:flex-none"
+                                  title="Delete"
+                                >
+                                  <i className="fas fa-trash"></i>
+                                </button>
+                              </div>
                             </div>
                           </td>
                         </tr>
@@ -634,25 +641,25 @@ const AdminDashboardPage = () => {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Dentist/Clinic
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden sm:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Contact
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Location
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden lg:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Specialization
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Status
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Date
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Actions
                         </th>
                       </tr>
@@ -660,24 +667,27 @@ const AdminDashboardPage = () => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       {filteredDentistLeads.map((lead) => (
                         <tr key={lead.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm font-medium text-gray-900">
                               {lead.dentist_name}
                             </div>
                             <div className="text-sm text-gray-500">
                               {lead.clinic_name}
                             </div>
+                            <div className="sm:hidden text-xs text-gray-500 mt-1">
+                              {lead.email}
+                            </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="hidden sm:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">{lead.email}</div>
                             {lead.phone && (
                               <div className="text-sm text-gray-500">{lead.phone}</div>
                             )}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">{lead.city}, {lead.state}</div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="hidden lg:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
                               {lead.specialization}
                             </div>
@@ -685,18 +695,18 @@ const AdminDashboardPage = () => {
                               {lead.experience} experience
                             </div>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                             {getStatusBadge(lead.status || 'pending', 'dentist')}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {new Date(lead.created_at).toLocaleDateString()}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div className="flex space-x-2">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
                               <select
                                 value={lead.status || 'pending'}
                                 onChange={(e) => updateDentistLeadStatus(lead.id, e.target.value)}
-                                className="text-xs border border-gray-300 rounded px-2 py-1"
+                                className="text-xs border border-gray-300 rounded px-1 sm:px-2 py-1 w-full sm:w-auto"
                               >
                                 <option value="pending">Pending</option>
                                 <option value="approved">Approved</option>
@@ -704,18 +714,22 @@ const AdminDashboardPage = () => {
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                               </select>
-                              <button
-                                onClick={() => openDetailsModal(lead, 'dentist')}
-                                className="text-blue-600 hover:text-blue-900 text-xs mr-2"
-                              >
-                                View Details
-                              </button>
-                              <button
-                                onClick={() => deleteDentistLead(lead.id)}
-                                className="text-red-600 hover:text-red-900 text-xs"
-                              >
-                                Delete
-                              </button>
+                              <div className="flex space-x-1 sm:space-x-2">
+                                <button
+                                  onClick={() => openDetailsModal(lead, 'dentist')}
+                                  className="text-blue-600 hover:text-blue-900 text-xs p-1 rounded hover:bg-blue-50 flex-1 sm:flex-none"
+                                  title="View Details"
+                                >
+                                  <i className="fas fa-eye"></i>
+                                </button>
+                                <button
+                                  onClick={() => deleteDentistLead(lead.id)}
+                                  className="text-red-600 hover:text-red-900 text-xs p-1 rounded hover:bg-red-50 flex-1 sm:flex-none"
+                                  title="Delete"
+                                >
+                                  <i className="fas fa-trash"></i>
+                                </button>
+                              </div>
                             </div>
                           </td>
                         </tr>
@@ -739,22 +753,22 @@ const AdminDashboardPage = () => {
                    <table className="min-w-full divide-y divide-gray-200">
                      <thead className="bg-gray-50">
                        <tr>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Contact Info
                          </th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Subject
                          </th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="hidden lg:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Message
                          </th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Status
                          </th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Date
                          </th>
-                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                            Actions
                          </th>
                        </tr>
@@ -762,7 +776,7 @@ const AdminDashboardPage = () => {
                      <tbody className="bg-white divide-y divide-gray-200">
                        {filteredGeneralInquiries.map((inquiry) => (
                          <tr key={inquiry.id} className="hover:bg-gray-50">
-                           <td className="px-6 py-4 whitespace-nowrap">
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                              <div className="text-sm font-medium text-gray-900">
                                {inquiry.name}
                              </div>
@@ -771,47 +785,51 @@ const AdminDashboardPage = () => {
                                <div className="text-sm text-gray-500">{inquiry.phone}</div>
                              )}
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap">
+                           <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
                              <div className="text-sm text-gray-900">
                                {inquiry.subject}
                              </div>
                            </td>
-                           <td className="px-6 py-4">
+                           <td className="hidden lg:table-cell px-3 sm:px-6 py-4">
                              <div className="text-sm text-gray-900 max-w-xs truncate">
                                {inquiry.message}
                              </div>
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap">
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                              {getStatusBadge(inquiry.status || 'new', 'patient')}
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                           <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                              {new Date(inquiry.created_at).toLocaleDateString()}
                            </td>
-                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                             <div className="flex space-x-2">
-                               <select
-                                 value={inquiry.status || 'new'}
-                                 onChange={(e) => updateGeneralInquiryStatus(inquiry.id, e.target.value)}
-                                 className="text-xs border border-gray-300 rounded px-2 py-1"
-                               >
-                                 <option value="new">New</option>
-                                 <option value="contacted">Contacted</option>
-                                 <option value="converted">Converted</option>
-                                 <option value="lost">Lost</option>
-                               </select>
-                               <button
-                                 onClick={() => openDetailsModal(inquiry, 'inquiry')}
-                                 className="text-blue-600 hover:text-blue-900 text-xs mr-2"
-                               >
-                                 View Details
-                               </button>
-                               <button
-                                 onClick={() => deleteGeneralInquiry(inquiry.id)}
-                                 className="text-red-600 hover:text-red-900 text-xs"
-                               >
-                                 Delete
-                               </button>
-                             </div>
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                            <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
+                                 <select
+                                   value={inquiry.status || 'new'}
+                                   onChange={(e) => updateGeneralInquiryStatus(inquiry.id, e.target.value)}
+                                   className="text-xs border border-gray-300 rounded px-1 sm:px-2 py-1 w-full sm:w-auto"
+                                 >
+                                   <option value="new">New</option>
+                                   <option value="contacted">Contacted</option>
+                                   <option value="converted">Converted</option>
+                                   <option value="lost">Lost</option>
+                                 </select>
+                                <div className="flex space-x-1 sm:space-x-2">
+                                  <button
+                                    onClick={() => openDetailsModal(inquiry, 'inquiry')}
+                                    className="text-blue-600 hover:text-blue-900 text-xs p-1 rounded hover:bg-blue-50 flex-1 sm:flex-none"
+                                    title="View Details"
+                                  >
+                                    <i className="fas fa-eye"></i>
+                                  </button>
+                                   <button
+                                     onClick={() => deleteGeneralInquiry(inquiry.id)}
+                                     className="text-red-600 hover:text-red-900 text-xs p-1 rounded hover:bg-red-50 flex-1 sm:flex-none"
+                                     title="Delete"
+                                   >
+                                     <i className="fas fa-trash"></i>
+                                   </button>
+                                 </div>
+                               </div>
                            </td>
                          </tr>
                        ))}
@@ -832,14 +850,14 @@ const AdminDashboardPage = () => {
          {/* Details Modal */}
          {showDetailsModal && (
            <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-             <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
-               <div className="mt-3">
-                 <div className="flex justify-between items-center mb-4">
-                   <h3 className="text-lg font-medium text-gray-900">
-                     {modalType === 'dentist' && 'Dentist Registration Details'}
-                     {modalType === 'patient' && 'Patient Contact Details'}
-                     {modalType === 'inquiry' && 'General Inquiry Details'}
-                   </h3>
+             <div className="relative top-10 sm:top-20 mx-auto p-3 sm:p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+                                <div className="mt-3">
+                   <div className="flex justify-between items-center mb-4">
+                     <h3 className="text-base sm:text-lg font-medium text-gray-900">
+                       {modalType === 'dentist' && 'Dentist Registration Details'}
+                       {modalType === 'patient' && 'Patient Contact Details'}
+                       {modalType === 'inquiry' && 'General Inquiry Details'}
+                     </h3>
                    <button
                      onClick={closeDetailsModal}
                      className="text-gray-400 hover:text-gray-600"
@@ -850,7 +868,7 @@ const AdminDashboardPage = () => {
                    </button>
                  </div>
                  
-                 <div className="space-y-4 max-h-96 overflow-y-auto">
+                 <div className="space-y-3 sm:space-y-4 max-h-64 sm:max-h-96 overflow-y-auto">
                    {/* Dentist Details */}
                    {modalType === 'dentist' && selectedDentist && (
                      <>
