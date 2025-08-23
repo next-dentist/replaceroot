@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Footer } from '../components';
+import AddClinicModal from '../components/clinic/AddClinicModal';
 import Layout from '../components/Layout';
 
 const AboutPage = () => {
+  const [isAddClinicModalOpen, setIsAddClinicModalOpen] = useState(false);
   const teamMembers = [
     {
       name: "Dr. Sarah Johnson",
@@ -271,22 +273,23 @@ const AboutPage = () => {
           <p className="text-lg sm:text-xl text-cyan-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Whether you're a dental professional looking to expand your practice or a patient seeking quality care, we're here to help.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link 
-              to="/for-dentists" 
+          <div className="flex justify-center">
+            <button 
+              onClick={() => setIsAddClinicModalOpen(true)}
               className="bg-white text-cyan-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg transform hover:-translate-y-1"
             >
               Join as Dentist
-            </Link>
-            <Link 
-              to="/for-patients" 
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-cyan-600 transition-all duration-300"
-            >
-              Find a Dentist
-            </Link>
+            </button>
           </div>
                   </div>
         </section>
+        
+        {/* Add Clinic Modal */}
+        <AddClinicModal 
+          isOpen={isAddClinicModalOpen}
+          onClose={() => setIsAddClinicModalOpen(false)}
+        />
+        
         <Footer />
       </div>
     </Layout>

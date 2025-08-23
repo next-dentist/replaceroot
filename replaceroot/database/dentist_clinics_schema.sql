@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS dentist_clinics (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     dentist_name VARCHAR(255) NOT NULL,
     clinic_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
     phone VARCHAR(50) NOT NULL,
     city VARCHAR(100) NOT NULL,
     state VARCHAR(100) NOT NULL,
@@ -55,13 +55,17 @@ CREATE POLICY "Allow insert for clinic registrations" ON dentist_clinics
 CREATE POLICY "Allow view approved clinics" ON dentist_clinics
     FOR SELECT USING (status = 'approved');
 
--- Allow authenticated users to view their own clinic data
+-- Allow authenticated users to view their own clinic data (multiple clinics per email)
 CREATE POLICY "Allow users to view own clinic data" ON dentist_clinics
     FOR SELECT USING (auth.uid()::text = email);
 
--- Allow authenticated users to update their own clinic data
+-- Allow authenticated users to update their own clinic data (multiple clinics per email)
 CREATE POLICY "Allow users to update own clinic data" ON dentist_clinics
     FOR UPDATE USING (auth.uid()::text = email);
+
+-- Allow authenticated users to delete their own clinic data (multiple clinics per email)
+CREATE POLICY "Allow users to delete own clinic data" ON dentist_clinics
+    FOR DELETE USING (auth.uid()::text = email);
 
 -- Allow service role to perform all operations (for admin panel)
 CREATE POLICY "Allow service role full access" ON dentist_clinics

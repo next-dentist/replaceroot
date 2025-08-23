@@ -190,14 +190,6 @@ const AddClinicModal = ({ isOpen, onClose }) => {
     setSubmitStatus(null);
 
     try {
-      // Check if email already exists
-      const emailExists = await dentistService.checkEmailExists(formData.email);
-      if (emailExists) {
-        setSubmitStatus('error');
-        alert('An account with this email address already exists. Please use a different email or contact support.');
-        return;
-      }
-
       // Submit clinic registration to database
       await dentistService.submitClinicRegistration(formData);
       

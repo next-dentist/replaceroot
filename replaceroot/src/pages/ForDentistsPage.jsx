@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Header, Footer, AddClinicModal } from '../components';
+import { Header, Footer } from '../components';
 import Layout from '../components/Layout';
 
 const ForDentistsPage = () => {
-  const [isAddClinicModalOpen, setIsAddClinicModalOpen] = useState(false);
 
   const leadPackages = [
     {
@@ -358,21 +357,14 @@ const ForDentistsPage = () => {
           
           <div className="text-center mt-8 sm:mt-12">
             <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Need a custom plan for your practice?</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <div className="flex justify-center">
               <Link 
-                to="#contact" 
+                to="/contact" 
                 className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-xl font-bold hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 text-sm sm:text-base"
               >
                 <i className="fa-solid fa-phone mr-2"></i>
                 Contact Sales Team
               </Link>
-              <button
-                onClick={() => setIsAddClinicModalOpen(true)}
-                className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-white border-2 border-cyan-500 text-cyan-600 rounded-xl font-bold hover:bg-cyan-50 transition-all duration-300 text-sm sm:text-base"
-              >
-                <i className="fa-solid fa-hospital mr-2"></i>
-                Add Your Clinic
-              </button>
             </div>
           </div>
         </div>
@@ -402,26 +394,11 @@ const ForDentistsPage = () => {
             ))}
           </div>
           
-          <div className="text-center mt-8 sm:mt-12">
-            <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Still have questions?</p>
-            <Link 
-              to="#contact" 
-              className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-xl font-bold hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 text-sm sm:text-base"
-            >
-              <i className="fa-solid fa-envelope mr-2"></i>
-              Contact Our Support Team
-            </Link>
-          </div>
+
         </div>
       </section>
 
       <Footer />
-      
-      {/* Add Clinic Modal */}
-      <AddClinicModal 
-        isOpen={isAddClinicModalOpen}
-        onClose={() => setIsAddClinicModalOpen(false)}
-      />
     </div>
   </Layout>
 );

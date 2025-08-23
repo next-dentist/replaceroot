@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AddClinicModal from './clinic/AddClinicModal';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isAddClinicModalOpen, setIsAddClinicModalOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -11,6 +13,14 @@ const Header = () => {
 
   const toggleServicesDropdown = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
+  };
+
+  const openAddClinicModal = () => {
+    setIsAddClinicModalOpen(true);
+  };
+
+  const closeAddClinicModal = () => {
+    setIsAddClinicModalOpen(false);
   };
 
   const services = [
@@ -146,9 +156,12 @@ const Header = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-              <a href="#" className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-              Add Your Clinic
-            </a>
+              <button 
+                onClick={openAddClinicModal}
+                className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                Add Your Clinic
+              </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -196,11 +209,24 @@ const Header = () => {
               <Link to="/case-studies" className="block text-gray-600 hover:text-cyan-600 transition-all duration-300 py-2">Case Study</Link>
               <Link to="/faqs" className="block text-gray-600 hover:text-cyan-600 transition-all duration-300 py-2">FAQs</Link>
               <Link to="/contact" className="block text-gray-600 hover:text-cyan-600 transition-all duration-300 py-2">Contact Us</Link>
-              <a href="#" className="block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-center mt-2">Add Your Clinic</a>
+              <button 
+                onClick={openAddClinicModal}
+                className="block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-center mt-2 w-full"
+              >
+                Add Your Clinic
+              </button>
           </nav>
         </div>
       )}
     </header>
+    
+    {/* Add Clinic Modal */}
+    <AddClinicModal 
+      isOpen={isAddClinicModalOpen} 
+      onClose={closeAddClinicModal} 
+    />
+    
+
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { web3formsService } from './web3formsService'
 
 // Dentist service using Supabase
 export const dentistService = {
@@ -40,6 +41,28 @@ export const dentistService = {
       }
 
       console.log('Clinic registration submitted successfully:', data)
+      
+      // Send email notification
+      try {
+        await web3formsService.sendDentistRegistrationNotification({
+          dentist_name: formData.dentistName,
+          clinic_name: formData.clinicName,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          state: formData.state,
+          address: formData.address,
+          specialization: formData.specialization,
+          experience: formData.experience,
+          consultation_fee: formData.consultationFee,
+          additional_info: formData.message
+        });
+        console.log('Email notification sent for dentist registration');
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+        // Don't throw error here - form submission was successful, email is secondary
+      }
+      
       return { success: true, data }
     } catch (error) {
       console.error('Clinic registration submission failed:', error)

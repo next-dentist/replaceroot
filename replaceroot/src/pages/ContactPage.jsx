@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header, Footer } from '../components';
 import Layout from '../components/Layout';
+import { contactService } from '../services/contactService';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -25,10 +26,11 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus(null);
+
+    try {
+      await contactService.submitGeneralInquiry(formData);
+      
       setSubmitStatus('success');
       setFormData({
         name: '',
@@ -40,7 +42,12 @@ const ContactPage = () => {
       
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -225,12 +232,19 @@ const ContactPage = () => {
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Send us a Message</h3>
                 
-                {submitStatus === 'success' && (
-                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm sm:text-base">
-                    <i className="fa-solid fa-check-circle mr-2"></i>
-                    Thank you! Your message has been sent successfully. We'll get back to you soon.
-                  </div>
-                )}
+                                 {submitStatus === 'success' && (
+                   <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm sm:text-base">
+                     <i className="fa-solid fa-check-circle mr-2"></i>
+                     Thank you! Your message has been sent successfully. We'll get back to you soon.
+                   </div>
+                 )}
+                 
+                 {submitStatus === 'error' && (
+                   <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm sm:text-base">
+                     <i className="fa-solid fa-exclamation-circle mr-2"></i>
+                     Sorry, there was an error sending your message. Please try again or contact us directly.
+                   </div>
+                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">

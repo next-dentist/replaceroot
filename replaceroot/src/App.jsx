@@ -112,6 +112,9 @@ import TirupatiPage from './pages/TirupatiPage.jsx';
 import SriGanganagarPage from './pages/Sri GanganagarPage.jsx';
 import MehsanaPage from './pages/MehsanaPage.jsx';
 import IchalkaranjiPage from './pages/IchalkaranjiPage.jsx';
+import AdminLoginPage from './pages/AdminLoginPage.jsx';
+import AdminDashboardPage from './pages/AdminDashboardPage.jsx';
+import { ProtectedRoute } from './components';
 
 
 function App() {
@@ -240,6 +243,17 @@ function App() {
           <Route path="/dental-implants-mehsana" element={<MehsanaPage />} />
           <Route path="/dental-implants-ichalkaranji" element={<IchalkaranjiPage />} />
           <Route path="/dental-implants-berhampore" element={<BerhamporePage />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route 
+            path="/admin/dashboard" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboardPage />
+              </ProtectedRoute>
+            } 
+          />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
