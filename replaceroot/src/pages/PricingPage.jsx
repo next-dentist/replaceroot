@@ -1,83 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Header, Footer } from '../components';
+import { Header, Footer, PricingSection } from '../components';
 import Layout from '../components/Layout';
 
 const PricingPage = () => {
-  const [billingCycle, setBillingCycle] = useState('monthly');
 
-  const plans = [
-    {
-      name: "Basic",
-      monthlyPrice: "₹9,999",
-      yearlyPrice: "₹99,999",
-      period: billingCycle === 'monthly' ? "per month" : "per year",
-      description: "Perfect for new practices looking to establish their implant business",
-      features: [
-        "Up to 20 qualified leads per month",
-        "Basic lead management dashboard",
-        "Email support",
-        "Patient verification included",
-        "Basic analytics",
-        "Mobile app access",
-        "Standard lead criteria",
-        "Monthly performance report"
-      ],
-      popular: false,
-      cta: "Start Free Trial",
-      savings: billingCycle === 'yearly' ? "Save 17%" : null
-    },
-    {
-      name: "Standard",
-      monthlyPrice: "₹19,999",
-      yearlyPrice: "₹199,999",
-      period: billingCycle === 'monthly' ? "per month" : "per year",
-      description: "Ideal for established practices wanting to scale their implant services",
-      features: [
-        "Up to 50 qualified leads per month",
-        "Advanced lead management system",
-        "Priority phone & email support",
-        "Patient verification & screening",
-        "Detailed analytics & reporting",
-        "Custom lead criteria",
-        "Dedicated account manager",
-        "Marketing materials & templates",
-        "Advanced filtering options",
-        "Weekly performance reports",
-        "Lead quality scoring",
-        "Integration with practice management"
-      ],
-      popular: true,
-      cta: "Get Started",
-      savings: billingCycle === 'yearly' ? "Save 17%" : null
-    },
-    {
-      name: "Premium",
-      monthlyPrice: "₹39,999",
-      yearlyPrice: "₹399,999",
-      period: billingCycle === 'monthly' ? "per month" : "per year",
-      description: "For large practices and dental chains with high-volume implant needs",
-      features: [
-        "Unlimited qualified leads",
-        "Full-featured lead management",
-        "24/7 priority support",
-        "Complete patient verification",
-        "Advanced analytics & insights",
-        "Custom integrations",
-        "Dedicated success manager",
-        "White-label solutions",
-        "API access",
-        "Custom training sessions",
-        "Multi-location support",
-        "Advanced reporting suite",
-        "Priority lead allocation",
-        "Custom development support"
-      ],
-      popular: false,
-      cta: "Contact Sales",
-      savings: billingCycle === 'yearly' ? "Save 17%" : null
-    }
-  ];
 
   const guaranteeFeatures = [
     {
@@ -104,64 +31,28 @@ const PricingPage = () => {
 
   const comparisonFeatures = [
     {
-      feature: "Qualified Leads per Month",
-      basic: "Up to 20",
-      standard: "Up to 50",
-      premium: "Unlimited"
+      feature: "Price (per year)",
+      starter: "₹9,999",
+      growth: "₹19,999",
+      unlimited: "₹39,999"
     },
     {
-      feature: "Lead Management Dashboard",
-      basic: "Basic",
-      standard: "Advanced",
-      premium: "Full-featured"
+      feature: "Patient Leads per Month",
+      starter: "10",
+      growth: "30",
+      unlimited: "Unlimited"
     },
     {
-      feature: "Support",
-      basic: "Email",
-      standard: "Phone & Email",
-      premium: "24/7 Priority"
+      feature: "Total Leads per Year",
+      starter: "120",
+      growth: "360",
+      unlimited: "Unlimited"
     },
     {
-      feature: "Patient Verification",
-      basic: "Included",
-      standard: "Enhanced",
-      premium: "Complete"
-    },
-    {
-      feature: "Analytics & Reporting",
-      basic: "Basic",
-      standard: "Detailed",
-      premium: "Advanced Suite"
-    },
-    {
-      feature: "Custom Lead Criteria",
-      basic: "Standard",
-      standard: "Custom",
-      premium: "Advanced"
-    },
-    {
-      feature: "Account Management",
-      basic: "Self-service",
-      standard: "Dedicated Manager",
-      premium: "Success Manager"
-    },
-    {
-      feature: "API Access",
-      basic: "No",
-      standard: "No",
-      premium: "Yes"
-    },
-    {
-      feature: "White-label Solutions",
-      basic: "No",
-      standard: "No",
-      premium: "Yes"
-    },
-    {
-      feature: "Custom Training",
-      basic: "No",
-      standard: "No",
-      premium: "Yes"
+      feature: "Key Features",
+      starter: "Ideal for practices launching implant services or with limited capacity; steady lead flow to build initial momentum.",
+      growth: "For expanding clinics; higher lead volume to increase consultations and conversions.",
+      unlimited: "Best for high-volume or multi-location practices; maximize patient acquisition with no lead cap."
     }
   ];
 
@@ -176,7 +67,7 @@ const PricingPage = () => {
     },
     {
       question: "What happens if I exceed my lead limit?",
-      answer: "For Basic and Standard plans, you can purchase additional leads at a discounted rate. Premium plans include unlimited leads."
+      answer: "For Starter and Growth plans, you can purchase additional leads at a discounted rate. Unlimited plans include unlimited leads with no cap."
     },
     {
       question: "Is there a setup fee?",
@@ -246,95 +137,16 @@ const PricingPage = () => {
               Flexible pricing plans designed to grow with your practice. All plans include our comprehensive lead guarantee.
             </p>
 
-            {/* Billing Toggle */}
-            <div className="flex items-center justify-center mb-6 sm:mb-8">
-              <span className={`mr-3 sm:mr-4 text-base sm:text-lg font-medium ${billingCycle === 'monthly' ? 'text-gray-800' : 'text-gray-500'}`}>Monthly</span>
-              <button
-                onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
-                className={`relative inline-flex h-7 sm:h-8 w-14 sm:w-16 items-center rounded-full transition-colors duration-300 ${
-                  billingCycle === 'yearly' ? 'bg-gradient-to-r from-cyan-500 to-teal-500' : 'bg-gray-300'
-                }`}
-              >
-                <span
-                  className={`inline-block h-5 sm:h-6 w-5 sm:w-6 transform rounded-full bg-white transition-transform duration-300 ${
-                    billingCycle === 'yearly' ? 'translate-x-8 sm:translate-x-9' : 'translate-x-1'
-                  }`}
-                />
-              </button>
-              <span className={`ml-3 sm:ml-4 text-base sm:text-lg font-medium ${billingCycle === 'yearly' ? 'text-gray-800' : 'text-gray-500'}`}>
-                Yearly
-                {billingCycle === 'yearly' && <span className="ml-1 sm:ml-2 text-xs sm:text-sm text-cyan-600 font-bold">Save 17%</span>}
-              </span>
-            </div>
+            
           </div>
         </div>
       </section>
 
-      {/* Pricing Plans */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
-              Choose Your <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Plan</span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Start with what you need and scale as you grow. All plans include our comprehensive lead guarantee.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-            {plans.map((plan, index) => (
-              <div key={index} className={`relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl border-2 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
-                plan.popular ? 'border-cyan-500' : 'border-gray-100'
-              }`}>
-                {plan.popular && (
-                  <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                {plan.savings && (
-                  <div className="absolute -top-3 sm:-top-4 right-3 sm:right-4">
-                    <span className="bg-green-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold">
-                      {plan.savings}
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-6 sm:mb-8">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
-                  <div className="mb-3 sm:mb-4">
-                    <span className="text-3xl sm:text-4xl font-bold text-gray-800">
-                      {billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice}
-                    </span>
-                    <span className="text-gray-600 text-sm sm:text-base">/{plan.period}</span>
-                  </div>
-                  <p className="text-gray-600 text-sm sm:text-base">{plan.description}</p>
-                </div>
-                
-                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <i className="fa-solid fa-check text-cyan-500 mr-2 sm:mr-3 text-sm sm:text-base"></i>
-                      <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 ${
-                  plan.popular
-                    ? 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white hover:from-cyan-600 hover:to-teal-600'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                }`}>
-                  {plan.cta}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* Pricing Plans */}
+      <PricingSection 
+        title="Choose Your Plan"
+        subtitle="Start with what you need and scale as you grow. All plans include our comprehensive lead guarantee."
+      />
 
       {/* Features Comparison */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -353,18 +165,18 @@ const PricingPage = () => {
               {/* Header */}
               <div className="grid grid-cols-4 bg-gray-50 p-4 sm:p-6 border-b border-gray-200">
                 <div className="font-bold text-gray-800 text-sm sm:text-base">Features</div>
-                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Basic</div>
-                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Standard</div>
-                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Premium</div>
+                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Starter</div>
+                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Growth</div>
+                <div className="text-center font-bold text-gray-800 text-sm sm:text-base">Unlimited</div>
               </div>
 
               {/* Features */}
               {comparisonFeatures.map((feature, index) => (
                 <div key={index} className={`grid grid-cols-4 p-4 sm:p-6 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                   <div className="font-semibold text-gray-800 text-sm sm:text-base">{feature.feature}</div>
-                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.basic}</div>
-                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.standard}</div>
-                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.premium}</div>
+                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.starter}</div>
+                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.growth}</div>
+                  <div className="text-center text-gray-600 text-sm sm:text-base">{feature.unlimited}</div>
                 </div>
               ))}
             </div>
@@ -462,10 +274,10 @@ const PricingPage = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
-  </Layout>
-);
+                     <Footer />
+      </div>
+    </Layout>
+  );
 };
 
 export default PricingPage;

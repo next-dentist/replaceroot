@@ -114,6 +114,7 @@ import MehsanaPage from './pages/MehsanaPage.jsx';
 import IchalkaranjiPage from './pages/IchalkaranjiPage.jsx';
 import AdminLoginPage from './pages/AdminLoginPage.jsx';
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx';
+import SitemapPage from './pages/SitemapPage.jsx';
 import { ProtectedRoute } from './components';
 
 
@@ -254,6 +255,8 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          
+          <Route path="/sitemap" element={<SitemapPage />} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>

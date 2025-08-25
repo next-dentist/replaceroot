@@ -154,5 +154,56 @@ Submitted on: ${new Date().toLocaleString()}
       console.error('Error sending dentist registration email notification:', error);
       throw error;
     }
+  },
+
+  // Send email notification for pricing form submissions
+  async sendPricingFormNotification(formData) {
+    try {
+      const emailData = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Pricing Plan Interest - ${formData.plan} Plan`,
+        from_name: 'ReplaceRoots Pricing Form',
+        message: `
+New pricing plan interest form submission:
+
+Contact Details:
+- Name: ${formData.name}
+- Email: ${formData.email}
+- Phone: ${formData.phone || 'Not provided'}
+
+Clinic Information:
+- Clinic Name: ${formData.clinicName || 'Not provided'}
+- Location: ${formData.location || 'Not provided'}
+
+Selected Plan: ${formData.plan}
+
+Additional Message:
+${formData.message || 'No additional message'}
+
+Submitted on: ${new Date().toLocaleString()}
+        `,
+        replyto: formData.email
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData)
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('Pricing form email notification sent successfully');
+        return { success: true };
+      } else {
+        throw new Error('Failed to send email notification');
+      }
+    } catch (error) {
+      console.error('Error sending pricing form email notification:', error);
+      throw error;
+    }
   }
 };

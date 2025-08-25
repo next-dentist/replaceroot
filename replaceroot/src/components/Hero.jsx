@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const Hero = () => {
   return (
-    <section className="relative pt-60 sm:pt-40 md:pt-48 pb-16 sm:pb-24 md:pb-32 min-h-screen bg-gradient-to-br from-gray-50 via-white to-cyan-50 overflow-hidden">
+    <section className="relative pt-40 sm:pt-32 md:pt-36 pb-16 sm:pb-24 md:pb-32 min-h-screen bg-gradient-to-br from-gray-50 via-white to-cyan-50 overflow-hidden">
       {/* Background Image with enhanced overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"

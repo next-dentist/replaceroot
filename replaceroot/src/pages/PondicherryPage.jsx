@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getClinic, getDisplayName } from '../content/clinics';
 import Layout from '../components/Layout';
+import ContactFormModal from '../components/clinic/ContactFormModal';
+import { Header, Footer } from '../components';
 
 const PondicherryPage = () => {
   const clinicName = 'pondicherry';
@@ -17,6 +19,7 @@ const PondicherryPage = () => {
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const facilities = [
     { icon: 'fa-car', name: 'Parking', available: true },
     { icon: 'fa-wheelchair', name: 'Handicapped', available: true },
@@ -49,60 +52,8 @@ const PondicherryPage = () => {
         telephone: clinic?.contact?.phone,
       }}
     >
-    <div className="font-inter bg-gray-50 text-gray-700">
-      {/* Header (exact ClinicHeader) */}
-      <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <img src="/images/rr-logo.webp" alt="Replace Roots Logo" className="h-10 w-auto transition-transform group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-teal-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">ReplaceRoots Dental</span>
-          </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            <a href="#about" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#services" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#pricing" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-cyan-600 font-medium transition-all duration-300 relative group">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-          </div>
-          <a href="#appointment" className="hidden md:block bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            <i className="fa-solid fa-calendar-check mr-2"></i>
-            Book Appointment
-          </a>
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-gray-600 focus:outline-none">
-            <i className={`fa-solid ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
-          </button>
-          {isMobileMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden">
-              <div className="px-6 py-4 space-y-4">
-                <Link to="/" className="block text-gray-600 hover:text-teal-500 transition">Home</Link>
-                <a href="#about" className="block text-gray-600 hover:text-teal-500 transition">About</a>
-                <a href="#services" className="block text-gray-600 hover:text-teal-500 transition">Services</a>
-                <a href="#pricing" className="block text-gray-600 hover:text-teal-500 transition">Pricing</a>
-                <a href="#contact" className="block text-gray-600 hover:text-teal-500 transition">Contact</a>
-                <a href="#appointment" className="block bg-teal-500 hover:bg-teal-600 text-white font-semibold px-5 py-2 rounded-lg transition text-center">Book Appointment</a>
-              </div>
-            </div>
-          )}
-        </nav>
-      </header>
+    <div className="font-inter bg-gray-50 text-gray-700 pt-8">
+      <Header />
 
       <main>
         {/* Hero Section */}
@@ -129,13 +80,13 @@ const PondicherryPage = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="#appointment" 
+                  <button
+                    onClick={() => setIsContactModalOpen(true)}
                     className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
                     <i className="fa-regular fa-calendar-days mr-2 sm:mr-3"></i>
                     Book Appointment
-                  </a>
+                  </button>
                 </div>
                 
                 <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500">
@@ -186,7 +137,7 @@ const PondicherryPage = () => {
           <div className="absolute top-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-gradient-to-br from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-tl from-teal-200/15 to-cyan-200/15 rounded-full blur-3xl"></div>
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <div className="text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 shadow-sm">
                 <i className="fa-solid fa-building mr-2 sm:mr-2.5"></i>
                 Our Facilities
@@ -231,8 +182,6 @@ const PondicherryPage = () => {
                   <div className="relative">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 inline-block pb-3 relative">
                       At our branch at {displayName}, <span className="text-teal-500">we pride ourselves on:</span>
-                      <span className="absolute bottom-0 right-0 w-24 h-1 bg-teal-400 rounded"></span>
-                      <span className="absolute -bottom-1 right-0 translate-x-14 w-2 h-2 border-2 border-teal-400 rounded-full bg-white"></span>
                     </h2>
                   </div>
                 </div>
@@ -458,7 +407,18 @@ const PondicherryPage = () => {
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-20"><div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6"><i className="fa-solid fa-star mr-2"></i>Why Choose Us</div><h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Why <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">{displayName}</span> for Dental Implants?</h2><div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">{clinic.whyFeatures.map((feature, index) => (<div key={index} className="group"><div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full"><div className="flex justify-center mb-6"><div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"><i className={`fa-solid ${feature.icon} text-2xl text-white`}></i></div></div><h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight group-hover:text-cyan-600 transition-colors">{feature.title}</h3><p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors">{feature.description}</p><div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><div className="w-8 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full mx-auto"></div></div></div></div>))}</div>
-              <div className="mt-16 text-center"><div className="inline-flex items-center space-x-4"><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-sm font-medium">8 Key Advantages</span></div><div className="w-px h-4 bg-gray-300"></div><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-award text-cyan-500"></i><span className="text-sm font-medium">Proven Excellence</span></div></div></div>
+              <div className="mt-16 text-center">
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+                  <div className="flex items-center space-x-2 text-gray-500">
+                    <i className="fa-solid fa-check-circle text-cyan-500"></i>
+                    <span className="text-sm font-medium">8 Key Advantages</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-gray-500">
+                    <i className="fa-solid fa-award text-cyan-500"></i>
+                    <span className="text-sm font-medium">Proven Excellence</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -564,10 +524,10 @@ const PondicherryPage = () => {
                     </div>
                     <h4 className="font-bold text-gray-800 mb-1 sm:mb-2 text-sm sm:text-base">Book Appointment</h4>
                     <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">Get your free consultation today</p>
-                    <a href="#appointment" className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
+                    <button onClick={() => setIsContactModalOpen(true)} className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm transition-all duration-300 shadow-md hover:shadow-lg">
                       <i className="fa-solid fa-arrow-right mr-1 sm:mr-2"></i>
                       Book Now
-                    </a>
+                    </button>
                   </div>
                 </div>
                 {clinic.contact.address && (
@@ -652,10 +612,15 @@ const PondicherryPage = () => {
                 ))}
               </div>
               <div className="mt-12 sm:mt-16 text-center">
-                <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
-                  <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">4 Key Benefits</span></div>
-                  <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
-                  <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-list-check text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">8 Treatment Options</span></div>
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+                  <div className="flex items-center space-x-2 text-gray-500">
+                    <i className="fa-solid fa-check-circle text-cyan-500"></i>
+                    <span className="text-xs sm:text-sm font-medium">4 Key Benefits</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-gray-500">
+                    <i className="fa-solid fa-list-check text-cyan-500"></i>
+                    <span className="text-xs sm:text-sm font-medium">8 Treatment Options</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -726,12 +691,11 @@ const PondicherryPage = () => {
                   </div>
                 </div>
                 
-                <div className="mt-12 flex justify-center items-center space-x-8">
-                  <div className="flex items_center space-x-2 text-gray-500">
+                <div className="mt-12 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
+                  <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-trending-up text-cyan-500"></i>
                     <span className="text-sm font-medium">Growing Demand</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-users text-cyan-500"></i>
                     <span className="text-sm font-medium">6 Key Factors</span>
@@ -744,116 +708,97 @@ const PondicherryPage = () => {
         
 
         {/* Innovation Section (exact InnovationSection markup) */}
-        <section className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
           
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                   <i className="fa-solid fa-lightbulb mr-2"></i>
                   Cutting-Edge Innovation
                 </div>
                 
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
                   Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Innovation</span> in Dental Implants
                 </h2>
                 
-                <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
+                <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+              <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+                <div className="space-y-6 sm:space-y-8">
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-6">
-                          <i className="fa-solid fa-shield-alt text-white text-2xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6 space-y-4 sm:space-y-0">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 sm:mr-6 flex-shrink-0">
+                          <i className="fa-solid fa-shield-alt text-white text-lg sm:text-2xl"></i>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Proven Excellence</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Proven Excellence</h3>
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.excellence}</p>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.excellence}</p>
                     </div>
                   </div>
 
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-6">
-                          <i className="fa-solid fa-microchip text-white text-2xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6 space-y-4 sm:space-y-0">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 sm:mr-6 flex-shrink-0">
+                          <i className="fa-solid fa-microchip text-white text-lg sm:text-2xl"></i>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Advanced Technology</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Advanced Technology</h3>
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.technology}</p>
+                      <p className="text-gray-600 leading-relaxed text-sm sm:text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.technology}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center lg:text-left">
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="mb-8">
-                        <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg mx-auto lg:mx-0 mb-6 group-hover:scale-110 transition-transform duration-300">
-                          <i className="fa-solid fa-calendar-check text-white text-3xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="mb-6 sm:mb-8">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg mx-auto lg:mx-0 mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <i className="fa-solid fa-calendar-check text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-800 mb-6 group-hover:text-cyan-600 transition-colors">Plan Your Treatment</h3>
-                        <p className="text-gray-600 leading-relaxed text-lg mb-8 group-hover:text-gray-700 transition-colors">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 group-hover:text-cyan-600 transition-colors">Plan Your Treatment</h3>
+                        <p className="text-gray-600 leading-relaxed text-sm sm:text-lg mb-6 sm:mb-8 group-hover:text-gray-700 transition-colors">
                           Plan your Dental Implants in India with Replace Roots. Schedule for your next dental appointment 
                           at your convenience – anytime, anywhere!
                         </p>
                       </div>
 
-                      <div className="space-y-6 mb-8">
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                      <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform flex-shrink-0">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Flexible Scheduling</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Flexible Scheduling</span>
                         </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform flex-shrink-0">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Expert Consultation</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Expert Consultation</span>
                         </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform flex-shrink-0">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Advanced Treatment Plans</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Advanced Treatment Plans</span>
                         </div>
                       </div>
 
                       <div className="text-center lg:text-left">
-                        <a 
-                          href="#appointment" 
-                          className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-3"
+                        <button 
+                          onClick={() => setIsContactModalOpen(true)}
+                          className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-2 sm:space-x-3 text-sm sm:text-lg"
                         >
-                          <i className="fa-regular fa-calendar-days text-xl"></i>
-                          <span className="text-lg">Schedule Appointment</span>
-                        </a>
+                          <i className="fa-regular fa-calendar-days text-lg sm:text-xl"></i>
+                          <span>Schedule Appointment</span>
+                        </button>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
-                  <div className="flex items-center space-x-2 text-gray-500">
-                    <i className="fa-solid fa-award text-cyan-500"></i>
-                    <span className="text-sm font-medium">Proven Excellence</span>
-                  </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
-                  <div className="flex items-center space-x-2 text-gray-500">
-                    <i className="fa-solid fa-microchip text-cyan-500"></i>
-                    <span className="text-sm font-medium">Advanced Technology</span>
-                  </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
-                  <div className="flex items-center space-x-2 text-gray-500">
-                    <i className="fa-solid fa-calendar-check text-cyan-500"></i>
-                    <span className="text-sm font-medium">Easy Scheduling</span>
                   </div>
                 </div>
               </div>
@@ -960,19 +905,19 @@ const PondicherryPage = () => {
                     alt="Dental implant parts diagram showing crown, abutment, and fixture" 
                     className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="p-6 bg-gradient-to-r from-cyan-50 to-teal-50">
-                    <div className="flex items-center justify-center space-x-4">
+                  <div className="p-4 sm:p-6 bg-gradient-to-r from-cyan-50 to-teal-50">
+                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-cyan-500 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Crown</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Crown</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Abutment</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Abutment</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-cyan-600 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Fixture</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Fixture</span>
                       </div>
                     </div>
                   </div>
@@ -988,15 +933,15 @@ const PondicherryPage = () => {
                 <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
                 {[ 'Helpful Doctors','Comfortable Office','Laser Dentistry','Family Helpful','Convenient Location','Little to no Wait Time','Free Consultation','Satisfaction Guarantee','Accessibility','Modern Equipment','High-Quality resources','Digital 3D X-Ray' ].map((specialty, index) => (
                   <div key={index} className="group">
-                    <div className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                          <i className="fa-solid fa-check text-white text-sm"></i>
+                    <div className="bg-white rounded-xl p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                      <div className="flex items-center space-x-2 sm:space-x-3">
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                          <i className="fa-solid fa-check text-white text-xs sm:text-sm"></i>
                         </div>
-                        <span className="text-sm font-medium text-gray-700 group-hover:text-cyan-600 transition-colors">{specialty}</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-cyan-600 transition-colors leading-tight">{specialty}</span>
                       </div>
                     </div>
                   </div>
@@ -1004,17 +949,15 @@ const PondicherryPage = () => {
               </div>
               
               <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-12">
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-star text-cyan-500"></i>
                     <span className="text-sm font-medium">12 Specialties</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-award text-cyan-500"></i>
                     <span className="text-sm font-medium">Premium Care</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-heart text-cyan-500"></i>
                     <span className="text-sm font-medium">Patient Focused</span>
@@ -1031,14 +974,15 @@ const PondicherryPage = () => {
       </main>
 
       {/* Footer (ClinicFooter) */}
-      <footer className="bg-gray-800 text-white">
-        <div className="container mx-auto px-6 py-8">
-          <div className="text-center">
-            <p>&copy; 2024 ReplaceRoots Dental Clinic. All Rights Reserved.</p>
-            <p className="text-sm text-gray-400 mt-2">Designed to bring back your fearless smile.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        clinicName={clinicName}
+        displayName={displayName}
+      />
     </div>
     </Layout>
   );

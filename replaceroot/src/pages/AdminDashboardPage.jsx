@@ -4,12 +4,14 @@ import { Header, Footer } from '../components';
 import Layout from '../components/Layout';
 import { supabase } from '../lib/supabase';
 import { adminAuthService } from '../services/adminAuthService';
+import { pricingService } from '../services/pricingService';
 
 const AdminDashboardPage = () => {
-  const [activeTab, setActiveTab] = useState('patients'); // 'patients', 'dentists', or 'inquiries'
+  const [activeTab, setActiveTab] = useState('patients'); // 'patients', 'dentists', 'inquiries', or 'pricing'
   const [patientLeads, setPatientLeads] = useState([]);
   const [dentistLeads, setDentistLeads] = useState([]);
   const [generalInquiries, setGeneralInquiries] = useState([]);
+  const [pricingSubmissions, setPricingSubmissions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +19,7 @@ const AdminDashboardPage = () => {
   const [selectedDentist, setSelectedDentist] = useState(null);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [selectedInquiry, setSelectedInquiry] = useState(null);
+  const [selectedPricingSubmission, setSelectedPricingSubmission] = useState(null);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [modalType, setModalType] = useState(''); // 'dentist', 'patient', 'inquiry'
   const navigate = useNavigate();
@@ -83,6 +86,20 @@ const AdminDashboardPage = () => {
       
       console.log('General inquiries fetched:', inquiryData?.length || 0);
       setGeneralInquiries(inquiryData || []);
+
+      // Fetch pricing submissions
+      const { data: pricingData, error: pricingError } = await supabase
+        .from('pricing_submissions')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (pricingError) {
+        console.error('Pricing submissions fetch error:', pricingError);
+        throw pricingError;
+      }
+      
+      console.log('Pricing submissions fetched:', pricingData?.length || 0);
+      setPricingSubmissions(pricingData || []);
       
       setError(''); // Clear any previous errors
     } catch (err) {
@@ -103,17 +120,26 @@ const AdminDashboardPage = () => {
       setSelectedDentist(item);
       setSelectedPatient(null);
       setSelectedInquiry(null);
+      setSelectedPricingSubmission(null);
       setModalType('dentist');
     } else if (type === 'patient') {
       setSelectedPatient(item);
       setSelectedDentist(null);
       setSelectedInquiry(null);
+      setSelectedPricingSubmission(null);
       setModalType('patient');
     } else if (type === 'inquiry') {
       setSelectedInquiry(item);
       setSelectedDentist(null);
       setSelectedPatient(null);
+      setSelectedPricingSubmission(null);
       setModalType('inquiry');
+    } else if (type === 'pricing') {
+      setSelectedPricingSubmission(item);
+      setSelectedDentist(null);
+      setSelectedPatient(null);
+      setSelectedInquiry(null);
+      setModalType('pricing');
     }
     setShowDetailsModal(true);
   };
@@ -122,6 +148,7 @@ const AdminDashboardPage = () => {
     setSelectedDentist(null);
     setSelectedPatient(null);
     setSelectedInquiry(null);
+    setSelectedPricingSubmission(null);
     setModalType('');
     setShowDetailsModal(false);
   };
@@ -260,6 +287,54 @@ const AdminDashboardPage = () => {
     }
   };
 
+  const updatePricingSubmissionStatus = async (id, status) => {
+    try {
+      console.log('Updating pricing submission:', { id, status });
+      
+      const { data, error } = await supabase
+        .from('pricing_submissions')
+        .update({ status })
+        .eq('id', id)
+        .select();
+
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      console.log('Update successful:', data);
+      
+      // Update local state
+      setPricingSubmissions(prev => prev.map(submission => 
+        submission.id === id ? { ...submission, status } : submission
+      ));
+      
+      setError(''); // Clear any previous errors
+    } catch (err) {
+      console.error('Error updating pricing submission:', err);
+      setError(`Failed to update pricing submission status: ${err.message}`);
+    }
+  };
+
+  const deletePricingSubmission = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this pricing submission?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('pricing_submissions')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      // Update local state
+      setPricingSubmissions(prev => prev.filter(submission => submission.id !== id));
+    } catch (err) {
+      setError('Failed to delete pricing submission');
+      console.error('Error deleting pricing submission:', err);
+    }
+  };
+
   const filteredPatientLeads = patientLeads.filter(lead => {
     const matchesSearch = 
       lead.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -296,6 +371,20 @@ const AdminDashboardPage = () => {
     return matchesSearch && matchesStatus;
   });
 
+  const filteredPricingSubmissions = pricingSubmissions.filter(submission => {
+    const matchesSearch = 
+      submission.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      submission.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      submission.clinic_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      submission.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      submission.selected_plan?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      submission.message?.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesStatus = filterStatus === 'all' || submission.status === filterStatus;
+    
+    return matchesSearch && matchesStatus;
+  });
+
   // Get current active tab's filtered leads for status filter options
   const getCurrentFilterOptions = () => {
     if (activeTab === 'patients') {
@@ -328,6 +417,22 @@ const AdminDashboardPage = () => {
       const statusConfig = {
         new: { color: 'bg-blue-100 text-blue-800', text: 'New' },
         contacted: { color: 'bg-yellow-100 text-yellow-800', text: 'Contacted' },
+        converted: { color: 'bg-green-100 text-green-800', text: 'Converted' },
+        lost: { color: 'bg-red-100 text-red-800', text: 'Lost' }
+      };
+
+      const config = statusConfig[status] || statusConfig.new;
+      return (
+        <span className={`px-2 py-1 text-xs font-medium rounded-full ${config.color}`}>
+          {config.text}
+        </span>
+      );
+    } else if (type === 'pricing') {
+      // Pricing submission status values
+      const statusConfig = {
+        new: { color: 'bg-blue-100 text-blue-800', text: 'New' },
+        contacted: { color: 'bg-yellow-100 text-yellow-800', text: 'Contacted' },
+        qualified: { color: 'bg-purple-100 text-purple-800', text: 'Qualified' },
         converted: { color: 'bg-green-100 text-green-800', text: 'Converted' },
         lost: { color: 'bg-red-100 text-red-800', text: 'Lost' }
       };
@@ -469,6 +574,19 @@ const AdminDashboardPage = () => {
                    >
                      General Inquiries ({generalInquiries.length})
                    </button>
+                   <button
+                     onClick={() => {
+                       setActiveTab('pricing');
+                       setFilterStatus('all');
+                     }}
+                     className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
+                       activeTab === 'pricing'
+                         ? 'border-cyan-500 text-cyan-600'
+                         : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                     }`}
+                   >
+                     Pricing Submissions ({pricingSubmissions.length})
+                   </button>
                 </nav>
               </div>
             </div>
@@ -506,6 +624,14 @@ const AdminDashboardPage = () => {
                          <option value="rejected">Rejected</option>
                          <option value="active">Active</option>
                          <option value="inactive">Inactive</option>
+                       </>
+                     ) : activeTab === 'pricing' ? (
+                       <>
+                         <option value="new">New</option>
+                         <option value="contacted">Contacted</option>
+                         <option value="qualified">Qualified</option>
+                         <option value="converted">Converted</option>
+                         <option value="lost">Lost</option>
                        </>
                      ) : (
                        <>
@@ -844,6 +970,109 @@ const AdminDashboardPage = () => {
                  )}
                </div>
              )}
+
+             {/* Pricing Submissions Table */}
+             {activeTab === 'pricing' && (
+               <div className="bg-white rounded-lg shadow overflow-hidden">
+                 <div className="overflow-x-auto">
+                   <table className="min-w-full divide-y divide-gray-200">
+                     <thead className="bg-gray-50">
+                       <tr>
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Contact Info
+                         </th>
+                         <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Clinic Details
+                         </th>
+                         <th className="hidden lg:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Selected Plan
+                         </th>
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Status
+                         </th>
+                         <th className="hidden md:table-cell px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Date
+                         </th>
+                         <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           Actions
+                         </th>
+                       </tr>
+                     </thead>
+                     <tbody className="bg-white divide-y divide-gray-200">
+                       {filteredPricingSubmissions.map((submission) => (
+                         <tr key={submission.id} className="hover:bg-gray-50">
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                             <div className="text-sm font-medium text-gray-900">
+                               {submission.name}
+                             </div>
+                             <div className="text-sm text-gray-900">{submission.email}</div>
+                             {submission.phone && (
+                               <div className="text-sm text-gray-500">{submission.phone}</div>
+                             )}
+                           </td>
+                           <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
+                             <div className="text-sm text-gray-900">
+                               {submission.clinic_name}
+                             </div>
+                             {submission.location && (
+                               <div className="text-sm text-gray-500">{submission.location}</div>
+                             )}
+                           </td>
+                           <td className="hidden lg:table-cell px-3 sm:px-6 py-4 whitespace-nowrap">
+                             <div className="text-sm text-gray-900 font-medium">
+                               {submission.selected_plan}
+                             </div>
+                           </td>
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                             {getStatusBadge(submission.status || 'new', 'pricing')}
+                           </td>
+                           <td className="hidden md:table-cell px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                             {new Date(submission.created_at).toLocaleDateString()}
+                           </td>
+                           <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                             <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
+                               <select
+                                 value={submission.status || 'new'}
+                                 onChange={(e) => updatePricingSubmissionStatus(submission.id, e.target.value)}
+                                 className="text-xs border border-gray-300 rounded px-1 sm:px-2 py-1 w-full sm:w-auto"
+                               >
+                                 <option value="new">New</option>
+                                 <option value="contacted">Contacted</option>
+                                 <option value="qualified">Qualified</option>
+                                 <option value="converted">Converted</option>
+                                 <option value="lost">Lost</option>
+                               </select>
+                               <div className="flex space-x-1 sm:space-x-2">
+                                 <button
+                                   onClick={() => openDetailsModal(submission, 'pricing')}
+                                   className="text-blue-600 hover:text-blue-900 text-xs p-1 rounded hover:bg-blue-50 flex-1 sm:flex-none"
+                                   title="View Details"
+                                 >
+                                   <i className="fas fa-eye"></i>
+                                 </button>
+                                 <button
+                                   onClick={() => deletePricingSubmission(submission.id)}
+                                   className="text-red-600 hover:text-red-900 text-xs p-1 rounded hover:bg-red-50 flex-1 sm:flex-none"
+                                   title="Delete"
+                                 >
+                                   <i className="fas fa-trash"></i>
+                                 </button>
+                               </div>
+                             </div>
+                           </td>
+                         </tr>
+                       ))}
+                     </tbody>
+                   </table>
+                 </div>
+                 
+                 {filteredPricingSubmissions.length === 0 && (
+                   <div className="text-center py-12">
+                     <p className="text-gray-500">No pricing submissions found</p>
+                   </div>
+                 )}
+               </div>
+             )}
            </div>
          </main>
 
@@ -857,6 +1086,7 @@ const AdminDashboardPage = () => {
                        {modalType === 'dentist' && 'Dentist Registration Details'}
                        {modalType === 'patient' && 'Patient Contact Details'}
                        {modalType === 'inquiry' && 'General Inquiry Details'}
+                       {modalType === 'pricing' && 'Pricing Submission Details'}
                      </h3>
                    <button
                      onClick={closeDetailsModal}
@@ -1090,6 +1320,80 @@ const AdminDashboardPage = () => {
                      </>
                    )}
 
+                   {/* Pricing Submission Details */}
+                   {modalType === 'pricing' && selectedPricingSubmission && (
+                     <>
+                       {/* Contact Information */}
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                         <h4 className="font-semibold text-gray-800 mb-3">Contact Information</h4>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Name</label>
+                             <p className="text-sm text-gray-900">{selectedPricingSubmission.name}</p>
+                           </div>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Email</label>
+                             <p className="text-sm text-gray-900">{selectedPricingSubmission.email}</p>
+                           </div>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Phone</label>
+                             <p className="text-sm text-gray-900">{selectedPricingSubmission.phone || 'Not provided'}</p>
+                           </div>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Submission Date</label>
+                             <p className="text-sm text-gray-900">
+                               {new Date(selectedPricingSubmission.created_at).toLocaleDateString()} at{' '}
+                               {new Date(selectedPricingSubmission.created_at).toLocaleTimeString()}
+                             </p>
+                           </div>
+                         </div>
+                       </div>
+
+                       {/* Clinic Information */}
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                         <h4 className="font-semibold text-gray-800 mb-3">Clinic Information</h4>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Clinic Name</label>
+                             <p className="text-sm text-gray-900">{selectedPricingSubmission.clinic_name || 'Not provided'}</p>
+                           </div>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Location</label>
+                             <p className="text-sm text-gray-900">{selectedPricingSubmission.location || 'Not provided'}</p>
+                           </div>
+                         </div>
+                       </div>
+
+                       {/* Plan Information */}
+                       <div className="bg-gray-50 p-4 rounded-lg">
+                         <h4 className="font-semibold text-gray-800 mb-3">Plan Information</h4>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Selected Plan</label>
+                             <p className="text-sm text-gray-900 font-semibold text-cyan-600">{selectedPricingSubmission.selected_plan}</p>
+                           </div>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Current Status</label>
+                             <div className="mt-1">
+                               {getStatusBadge(selectedPricingSubmission.status || 'new', 'pricing')}
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                       {/* Additional Message */}
+                       {selectedPricingSubmission.message && (
+                         <div className="bg-gray-50 p-4 rounded-lg">
+                           <h4 className="font-semibold text-gray-800 mb-3">Additional Message</h4>
+                           <div>
+                             <label className="block text-sm font-medium text-gray-600">Message</label>
+                             <p className="text-sm text-gray-900 whitespace-pre-wrap">{selectedPricingSubmission.message}</p>
+                           </div>
+                         </div>
+                       )}
+                     </>
+                   )}
+
                    {/* System Information */}
                    <div className="bg-gray-50 p-4 rounded-lg">
                      <h4 className="font-semibold text-gray-800 mb-3">System Information</h4>
@@ -1100,6 +1404,7 @@ const AdminDashboardPage = () => {
                            {modalType === 'dentist' && selectedDentist?.id}
                            {modalType === 'patient' && selectedPatient?.id}
                            {modalType === 'inquiry' && selectedInquiry?.id}
+                           {modalType === 'pricing' && selectedPricingSubmission?.id}
                          </p>
                        </div>
                        <div>
@@ -1107,7 +1412,8 @@ const AdminDashboardPage = () => {
                          <p className="text-sm text-gray-900">
                            {(() => {
                              const item = modalType === 'dentist' ? selectedDentist : 
-                                        modalType === 'patient' ? selectedPatient : selectedInquiry;
+                                        modalType === 'patient' ? selectedPatient : 
+                                        modalType === 'inquiry' ? selectedInquiry : selectedPricingSubmission;
                              return item?.updated_at ? 
                                `${new Date(item.updated_at).toLocaleDateString()} at ${new Date(item.updated_at).toLocaleTimeString()}` : 
                                'Not updated yet';

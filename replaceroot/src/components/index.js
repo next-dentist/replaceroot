@@ -14,3 +14,4 @@ export { default as ClinicCard } from './ClinicCard';
 export { default as Layout } from './Layout';
 export { default as AddClinicModal } from './clinic/AddClinicModal';
 export { default as ProtectedRoute } from './ProtectedRoute';
+export { default as PricingSection } from './PricingSection';

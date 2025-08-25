@@ -57,7 +57,7 @@ const DhulePage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-cyan-50 relative overflow-hidden">
+        <section className="py-24 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-cyan-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-br from-cyan-200/30 to-teal-200/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tl from-teal-200/20 to-cyan-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
           
@@ -182,8 +182,6 @@ const DhulePage = () => {
                   <div className="relative">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 inline-block pb-3 relative">
                       At our branch at {displayName}, <span className="text-teal-500">we pride ourselves on:</span>
-                      <span className="absolute bottom-0 right-0 w-24 h-1 bg-teal-400 rounded"></span>
-                      <span className="absolute -bottom-1 right-0 translate-x-14 w-2 h-2 border-2 border-teal-400 rounded-full bg-white"></span>
                     </h2>
                   </div>
                 </div>
@@ -409,7 +407,7 @@ const DhulePage = () => {
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-20"><div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6"><i className="fa-solid fa-star mr-2"></i>Why Choose Us</div><h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Why <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">{displayName}</span> for Dental Implants?</h2><div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">{clinic.whyFeatures.map((feature, index) => (<div key={index} className="group"><div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full"><div className="flex justify-center mb-6"><div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"><i className={`fa-solid ${feature.icon} text-2xl text-white`}></i></div></div><h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight group-hover:text-cyan-600 transition-colors">{feature.title}</h3><p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors">{feature.description}</p><div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><div className="w-8 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full mx-auto"></div></div></div></div>))}</div>
-              <div className="mt-16 text-center"><div className="inline-flex items-center space-x-4"><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-sm font-medium">8 Key Advantages</span></div><div className="w-px h-4 bg-gray-300"></div><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-award text-cyan-500"></i><span className="text-sm font-medium">Proven Excellence</span></div></div></div>
+              <div className="mt-16 text-center"><div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4"><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-sm font-medium">8 Key Advantages</span></div><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-award text-cyan-500"></i><span className="text-sm font-medium">Proven Excellence</span></div></div></div>
             </div>
           </div>
         </section>
@@ -608,7 +606,6 @@ const DhulePage = () => {
               <div className="mt-12 sm:mt-16 text-center">
                 <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
                   <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">4 Key Benefits</span></div>
-                  <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-list-check text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">8 Treatment Options</span></div>
                 </div>
               </div>
@@ -681,11 +678,10 @@ const DhulePage = () => {
                 </div>
                 
                 <div className="mt-12 flex justify-center items-center space-x-8">
-                  <div className="flex items_center space-x-2 text-gray-500">
+                  <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-trending-up text-cyan-500"></i>
                     <span className="text-sm font-medium">Growing Demand</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-users text-cyan-500"></i>
                     <span className="text-sm font-medium">6 Key Factors</span>
@@ -698,94 +694,94 @@ const DhulePage = () => {
         
 
         {/* Innovation Section (exact InnovationSection markup) */}
-        <section className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-cyan-200/20 to-teal-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-200/10 to-cyan-200/10 rounded-full blur-3xl"></div>
           
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6">
+              <div className="text-center mb-12 sm:mb-16">
+                <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                   <i className="fa-solid fa-lightbulb mr-2"></i>
                   Cutting-Edge Innovation
                 </div>
                 
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
                   Our <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">Innovation</span> in Dental Implants
                 </h2>
                 
-                <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
+                <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div className="space-y-6 sm:space-y-8">
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-6">
-                          <i className="fa-solid fa-shield-alt text-white text-2xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="flex items-center mb-4 sm:mb-6">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4 sm:mr-6">
+                          <i className="fa-solid fa-shield-alt text-white text-lg sm:text-2xl"></i>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Proven Excellence</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Proven Excellence</h3>
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.excellence}</p>
+                      <p className="text-gray-600 leading-relaxed text-base sm:text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.excellence}</p>
                     </div>
                   </div>
 
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-6">
-                          <i className="fa-solid fa-microchip text-white text-2xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="flex items-center mb-4 sm:mb-6">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 mr-4 sm:mr-6">
+                          <i className="fa-solid fa-microchip text-white text-lg sm:text-2xl"></i>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Advanced Technology</h3>
+                        <h3 className="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-cyan-600 transition-colors">Advanced Technology</h3>
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.technology}</p>
+                      <p className="text-gray-600 leading-relaxed text-base sm:text-lg group-hover:text-gray-700 transition-colors">{clinic.innovation.technology}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center lg:text-left">
                   <div className="group">
-                    <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                      <div className="mb-8">
-                        <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg mx-auto lg:mx-0 mb-6 group-hover:scale-110 transition-transform duration-300">
-                          <i className="fa-solid fa-calendar-check text-white text-3xl"></i>
+                    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
+                      <div className="mb-6 sm:mb-8">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg mx-auto lg:mx-0 mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                          <i className="fa-solid fa-calendar-check text-white text-2xl sm:text-3xl"></i>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-800 mb-6 group-hover:text-cyan-600 transition-colors">Plan Your Treatment</h3>
-                        <p className="text-gray-600 leading-relaxed text-lg mb-8 group-hover:text-gray-700 transition-colors">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 group-hover:text-cyan-600 transition-colors">Plan Your Treatment</h3>
+                        <p className="text-gray-600 leading-relaxed text-base sm:text-lg mb-6 sm:mb-8 group-hover:text-gray-700 transition-colors">
                           Plan your Dental Implants in India with Replace Roots. Schedule for your next dental appointment 
                           at your convenience – anytime, anywhere!
                         </p>
                       </div>
 
-                      <div className="space-y-6 mb-8">
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                      <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Flexible Scheduling</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Flexible Scheduling</span>
                         </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Expert Consultation</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Expert Consultation</span>
                         </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-4 group/item">
-                          <div className="w-8 h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
-                            <i className="fa-solid fa-check text-cyan-600 text-sm"></i>
+                        <div className="flex items-center justify-center lg:justify-start space-x-3 sm:space-x-4 group/item">
+                          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-100 to-teal-100 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                            <i className="fa-solid fa-check text-cyan-600 text-xs sm:text-sm"></i>
                           </div>
-                          <span className="text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Advanced Treatment Plans</span>
+                          <span className="text-sm sm:text-base text-gray-700 font-medium group-hover/item:text-gray-800 transition-colors">Advanced Treatment Plans</span>
                         </div>
                       </div>
 
                       <div className="text-center lg:text-left">
                         <button
                           onClick={() => setIsContactModalOpen(true)}
-                          className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-3"
+                          className="inline-flex items-center bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-2 sm:space-x-3"
                         >
-                          <i className="fa-regular fa-calendar-days text-xl"></i>
-                          <span className="text-lg">Schedule Appointment</span>
+                          <i className="fa-regular fa-calendar-days text-lg sm:text-xl"></i>
+                          <span className="text-base sm:text-lg">Schedule Appointment</span>
                         </button>
                       </div>
                     </div>
@@ -794,17 +790,15 @@ const DhulePage = () => {
               </div>
               
               <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
+                <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8">
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-award text-cyan-500"></i>
                     <span className="text-sm font-medium">Proven Excellence</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-microchip text-cyan-500"></i>
                     <span className="text-sm font-medium">Advanced Technology</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-calendar-check text-cyan-500"></i>
                     <span className="text-sm font-medium">Easy Scheduling</span>
@@ -914,19 +908,19 @@ const DhulePage = () => {
                     alt="Dental implant parts diagram showing crown, abutment, and fixture" 
                     className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="p-6 bg-gradient-to-r from-cyan-50 to-teal-50">
-                    <div className="flex items-center justify-center space-x-4">
+                  <div className="p-4 sm:p-6 bg-gradient-to-r from-cyan-50 to-teal-50">
+                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-cyan-500 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Crown</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Crown</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Abutment</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Abutment</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-cyan-600 rounded-full"></div>
-                        <span className="text-sm font-medium text-gray-700">Fixture</span>
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Fixture</span>
                       </div>
                     </div>
                   </div>
@@ -958,17 +952,15 @@ const DhulePage = () => {
               </div>
               
               <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
+                <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8">
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-star text-cyan-500"></i>
                     <span className="text-sm font-medium">12 Specialties</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-award text-cyan-500"></i>
                     <span className="text-sm font-medium">Premium Care</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-heart text-cyan-500"></i>
                     <span className="text-sm font-medium">Patient Focused</span>

@@ -6,7 +6,7 @@ import {
   ForPatients,
   WhyChooseUs,
   Testimonials,
-  PlansPricing,
+  PricingSection,
   Footer
 } from '../components';
 import Layout from '../components/Layout';
@@ -56,7 +56,10 @@ const HomePage = () => {
           <ForPatients />
           <WhyChooseUs />
           <Testimonials />
-          <PlansPricing />
+          <PricingSection 
+            title="Choose Your Growth Plan"
+            subtitle="Flexible pricing plans designed to scale with your practice growth. Start with the plan that fits your needs and upgrade as you grow."
+          />
         </main>
         <Footer />
       </div>

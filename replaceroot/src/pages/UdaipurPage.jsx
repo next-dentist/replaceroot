@@ -57,7 +57,7 @@ const UdaipurPage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-cyan-50 relative overflow-hidden">
+        <section className="py-24 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-cyan-50 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-gradient-to-br from-cyan-200/30 to-teal-200/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-tl from-teal-200/20 to-cyan-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
           
@@ -182,8 +182,6 @@ const UdaipurPage = () => {
                   <div className="relative">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 inline-block pb-3 relative">
                       At our branch at {displayName}, <span className="text-teal-500">we pride ourselves on:</span>
-                      <span className="absolute bottom-0 right-0 w-24 h-1 bg-teal-400 rounded"></span>
-                      <span className="absolute -bottom-1 right-0 translate-x-14 w-2 h-2 border-2 border-teal-400 rounded-full bg-white"></span>
                     </h2>
                   </div>
                 </div>
@@ -409,7 +407,7 @@ const UdaipurPage = () => {
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-20"><div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-100 to-teal-100 text-cyan-700 rounded-full text-sm font-medium mb-6"><i className="fa-solid fa-star mr-2"></i>Why Choose Us</div><h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Why <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">{displayName}</span> for Dental Implants?</h2><div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto rounded-full"></div></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">{clinic.whyFeatures.map((feature, index) => (<div key={index} className="group"><div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 h-full"><div className="flex justify-center mb-6"><div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"><i className={`fa-solid ${feature.icon} text-2xl text-white`}></i></div></div><h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight group-hover:text-cyan-600 transition-colors">{feature.title}</h3><p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors">{feature.description}</p><div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><div className="w-8 h-1 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full mx-auto"></div></div></div></div>))}</div>
-              <div className="mt-16 text-center"><div className="inline-flex items-center space-x-4"><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-sm font-medium">8 Key Advantages</span></div><div className="w-px h-4 bg-gray-300"></div><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-award text-cyan-500"></i><span className="text-sm font-medium">Proven Excellence</span></div></div></div>
+              <div className="mt-16 text-center"><div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4"><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-sm font-medium">8 Key Advantages</span></div><div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-award text-cyan-500"></i><span className="text-sm font-medium">Proven Excellence</span></div></div></div>
             </div>
           </div>
         </section>
@@ -608,7 +606,6 @@ const UdaipurPage = () => {
               <div className="mt-12 sm:mt-16 text-center">
                 <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
                   <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-check-circle text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">4 Key Benefits</span></div>
-                  <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500"><i className="fa-solid fa-list-check text-cyan-500"></i><span className="text-xs sm:text-sm font-medium">8 Treatment Options</span></div>
                 </div>
               </div>
@@ -685,7 +682,6 @@ const UdaipurPage = () => {
                     <i className="fa-solid fa-trending-up text-cyan-500"></i>
                     <span className="text-sm font-medium">Growing Demand</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-users text-cyan-500"></i>
                     <span className="text-sm font-medium">6 Key Factors</span>
@@ -794,17 +790,15 @@ const UdaipurPage = () => {
               </div>
               
               <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
+                <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8">
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-award text-cyan-500"></i>
                     <span className="text-sm font-medium">Proven Excellence</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-microchip text-cyan-500"></i>
                     <span className="text-sm font-medium">Advanced Technology</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-calendar-check text-cyan-500"></i>
                     <span className="text-sm font-medium">Easy Scheduling</span>
@@ -958,17 +952,15 @@ const UdaipurPage = () => {
               </div>
               
               <div className="mt-16 text-center">
-                <div className="inline-flex items-center space-x-8">
+                <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8">
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-star text-cyan-500"></i>
                     <span className="text-sm font-medium">12 Specialties</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-award text-cyan-500"></i>
                     <span className="text-sm font-medium">Premium Care</span>
                   </div>
-                  <div className="w-px h-4 bg-gray-300"></div>
                   <div className="flex items-center space-x-2 text-gray-500">
                     <i className="fa-solid fa-heart text-cyan-500"></i>
                     <span className="text-sm font-medium">Patient Focused</span>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header, Footer } from '../components';
 import Layout from '../components/Layout';
 import { contactService } from '../services/contactService';
+import AddClinicModal from '../components/clinic/AddClinicModal';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const ContactPage = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [isDentistModalOpen, setIsDentistModalOpen] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,50 +55,25 @@ const ContactPage = () => {
   const contactInfo = [
     {
       icon: 'fa-map-marker-alt',
-      title: 'Global Headquarters',
-      details: '123 Business District, Suite 456<br/>New York, NY 10001<br/>United States',
+      title: 'Office Address',
+      details: '202-Premier Chambers<br/>Above LIC Office, RC Dutt Road<br/>Alkapuri, Vadodara 390007',
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: 'fa-envelope',
       title: 'Email Support',
-      details: 'support@replaceroots.com<br/>info@replaceroots.com<br/>business@replaceroots.com',
+      details: 'info@replaceroots.com',
       color: 'from-cyan-500 to-teal-500'
     },
     {
       icon: 'fa-phone',
       title: 'Phone Support',
-      details: '+1 (555) 123-4567<br/>+1 (555) 987-6543<br/>Mon-Fri: 9AM-6PM EST',
+      details: '+91 9328036817<br/>Mon-Fri: 9AM-6PM IST<br/>Sat: 9AM-2PM IST',
       color: 'from-teal-500 to-green-500'
     }
   ];
 
-  const supportCategories = [
-    {
-      title: 'For Dentists',
-      description: 'Get help with joining our platform, lead management, and practice growth.',
-      icon: 'fa-user-md',
-      contact: 'dentists@replaceroots.com'
-    },
-    {
-      title: 'For Patients',
-      description: 'Find specialists, get treatment information, and patient support.',
-      icon: 'fa-user',
-      contact: 'patients@replaceroots.com'
-    },
-    {
-      title: 'Technical Support',
-      description: 'Website issues, account problems, and technical assistance.',
-      icon: 'fa-cog',
-      contact: 'tech@replaceroots.com'
-    },
-    {
-      title: 'Business Inquiries',
-      description: 'Partnerships, media requests, and business development.',
-      icon: 'fa-handshake',
-      contact: 'business@replaceroots.com'
-    }
-  ];
+
 
   const faqs = [
     {
@@ -139,8 +116,8 @@ const ContactPage = () => {
         url: 'https://replaceroot.com/contact',
         contactPoint: {
           '@type': 'ContactPoint',
-          telephone: '+1 (555) 123-4567',
-          email: 'support@replaceroots.com',
+          telephone: '+91 9328036817',
+          email: 'info@replaceroots.com',
           contactType: 'customer service',
           availableLanguage: 'English'
         },
@@ -176,13 +153,14 @@ const ContactPage = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a 
-                href="#contact-form"
+                href="mailto:info@replaceroots.com"
                 className="bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all duration-300 shadow-lg transform hover:-translate-y-1"
               >
-                Send Message
+                <i className="fa-solid fa-envelope mr-2"></i>
+                Email Us
               </a>
               <a 
-                href="tel:+15551234567"
+                href="tel:+919328036817"
                 className="bg-white border-2 border-cyan-500 text-cyan-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg hover:bg-cyan-50 transition-all duration-300"
               >
                 <i className="fa-solid fa-phone mr-2"></i>
@@ -222,29 +200,29 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Form & Support Categories */}
+      {/* Contact Form */}
       <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-7xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             
             {/* Contact Form */}
             <div id="contact-form">
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Send us a Message</h3>
                 
-                                 {submitStatus === 'success' && (
-                   <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm sm:text-base">
-                     <i className="fa-solid fa-check-circle mr-2"></i>
-                     Thank you! Your message has been sent successfully. We'll get back to you soon.
-                   </div>
-                 )}
-                 
-                 {submitStatus === 'error' && (
-                   <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm sm:text-base">
-                     <i className="fa-solid fa-exclamation-circle mr-2"></i>
-                     Sorry, there was an error sending your message. Please try again or contact us directly.
-                   </div>
-                 )}
+                {submitStatus === 'success' && (
+                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm sm:text-base">
+                    <i className="fa-solid fa-check-circle mr-2"></i>
+                    Thank you! Your message has been sent successfully. We'll get back to you soon.
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm sm:text-base">
+                    <i className="fa-solid fa-exclamation-circle mr-2"></i>
+                    Sorry, there was an error sending your message. Please try again or contact us directly.
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -354,32 +332,6 @@ const ContactPage = () => {
                 </form>
               </div>
             </div>
-
-            {/* Support Categories */}
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6 sm:mb-8">Support Categories</h3>
-              <div className="space-y-4 sm:space-y-6">
-                {supportCategories.map((category, index) => (
-                  <div key={index} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 hover:shadow-xl transition-all duration-300">
-                    <div className="flex items-start gap-3 sm:gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i className={`fa-solid ${category.icon} text-white text-sm sm:text-base`}></i>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-1 sm:mb-2">{category.title}</h4>
-                        <p className="text-gray-600 mb-2 sm:mb-3 text-sm sm:text-base">{category.description}</p>
-                        <a 
-                          href={`mailto:${category.contact}`}
-                          className="text-cyan-600 hover:text-cyan-700 font-medium text-xs sm:text-sm"
-                        >
-                          {category.contact}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -421,12 +373,12 @@ const ContactPage = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a 
-                href="/for-dentists"
+              <button 
+                onClick={() => setIsDentistModalOpen(true)}
                 className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 shadow-lg"
               >
                 Join as Dentist
-              </a>
+              </button>
               <a 
                 href="/for-patients"
                 className="bg-white border-2 border-cyan-500 text-cyan-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg hover:bg-cyan-50 transition-all duration-300"
@@ -439,6 +391,12 @@ const ContactPage = () => {
       </section>
 
       <Footer />
+      
+      {/* Dentist Registration Modal */}
+      <AddClinicModal 
+        isOpen={isDentistModalOpen}
+        onClose={() => setIsDentistModalOpen(false)}
+      />
     </div>
   </Layout>
 );
